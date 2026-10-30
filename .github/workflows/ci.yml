@@ -40,10 +40,21 @@ jobs:
       - name: Test
         run: pnpm test
 
-      - name: Build all browser targets
+      - name: Build and package browser targets
         run: |
-          for target in build-ch build-ed build-op build-ff build-ff-unlisted build-ff-android build-th; do
+          for target in ch ed op ff ff-unlisted ff-android th; do
             echo "::group::$target"
-            pnpm run "$target"
+            pnpm run "build-$target"
+            version=$(node -p "require('./extension/manifest.json').version")
+            pnpm run pack:zip
+            mv extension.zip "SmartProxy-v${version}-${target}.zip"
             echo "::endgroup::"
           done
+
+      - name: Upload packaged extensions
+        uses: actions/upload-artifact@v4
+        with:
+          name: smartproxy-extensions
+          path: SmartProxy-*.zip
+          if-no-files-found: error
+          retention-days: 14
