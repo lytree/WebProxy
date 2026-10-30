@@ -228,6 +228,12 @@
 	"settingsGeneralSmartFeaturesNoChrome": {
 		"message": "<strong><a href='https://www.getfirefox.com/' target='_blank' rel='noopener'>Firefox</a> only!</strong> Unfortunately this feature is not supported by Chrome."
 	},
+	"settingsHostPermissionRequired": {
+		"message": "SmartProxy needs permission to access websites in Firefox. Please grant access to apply proxy rules."
+	},
+	"settingsHostPermissionGrant": {
+		"message": "Grant access"
+	},
 	"settingsGeneralProxyPerOrigin": {
 		"message": "Enable proxy per tab/origin"
 	},

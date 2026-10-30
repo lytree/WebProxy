@@ -24,23 +24,19 @@ Function BuildAndPack($Build, $BuildName) {
  if(!$global:Success) {
     return;
  }
- if (Test-Path ".\build") {
-    Write-Output "Cleaning build folder"
-    Remove-Item -path .\build\* -recurse
- }
 
  Invoke-Expression ("npm run build-$Build " + ';$global:Success=$?')
 
  if($global:Success)
  {
-    $manifest = Get-Content .\build\manifest.json | ConvertFrom-Json
+    $manifest = Get-Content .\extension\manifest.json | ConvertFrom-Json
     $global:version = $manifest.version
 	if (!(Test-Path "..\!Releases\$global:version\")) {
 		New-Item -Path "..\!Releases\$global:version\" -ItemType Directory
 	}
     $zipfile = "..\!Releases\$global:version\SmartProxy-v$global:version-$BuildName.zip"
     $compress = @{
-        Path = ".\build\*"
+        Path = ".\extension\*"
         DestinationPath = $zipfile
     }
     Compress-Archive @compress
@@ -55,7 +51,6 @@ Function BuildAndPack($Build, $BuildName) {
 
 BuildAndPack "ff" "Firefox"
 BuildAndPack "ch"  "Chrome-ManifestV3"
-BuildAndPack "ch-mv2"  "Chrome-ManifestV2"
 BuildAndPack "ed"  "Edge"
 BuildAndPack "th"  "Thunderbird"
 BuildAndPack "op"  "Opera"

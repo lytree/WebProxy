@@ -5,3 +5,4 @@ environment.browserConfig = {
     marketName: "Opera Extensions",
     marketUrl: "https://addons.opera.com/en/extensions/details/smartproxy/"
 };
+environment.manifestV3 = true;

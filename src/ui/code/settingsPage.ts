@@ -409,6 +409,24 @@ export class settingsPage {
 		});
 	}
 
+	/** Firefox MV3 does not grant host permissions automatically, ask for them on a user gesture */
+	private static checkHostPermissions() {
+		if (!api.permissions?.contains || !api.permissions?.request)
+			return;
+
+		const alertId = "#divAlertFirefoxHostPermission";
+		api.permissions.contains({ origins: ["<all_urls>"] }).then((granted: boolean) => {
+			jq(alertId).toggleClass("d-none", granted);
+		});
+
+		jq("#btnRequestHostPermissions").on("click", () => {
+			api.permissions.request({ origins: ["<all_urls>"] }).then((granted: boolean) => {
+				if (granted)
+					jq(alertId).addClass("d-none");
+			});
+		});
+	}
+
 	private static localizeUi() {
 		if (settingsPage.localized)
 			return;
@@ -429,6 +447,8 @@ export class settingsPage {
 			jq("#divAlertFirefox").show().removeClass('d-none');
 			jq(".firefox-only").show().removeClass('d-none');
 			jq(".chrome-only").hide();
+
+			settingsPage.checkHostPermissions();
 		}
 
 		// -- ServerSubscription --------

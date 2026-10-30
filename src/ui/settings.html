@@ -247,6 +247,10 @@
 						<!----------General Options----------->
 						<h3 data-localize="settingsTabGeneral">General Options</h3>
 						<hr class="afshin-line" />
+						<div id="divAlertFirefoxHostPermission" class="firefox-only alert alert-warning d-none" role="alert">
+							<span data-localize="settingsHostPermissionRequired">SmartProxy needs permission to access websites in Firefox. Please grant access to apply proxy rules.</span>
+							<button id="btnRequestHostPermissions" type="button" class="btn btn-sm btn-warning" data-localize="settingsHostPermissionGrant">Grant access</button>
+						</div>
 						<div>
 							<h3 data-localize="settingsGeneralSmartFeatures">Smart Features</h3>
 							<label class="mx-2 form-label">

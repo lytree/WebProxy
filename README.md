@@ -38,6 +38,13 @@ Run the app
     npm install
     npm run build-ff:watch
 
+Build output is written to the `extension/` directory. Choose the target browser with the build script:
+
+    build-ch (Chrome)   build-ed (Edge)   build-op (Opera)
+    build-ff (Firefox)  build-ff-unlisted  build-ff-android  build-th (Thunderbird)
+
+Append `:watch` to a browser build (e.g. `npm run build-ff:watch`) to rebuild on change.
+
 To install in **Firefox** follow these instructions:
 
 https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/
@@ -46,7 +53,7 @@ https://extensionworkshop.com/documentation/develop/temporary-installation-in-fi
 2.	open Firefox
 3.	enter "about:debugging" in the URL bar
 4.	click "Load Temporary Add-on"
-5.	open the extension's 'build' directory and select any file inside the extension.
+5.	open the `extension/` directory and select any file inside the extension.
 
 To install in **Google Chrome** follow these instructions:
 
@@ -56,7 +63,7 @@ https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#
 2.	Open the Extension Management page by navigating to chrome://extensions.
 3.	The Extension Management page can also be opened by clicking on the Chrome menu, hovering over More Tools then selecting Extensions.
 4.	Enable Developer Mode by clicking the toggle switch next to Developer mode.
-5.	Click the LOAD UNPACKED button and select the extension's 'build' directory.
+5.	Click the LOAD UNPACKED button and select the `extension/` directory.
 
 #### Attribution
 

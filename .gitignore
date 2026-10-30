@@ -286,6 +286,8 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/extension
+/extension.zip
 /build
 /build-firefox
 /build-firefox-unlisted
