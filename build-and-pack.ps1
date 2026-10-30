@@ -25,7 +25,7 @@ Function BuildAndPack($Build, $BuildName) {
     return;
  }
 
- Invoke-Expression ("npm run build-$Build " + ';$global:Success=$?')
+ Invoke-Expression ("pnpm run build-$Build " + ';$global:Success=$?')
 
  if($global:Success)
  {

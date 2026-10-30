@@ -288,6 +288,9 @@ __pycache__/
 *.xsd.cs
 /extension
 /extension.zip
+/extension.crx
+/extension.xpi
+/key.pem
 /build
 /build-firefox
 /build-firefox-unlisted

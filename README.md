@@ -30,26 +30,35 @@ If you are interested to have SmartProxy in your language or it is not translate
 #### How to build/test:
 Requirements
 
-    Node.js
+    Node.js + pnpm
     Firefox or Chrome browser
 
 Run the app
 
-    npm install
-    npm run build-ff:watch
+    pnpm install
+    pnpm dev-firefox    # build + watch + launch Firefox via web-ext
+    pnpm dev            # build + watch + launch Chromium via web-ext
 
 Build output is written to the `extension/` directory. Choose the target browser with the build script:
 
     build-ch (Chrome)   build-ed (Edge)   build-op (Opera)
     build-ff (Firefox)  build-ff-unlisted  build-ff-android  build-th (Thunderbird)
 
-Append `:watch` to a browser build (e.g. `npm run build-ff:watch`) to rebuild on change.
+Append `:watch` to a browser build (e.g. `pnpm run build-ff:watch`) to rebuild on change.
+
+Code quality and packaging:
+
+    pnpm typecheck      # tsc --noEmit
+    pnpm lint           # ESLint flat config
+    pnpm pack           # extension.zip + extension.crx + extension.xpi
+
+Run the matching browser build before `pnpm pack` (crx for Chromium targets, xpi for Firefox/Thunderbird).
 
 To install in **Firefox** follow these instructions:
 
 https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/
 
-1.	build the project using `npm run build-ff` command
+1.	build the project using `pnpm run build-ff` command
 2.	open Firefox
 3.	enter "about:debugging" in the URL bar
 4.	click "Load Temporary Add-on"
@@ -59,7 +68,7 @@ To install in **Google Chrome** follow these instructions:
 
 https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked
 
-1.	build the project using `npm run build-ch` command
+1.	build the project using `pnpm run build-ch` command
 2.	Open the Extension Management page by navigating to chrome://extensions.
 3.	The Extension Management page can also be opened by clicking on the Chrome menu, hovering over More Tools then selecting Extensions.
 4.	Enable Developer Mode by clicking the toggle switch next to Developer mode.

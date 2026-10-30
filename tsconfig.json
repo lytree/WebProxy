@@ -2,7 +2,7 @@
 	"compileOnSave": true,
 	"compilerOptions": {
 		"typeRoots": [ "node_modules/@types", "node_modules/web-ext-types" ],
-		"types": [ "jest" ],
+		"types": [ "jest", "node" ],
 		"outDir": "build-ts",
 		"rootDir": "src",
 		"noImplicitAny": false,
@@ -13,7 +13,8 @@
 		"lib": [ "ES2021", "ESNext", "dom" ],
 		"strictNullChecks": false,
 		"noUnusedLocals": true,
-		"moduleResolution": "node",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
 		"ignoreDeprecations": "6.0"
 	},
 	"exclude": [
