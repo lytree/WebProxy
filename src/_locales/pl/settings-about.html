@@ -1,0 +1,168 @@
+<h2 class="text-primary">
+	SmartProxy
+</h2>
+<p data-localize="settingsTabAboutDescription">
+	Pomyśl o tym jako o rozwiązaniu: skonfiguruj raz i zapomnij. Korzystanie z proxy nigdy nie było łatwiejsze dzięki SmartProxy.
+	Dzięki SmartProxy nie musisz ręcznie zmieniać ustawień proxy ani włączać i wyłączać go.
+	Po prostu powiedz SmartProxy, aby włączył proxy dla wybranej strony internetowej jednym kliknięciem.
+	Po tym, gdy odwiedzisz tę konkretną stronę, SmartProxy automatycznie przekieruje
+	wszystkie Twoje dane przez proxy bez potrzeby podejmowania dalszych działań.
+</p>
+<p>
+	SmartProxy oferuje różnorodne funkcje odpowiednie zarówno dla początkujących, jak i zaawansowanych użytkowników, w tym:
+</p>
+<ul>
+	<li>Włącz proxy dla pojedynczej strony na karcie, a wszystko na tej karcie będzie automatycznie
+		używać proxy. Ta funkcja nazywa się proxy-na-kartę.</li>
+	<li>Automatycznie wykrywaj, kiedy włączyć lub wyłączyć proxy dla określonych stron internetowych na podstawie wzorców reguł.</li>
+	<li>Łatwo przełączaj się między wieloma serwerami proxy jako ustawienie aktywnego serwera proxy.</li>
+	<li>Włącz proxy dla bieżącej strony, na której się znajdujesz, jednym kliknięciem.</li>
+	<li>Przeglądaj zasoby i żądania bieżącej strony i zdecyduj, czy włączyć dla nich proxy
+		jednym kliknięciem.</li>
+	<li>Łatwo przełączaj się między trybami proxy lub włącz proxy dla wszystkich domen.</li>
+	<li>Twórz kopie zapasowe/Przywracaj ustawienia i reguły.</li>
+</ul>
+<br />
+<h3>Proszę zwrócić uwagę, że:</h3>
+<p>
+<div class="text-info">
+	<i class="fas fa-info-circle" aria-hidden="true"></i>
+	SmartProxy nie dostarcza żadnego typu serwerów proxy.
+</div>
+<div class="text-danger">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy nie śledzi Cię w żaden sposób.
+</div>
+<div class="text-warning">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy nie ingeruje w strony internetowe i treści.
+</div>
+</p>
+<br>
+<h3>Twoja opinia jest ważna</h3>
+<p>
+<div>
+	<i class="fas fa-star text-warning"></i>
+	Jeśli <i class="fas fa-heart text-danger"></i> lubisz SmartProxy, oceń go na stronie
+	<a id="linkAddonsMarket" href="#" target="_blank">Rozszerzenia</a>.
+</div>
+<div class="">
+	<i class="fas fa-question-circle text-primary"></i>
+	Jeśli masz pytania lub problemy, odwiedź stronę zgłoszeń i otwórz ticket, aby 
+	<a href="https://github.com/salarcode/SmartProxy/issues" target="_blank">zgłosić problemy</a>.
+</div>
+</p>
+<br>
+<h3>Legenda ikon akcji paska narzędzi</h3>
+<p>
+	Ikona na pasku narzędzi przeglądarki zmieni się, aby reprezentować status SmartProxy. Oto co oznaczają różne ikony:
+	<br />
+
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>Legenda ikon (wszystkie przeglądarki):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">Ikona</th>
+				<th>Meaning</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-disabled.svg" class=""></td>
+				<td>Żądania nie będą używać proxy.</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/smartproxy.svg" class=""></td>
+				<td>
+					Proxy zostało zastosowane lub zostanie zastosowane do żądań pasujących do zdefiniowanych reguł.
+					<br /> Lub żadna reguła nie pasuje do karty.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i>
+					Reguły inteligentne
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always.svg" class=""></td>
+				<td>
+					Proxy jest stosowane do wszystkich żądań w bieżącej karcie. (Domeny z białej listy są reprezentowane w
+					przeglądarkach opartych na Chrome)
+					<br />
+					Profil: <i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i>
+					Zawsze włączone
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-system.svg" class=""></td>
+				<td>
+					Decyzja o użyciu proxy jest przekazywana systemowi operacyjnemu.
+					<br/>
+					Profil: System
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>Legenda ikon (tylko Firefox):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">Ikona</th>
+				<th>Meaning</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-green.svg" class=""></td>
+				<td>
+					Reguła pasuje do bieżącej karty. Wszystkie kolejne żądania przechodzą przez proxy.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Reguły inteligentne
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-failed.svg" class=""></td>
+				<td>
+					Reguła pasuje do bieżącej karty. Istnieje co najmniej jedno żądanie, które nie odpowiada / zakończyło się niepowodzeniem.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Reguły inteligentne
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-bypassed.svg" class=""></td>
+				<td>
+					Żadna reguła nie pasuje do bieżącej karty. Co najmniej jedno kolejne żądanie pasuje do reguły i przechodzi przez proxy.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Reguły inteligentne
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-unmatched.svg" class=""></td>
+				<td>
+					Reguła pasuje do bieżącej karty. Co najmniej jedno kolejne żądanie nie pasuje do żadnej reguły i nie przechodzi przez proxy.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Reguły inteligentne
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-noproxy-has-matched.svg" class=""></td>
+				<td>
+					Reguła pasuje do bieżącej karty. Co najmniej jedno kolejne żądanie ominęło proxy za pomocą reguły.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Reguły inteligentne
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always-bypassed.svg" class=""></td>
+				<td>
+					Proxy jest stosowane do wszystkich żądań w bieżącej karcie. Co najmniej jedno kolejne żądanie ominęło proxy za pomocą reguły.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i> Zawsze
+					włączone
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</p>

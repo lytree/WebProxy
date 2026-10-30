@@ -1,0 +1,23 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"typeRoots": [ "node_modules/@types", "node_modules/web-ext-types" ],
+		"types": [ "jest" ],
+		"outDir": "build-ts",
+		"rootDir": "src",
+		"noImplicitAny": false,
+		"noEmitOnError": true,
+		"removeComments": true,
+		"sourceMap": false,
+		"target": "ES2021",
+		"lib": [ "ES2021", "ESNext", "dom" ],
+		"strictNullChecks": false,
+		"noUnusedLocals": true,
+		"moduleResolution": "node",
+		"ignoreDeprecations": "6.0"
+	},
+	"exclude": [
+		"node_modules",
+		"wwwroot"
+	]
+}

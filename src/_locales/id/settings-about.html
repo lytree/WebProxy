@@ -1,0 +1,151 @@
+<h2 class="text-primary">
+	SmartProxy
+</h2>
+<p data-localize="settingsTabAboutDescription">
+	Menggunakan proxy tidak pernah semudah ini dengan SmartProxy. Anggap saja sebagai solusi "atur sekali dan lupakan".
+	Dengan SmartProxy, Anda tidak perlu mengubah pengaturan proxy secara manual atau menyalakan dan mematikannya.
+	Cukup beri tahu SmartProxy untuk mengaktifkan proxy untuk situs web yang Anda inginkan dengan sekali klik.
+	Setelah itu, setiap kali Anda mengunjungi situs tersebut, SmartProxy akan secara otomatis mengarahkan semua data Anda melalui proxy tanpa tindakan lebih lanjut dari Anda.
+</p>
+<p>
+	SmartProxy menawarkan berbagai fitur yang cocok untuk pemula dan pengguna tingkat lanjut, termasuk:
+</p>
+<ul>
+	<li>Aktifkan proxy untuk satu situs pada sebuah tab, dan semua yang ada di tab tersebut akan otomatis menggunakan proxy. Fitur ini disebut proxy-per-tab.</li>
+	<li>Secara otomatis mendeteksi kapan harus mengaktifkan atau menonaktifkan proxy untuk situs web tertentu berdasarkan pola aturan.</li>
+	<li>Dengan mudah beralih antara beberapa server proxy sebagai pengaturan server proxy aktif Anda.</li>
+	<li>Aktifkan proxy untuk situs saat ini yang Anda kunjungi hanya dengan satu klik.</li>
+	<li>Lihat sumber daya dan permintaan situs web saat ini dan putuskan apakah akan mengaktifkan proxy untuk mereka dengan satu klik.</li>
+	<li>Dengan mudah beralih antara mode proxy atau mengaktifkan proxy untuk semua domain.</li>
+	<li>Cadangkan dan pulihkan pengaturan serta aturan.</li>
+</ul>
+<br />
+<h3>Harap perhatikan bahwa:</h3>
+<p>
+<div class="text-info">
+	<i class="fas fa-info-circle" aria-hidden="true"></i>
+	SmartProxy tidak menyediakan server proxy jenis apa pun.
+</div>
+<div class="text-danger">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy tidak melacak Anda dengan cara apa pun.
+</div>
+<div class="text-warning">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy tidak mengganggu halaman web dan konten.
+</div>
+</p>
+<br>
+<h3>Masukan Anda penting</h3>
+<p>
+<div>
+	<i class="fas fa-star text-warning"></i>
+	Jika Anda <i class="fas fa-heart text-danger"></i> menyukai SmartProxy, silakan beri nilai di
+	halaman <a id="linkAddonsMarket" href="#" target="_blank">Ekstensi</a>.
+</div>
+<div class="">
+	<i class="fas fa-question-circle text-primary"></i>
+	Jika Anda memiliki pertanyaan atau masalah, silakan kunjungi halaman masalah dan buka tiket untuk
+	<a href="https://github.com/salarcode/SmartProxy/issues" target="_blank">melaporkan masalah</a>.
+</div>
+</p>
+<br>
+<h3>Keterangan Ikon Toolbar</h3>
+<p>
+	Ikon pada toolbar browser Anda akan berubah untuk menunjukkan status SmartProxy. Berikut arti dari berbagai ikon tersebut:
+	<br />
+
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>Keterangan Ikon (semua browser):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">Ikon</th>
+				<th>Arti</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-disabled.svg" class=""></td>
+				<td>Permintaan tidak akan menggunakan proxy.</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/smartproxy.svg" class=""></td>
+				<td>
+					Proxy diterapkan atau akan diterapkan pada permintaan yang sesuai dengan aturan yang ditentukan.
+					<br />Atau tidak ada aturan yang cocok untuk tab tersebut.
+					<br />Profil:<i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Aturan Pintar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always.svg" class=""></td>
+				<td>
+					Proxy diterapkan pada semua permintaan dalam tab saat ini. (Domain yang masuk daftar putih ditampilkan pada browser berbasis Chrome).<br />Profil: <i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i>Selalu Diaktifkan
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-system.svg" class=""></td>
+				<td>
+					Keputusan tentang penggunaan proxy diserahkan ke sistem operasi.
+					<br/>Profil: Sistem 
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>Keterangan Ikon (Khusus Firefox):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">Ikon</th>
+				<th>Arti</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-green.svg" class=""></td>
+				<td>
+					Sebuah aturan cocok untuk tab saat ini. Semua permintaan selanjutnya melewati proxy.
+					<br />Profil:<i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Aturan Pintar 
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-failed.svg" class=""></td>
+				<td>
+					Sebuah aturan cocok untuk tab saat ini. Ada setidaknya satu permintaan yang tidak responsif atau gagal.
+					<br />Profil:<i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Aturan Pintar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-bypassed.svg" class=""></td>
+				<td>
+					Sebuah aturan cocok untuk tab saat ini. Setidaknya satu permintaan selanjutnya melewati proxy karena aturan.
+					<br />Profil:<i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Aturan Pintar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-unmatched.svg" class=""></td>
+				<td>
+					Sebuah aturan cocok untuk tab saat ini. Setidaknya satu permintaan selanjutnya tidak cocok dengan aturan mana pun dan tidak melewati proxy.
+					<br />Profil:<i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Aturan Pintar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-noproxy-has-matched.svg" class=""></td>
+				<td>
+					Tidak ada aturan yang cocok untuk tab saat ini. Setidaknya satu permintaan selanjutnya cocok dengan sebuah aturan dan melewati proxy.
+					<br />Profil:<i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Aturan Pintar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always-bypassed.svg" class=""></td>
+				<td>
+					Proxy diterapkan pada semua permintaan dalam tab saat ini. Setidaknya satu permintaan selanjutnya melewati proxy karena aturan.
+					<br />Profil:<i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i> Selalu Diaktifkan
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</p>

@@ -1,0 +1,382 @@
+/*
+ * This file is part of SmartProxy <https://github.com/salarcode/SmartProxy>,
+ * Copyright (C) 2022 Salar Khalilzadeh <salar2k@gmail.com>
+ *
+ * SmartProxy is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * SmartProxy is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with SmartProxy.  If not, see <http://www.gnu.org/licenses/>.
+ */
+import { PolyFill } from "../lib/PolyFill";
+import { LiteEvent } from "../lib/LiteEvent";
+import { CompiledProxyRule, FailedRequestType, ProxyServer, TabProxyStatus } from "./definitions";
+import { api, environment } from "../lib/environment";
+import { Settings } from "./Settings";
+import { ProxyRules } from "./ProxyRules";
+import { Utils } from "../lib/Utils";
+
+export class TabManager {
+
+	private static tabs: { [index: string]: TabDataType } = {};
+
+	private static currentTab: TabDataType;
+
+	private static readonly onTabRemoved = new LiteEvent<TabDataType>();
+	private static readonly onTabUpdated = new LiteEvent<TabDataType>();
+
+	public static get TabRemoved() { return this.onTabRemoved.expose(); }
+	public static get TabUpdated() { return this.onTabUpdated.expose(); }
+
+
+	public static initializeTracking() {
+
+		// listen to tab switching
+		api.tabs.onActivated.addListener(TabManager.updateActiveTab);
+
+		// update tab status
+		api.tabs.onUpdated.addListener(TabManager.handleTabUpdated);
+		// listen to tab URL changes
+		api.tabs.onUpdated.addListener(TabManager.updateActiveTab);
+
+		let webNavigation = api.webNavigation;
+		if (webNavigation) {
+			if (webNavigation.onBeforeNavigate)
+				webNavigation.onBeforeNavigate.addListener(TabManager.handleNavigationStarted);
+			if (webNavigation.onCommitted)
+				webNavigation.onCommitted.addListener(TabManager.handleNavigationCommitted);
+			if (webNavigation.onHistoryStateUpdated)
+				webNavigation.onHistoryStateUpdated.addListener(TabManager.handleNavigationCommitted);
+			if (webNavigation.onReferenceFragmentUpdated)
+				webNavigation.onReferenceFragmentUpdated.addListener(TabManager.handleNavigationCommitted);
+			if (webNavigation.onErrorOccurred)
+				webNavigation.onErrorOccurred.addListener(TabManager.handleNavigationError);
+		}
+
+		api.tabs.onRemoved.addListener(TabManager.handleTabRemoved);
+
+		// listen for window switching
+		if (api["windows"])
+			api.windows.onFocusChanged.addListener(TabManager.updateActiveTab);
+
+		// read the active tab
+		TabManager.updateActiveTab();
+
+	}
+
+	/** Gets tab or adds it */
+	public static getOrSetTab(tabId: number, loadTabData = true, initialUrl: string = null): TabDataType {
+		let tabData = TabManager.tabs[tabId];
+		if (tabData == null) {
+			tabData = new TabDataType(tabId);
+			TabManager.tabs[tabId] = tabData;
+			if (initialUrl)
+				tabData.url = initialUrl;
+
+			if (loadTabData)
+				TabManager.loadTabData(tabData);
+		}
+		return tabData;
+	}
+
+	/** Get tab only */
+	public static getTab(tabId: number): TabDataType {
+		return TabManager.tabs[tabId];
+	}
+
+	public static getCurrentTab(): TabDataType {
+		return TabManager.currentTab;
+	}
+
+	public static updateTabData(tabData: TabDataType, tabInfo: any): TabDataType {
+		if (!tabInfo) return null;
+
+		let tabId = tabInfo.id;
+		if (!tabData) {
+			tabData = TabManager.getOrSetTab(tabId, false);
+		}
+
+		// Chrome may expose the destination as pendingUrl while url is still the old/placeholder page.
+		// Firefox only has url, and during loading that is often about:blank / about:newtab.
+		let incomingUrl = tabInfo.pendingUrl || tabInfo.url || "";
+		let keepExistingUrl = Utils.shouldPreserveTrackedUrl(tabData.url, incomingUrl);
+		let effectiveUrl = keepExistingUrl ? tabData.url : incomingUrl;
+
+		if (effectiveUrl && tabData.proxifiedParentDocumentUrl != effectiveUrl) {
+			// resettings the state
+			tabData.resetTabState();
+
+			// apply `proxified` value
+			TabManager.setRuleForProxyPerOrigin(tabData, effectiveUrl);
+		}
+		tabData.updated = new Date();
+		tabData.incognito = tabInfo.incognito;
+		tabData.index = tabInfo.index;
+		if (effectiveUrl) {
+			tabData.url = effectiveUrl;
+			if (!tabData.proxifiedParentDocumentUrl)
+				tabData.proxifiedParentDocumentUrl = effectiveUrl;
+		}
+
+		// saving the tab in the storage
+		TabManager.tabs[tabId] = tabData;
+
+		TabManager.onTabUpdated.trigger(tabData);
+
+		return tabData;
+	}
+
+	public static setTabDataProxied(tabData: TabDataType, requestUrl: string, matchedRule?: CompiledProxyRule) {
+		if (matchedRule) {
+			tabData.proxified = matchedRule.whiteList ?
+				TabProxyStatus.Whitelisted :
+				TabProxyStatus.Proxified;
+			tabData.proxifiedParentDocumentUrl = requestUrl;
+			tabData.proxyMatchedRule = matchedRule;
+			tabData.proxyRuleHostName = matchedRule.hostName;
+
+			if (matchedRule.proxy)
+				tabData.proxyServerFromRule = matchedRule.proxy;
+			else
+				tabData.proxyServerFromRule = null;
+		}
+		else {
+			tabData.resetTabState();
+		}
+	}
+
+	private static setRuleForProxyPerOrigin(tabData: TabDataType, newRequestUrl: string) {
+		///** trying to set the proxified value */
+
+		if (environment.chrome)
+			// not supported in chromium browsers
+			return;
+
+		if (Settings.current.options?.proxyPerOrigin != true)
+			// not enabled
+			return;
+
+		let settingsActive = Settings.active;
+		if (!settingsActive)
+			return;
+		let activeSmartProfile = settingsActive.activeProfile;
+
+		let testResult = ProxyRules.findMatchedUrlInRulesInfo(newRequestUrl, activeSmartProfile.compiledRules);
+		if (testResult != null) {
+
+			let matchedRule = testResult.compiledRule;
+
+			// set `tabData.proxified = true` 
+			TabManager.setTabDataProxied(tabData, newRequestUrl, matchedRule);
+		}
+	}
+
+	private static updateActiveTab() {
+
+		// query the active tab in active window
+		PolyFill.tabsQuery(
+			{ active: true, currentWindow: true },
+			(tabs: any[]) => {
+				if (!tabs || !tabs.length)
+					return;
+				let tab = tabs[0];
+
+				// save tab log info
+				let tabData = TabManager.updateTabData(null, tab);
+
+				TabManager.currentTab = tabData;
+			});
+	}
+
+	private static loadTabData(tabData: TabDataType) {
+
+		PolyFill.tabsGet(tabData.tabId,
+			(tabInfo: any) => {
+
+				// save tab log info
+				TabManager.updateTabData(tabData, tabInfo);
+			});
+	}
+
+	private static handleTabRemoved(tabId: number) {
+		let tabData = TabManager.tabs[tabId];
+		if (tabData == null)
+			return;
+
+		delete TabManager.tabs[tabId];
+
+		TabManager.onTabRemoved.trigger(tabData);
+
+		tabData.clearFailedRequests();
+	}
+
+	private static isMainFrameNavigation(details: any): boolean {
+		return details && details.tabId > -1 && details.frameId === 0 && details.url;
+	}
+
+	private static handleNavigationStarted(details: any) {
+		if (!TabManager.isMainFrameNavigation(details))
+			return;
+
+		TabManager.updateTabUrlFromNavigation(details.tabId, details.url);
+	}
+
+	private static handleNavigationCommitted(details: any) {
+		if (!TabManager.isMainFrameNavigation(details))
+			return;
+
+		TabManager.updateTabUrlFromNavigation(details.tabId, details.url);
+	}
+
+	private static handleNavigationError(details: any) {
+		if (!TabManager.isMainFrameNavigation(details))
+			return;
+
+		let tabData = TabManager.tabs[details.tabId];
+		if (!tabData || tabData.url !== details.url)
+			return;
+
+		TabManager.loadTabData(tabData);
+	}
+
+	private static updateTabUrlFromNavigation(tabId: number, url: string) {
+		let tabData = TabManager.tabs[tabId];
+		let tabDataCreated = false;
+		if (!tabData) {
+			tabData = TabManager.getOrSetTab(tabId, false, url);
+			tabDataCreated = true;
+		}
+
+		if (!tabDataCreated && tabData.url === url)
+			return;
+
+		tabData.clearFailedRequests();
+		tabData.resetTabState();
+		TabManager.setRuleForProxyPerOrigin(tabData, url);
+		tabData.updated = new Date();
+		tabData.url = url;
+		tabData.proxifiedParentDocumentUrl = url;
+
+		if (!TabManager.currentTab || TabManager.currentTab.tabId === tabId)
+			TabManager.currentTab = tabData;
+		TabManager.onTabUpdated.trigger(tabData);
+	}
+
+	private static handleTabUpdated(tabId: number, changeInfo: any, tabInfo: any) {
+		// only if url of the page is changed
+
+		let tabData = TabManager.tabs[tabId];
+		let shouldResetHard = false;
+		let shouldResetSoft = false;
+
+		if (changeInfo["url"]) {
+
+			if (tabData != null &&
+				// only if url is changed
+				changeInfo.url != tabData.url) {
+
+				// reset
+				shouldResetHard = true;
+			}
+		}
+		if (!shouldResetHard && changeInfo["status"] === "loading") {
+			shouldResetSoft = true;
+		}
+		let callOnUpdate = false;
+
+		if (shouldResetSoft) {
+			// reload the tab data
+
+			if (tabData) {
+				callOnUpdate = true;
+				tabData.resetFailedRequests();
+			}
+		}
+		if (shouldResetHard) {
+			// reload the tab data
+
+			if (tabData) {
+				// reload tab data
+				tabData.clearFailedRequests();
+				if (changeInfo.url &&
+					!Utils.shouldPreserveTrackedUrl(tabData.url, changeInfo.url)) {
+					TabManager.updateTabUrlFromNavigation(tabId, changeInfo.url);
+				}
+				callOnUpdate = true;
+			}
+		}
+
+		if (callOnUpdate)
+			TabManager.onTabUpdated.trigger(tabData);
+	}
+}
+
+export class TabDataType {
+	constructor(tabId: number) {
+		this.tabId = tabId;
+		this.created = new Date();
+		this.updated = new Date();
+		this.url = "";
+		this.incognito = false;
+		this.failedRequests = new Map<string, FailedRequestType>();
+		this.proxified = TabProxyStatus.None;
+		this.status = new TabDataStatuses();
+	}
+
+	public tabId: number;
+	public created: Date;
+	public updated: Date;
+	public url: string;
+	public incognito: boolean;
+	public failedRequests: Map<string, FailedRequestType>;
+	public index: number;
+	public proxified: TabProxyStatus;
+	public proxifiedParentDocumentUrl: string;
+	public proxyRuleHostName: string;
+	public proxyMatchedRule?: CompiledProxyRule;
+	public proxyServerFromRule: ProxyServer;
+	public status: TabDataStatuses;
+
+	/** Removes failed requests */
+	public clearFailedRequests() {
+		if (this.failedRequests)
+			this.failedRequests.clear();
+	}
+
+	/** Resets failed requests Hit Count */
+	public resetFailedRequests() {
+		if (this.failedRequests)
+			this.failedRequests.forEach((request, requestDomainKey, map) => {
+				request.hitCount = 1;
+			});
+	}
+
+	/** Resets tab`s proxy state and its statuses */
+	public resetTabState() {
+
+		this.proxified = TabProxyStatus.None;
+		this.proxyServerFromRule = null;
+		this.proxifiedParentDocumentUrl = null;
+
+		this.status = new TabDataStatuses();
+	}
+}
+export class TabDataStatuses {
+	/** Any smart rule is matched or always enabled is on */
+	public statsHasProxifiedRequest: boolean;
+
+	/** No proxy applied */
+	public statsHasDirectRequest: boolean;
+
+	/** Smart rules has white listed and not proxies */
+	public statsHasWhitelistedRules: boolean;
+
+	/** Always enabled has bypassed and no proxy is applied */
+	public hasAlwaysEnabledByPassed: boolean;
+}

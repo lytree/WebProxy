@@ -1,0 +1,171 @@
+<h2 class="text-primary">
+	SmartProxy
+</h2>
+<p data-localize="settingsTabAboutDescription">
+	Bunu bir kez yapılandır ve unut
+	çözümü olarak düşünün. SmartProxy ile proxy kullanmak hiç bu kadar kolay olmamıştı.
+	SmartProxy ile proxy ayarlarınızı manuel olarak değiştirmenize veya açıp kapatmanıza gerek yok.
+	İstediğiniz web sitesi için proxy'yi tek tıklamayla etkinleştirmesini SmartProxy'ye söylemeniz yeterli.
+	Bundan sonra, o belirli web sitesini her ziyaret ettiğinizde, SmartProxy otomatik olarak
+	tüm verilerinizi proxy üzerinden yönlendirecek ve sizden başka bir işlem yapmanızı gerektirmeyecek.
+</p>
+<p>
+	SmartProxy, hem yeni başlayanlar hem de ileri düzey kullanıcılar için uygun çeşitli özellikler sunar:
+</p>
+<ul>
+	<li>Bir sekmede tek bir site için proxy'yi etkinleştirin ve o sekmedeki her şey otomatik olarak
+		proxy kullanacaktır. Bu özelliğe sekme başına proxy denir.</li>
+	<li>Belirli web siteleri için proxy'nin ne zaman etkinleştirileceğini veya devre dışı bırakılacağını kural kalıplarına göre otomatik olarak algılayın.</li>
+	<li>Etkin proxy sunucusu ayarınız olarak birden çok proxy sunucusu arasında kolayca geçiş yapın.</li>
+	<li>Bulunduğunuz mevcut site için proxy'yi tek tıklamayla etkinleştirin.</li>
+	<li>Mevcut web sitesinin kaynaklarını ve isteklerini görüntüleyin ve bunlar için proxy'yi tek tıklamayla
+		etkinleştirip etkinleştirmeyeceğinize karar verin.</li>
+	<li>Proxy modları arasında kolayca geçiş yapın veya tüm alanlar için proxy'yi etkinleştirin.</li>
+	<li>Ayarları ve kuralları yedekleyin/geri yükleyin.</li>
+</ul>
+<br />
+<h3>Lütfen dikkat edin:</h3>
+<p>
+<div class="text-info">
+	<i class="fas fa-info-circle" aria-hidden="true"></i>
+	SmartProxy herhangi bir türde proxy sunucusu sağlamaz.
+</div>
+<div class="text-danger">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy sizi hiçbir şekilde takip etmez.
+</div>
+<div class="text-warning">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy web sayfaları ile içeriklere müdahale etmez.
+</div>
+</p>
+<br>
+<h3>Geri bildiriminiz önemlidir</h3>
+<p>
+<div>
+	<i class="fas fa-star text-warning"></i>
+	SmartProxy'yi <i class="fas fa-heart text-danger"></i> seviyorsanız lütfen
+	<a id="linkAddonsMarket" href="#" target="_blank">Uzantılar</a>
+	sayfasında değerlendirin.
+</div>
+<div class="">
+	<i class="fas fa-question-circle text-primary"></i>
+	Sorularınız veya sorunlarınız varsa, lütfen sorunlar sayfasını ziyaret edin ve 
+	<a href="https://github.com/salarcode/SmartProxy/issues" target="_blank">sorun bildirmek</a> için bir kayıt açın.
+</div>
+</p>
+<br>
+<h3>Araç Çubuğu Eylem Simgesi Açıklamaları</h3>
+<p>
+	Tarayıcı araç çubuğunuzdaki simge, SmartProxy'nin durumunu temsil edecek şekilde değişecektir. Farklı simgelerin
+	anlamları şunlardır:
+	<br />
+
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>Icon Legends (all browsers):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">Simge</th>
+				<th>Meaning</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-disabled.svg" class=""></td>
+				<td>İstekler proxy kullanmayacak.</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/smartproxy.svg" class=""></td>
+				<td>
+					Proxy, tanımlanan kurallara uyan isteklere uygulandı veya uygulanacak.
+					<br /> Veya sekme için hiçbir kural eşleşmedi.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i>
+					Akıllı Kurallar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always.svg" class=""></td>
+				<td>
+					Proxy, mevcut sekmedeki tüm isteklere uygulanır. (Beyaz listeye alınmış alanlar
+					Chrome tabanlı tarayıcılarda temsil edilir)
+					<br />
+					Profil: <i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i>
+					Her Zaman Etkin
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-system.svg" class=""></td>
+				<td>
+					Herhangi bir proxy kullanma kararı işletim sistemine devredilir.
+					<br/>
+					Profil: Sistem
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>Simge Açıklamaları (Yalnızca Firefox):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">Simge</th>
+				<th>Meaning</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-green.svg" class=""></td>
+				<td>
+					Mevcut sekme için bir kural eşleşti. Sonraki tüm istekler proxy üzerinden gidiyor.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Akıllı Kurallar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-failed.svg" class=""></td>
+				<td>
+					Mevcut sekme için bir kural eşleşti. En az bir yanıt vermeyen / başarısız istek var.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Akıllı Kurallar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-bypassed.svg" class=""></td>
+				<td>
+					Mevcut sekme için bir kural eşleşti. En az bir sonraki istek bir kural aracılığıyla proxy'yi atladı.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Akıllı Kurallar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-unmatched.svg" class=""></td>
+				<td>
+					Mevcut sekme için bir kural eşleşti. En az bir sonraki istek hiçbir kuralla eşleşmedi ve proxy üzerinden gitmiyor.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Akıllı Kurallar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-noproxy-has-matched.svg" class=""></td>
+				<td>
+					Mevcut sekme için hiçbir kural eşleşmedi. En az bir sonraki istek bir kuralla eşleşti ve bir proxy üzerinden gidiyor.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Akıllı Kurallar
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always-bypassed.svg" class=""></td>
+				<td>
+					Proxy, mevcut sekmedeki tüm isteklere uygulanır. En az bir sonraki istek bir kural aracılığıyla proxy'yi atladı.
+					<br />
+					Profil: <i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i> Her Zaman
+					Etkin
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</p>

@@ -1,0 +1,168 @@
+<h2 class="text-primary">
+	SmartProxy
+</h2>
+<p data-localize="settingsTabAboutDescription">
+	Zie het als een één keer instellen en vergeten oplossing. Proxy's gebruiken is nog nooit zo eenvoudig geweest met SmartProxy.
+	Met SmartProxy hoef je je proxy-instellingen niet handmatig te wijzigen of in en uit te schakelen.
+	Vertel SmartProxy eenvoudig om de proxy voor je gewenste website in te schakelen met slechts één klik.
+	Daarna zal SmartProxy, wanneer je die specifieke website bezoekt, automatisch
+	al je gegevens door de proxy routeren zonder dat er verdere actie van jou nodig is.
+</p>
+<p>
+	SmartProxy biedt een verscheidenheid aan functies die geschikt zijn voor zowel beginners als gevorderde gebruikers, waaronder:
+</p>
+<ul>
+	<li>Schakel de proxy in voor één site op een tabblad, en alles op dat tabblad zal automatisch
+		de proxy gebruiken. Deze functie heet proxy-per-tabblad.</li>
+	<li>Detecteer automatisch wanneer de proxy moet worden in- of uitgeschakeld voor bepaalde websites op basis van regelpatronen.</li>
+	<li>Schakel eenvoudig tussen meerdere proxyservers als je actieve proxyserver-instelling.</li>
+	<li>Schakel de proxy in voor de huidige site waar je bent met slechts één klik.</li>
+	<li>Bekijk de bronnen en verzoeken van de huidige website en beslis of je de proxy
+		ervoor wilt inschakelen met één klik.</li>
+	<li>Schakel eenvoudig tussen proxymodi of schakel de proxy in voor alle domeinen.</li>
+	<li>Back-up/Herstel instellingen en regels.</li>
+</ul>
+<br />
+<h3>Let op:</h3>
+<p>
+<div class="text-info">
+	<i class="fas fa-info-circle" aria-hidden="true"></i>
+	SmartProxy biedt geen enkel type proxyservers aan.
+</div>
+<div class="text-danger">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy volgt je op geen enkele manier.
+</div>
+<div class="text-warning">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy interfereert niet met webpagina's en inhoud.
+</div>
+</p>
+<br>
+<h3>Je feedback is belangrijk</h3>
+<p>
+<div>
+	<i class="fas fa-star text-warning"></i>
+	Als je <i class="fas fa-heart text-danger"></i> van SmartProxy houdt, beoordeel het dan op de
+	<a id="linkAddonsMarket" href="#" target="_blank">Extensies</a> pagina.
+</div>
+<div class="">
+	<i class="fas fa-question-circle text-primary"></i>
+	Als je vragen of problemen hebt, bezoek dan de issues-pagina en open een ticket om
+	<a href="https://github.com/salarcode/SmartProxy/issues" target="_blank">problemen te melden</a>.
+</div>
+</p>
+<br>
+<h3>Werkbalk Actie Pictogram Legenda</h3>
+<p>
+	Het pictogram in je browserwerkbalk zal veranderen om de status van SmartProxy weer te geven. Dit is wat de verschillende pictogrammen betekenen:
+	<br />
+
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>Pictogram Legenda (alle browsers):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">Pictogram</th>
+				<th>Betekenis</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-disabled.svg" class=""></td>
+				<td>Verzoeken zullen geen proxy's gebruiken.</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/smartproxy.svg" class=""></td>
+				<td>
+					Proxy is toegepast of zal worden toegepast op de verzoeken die overeenkomen met de gedefinieerde regels.
+					<br /> Of er komt geen regel overeen voor het tabblad.
+					<br />
+					Profiel: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i>
+					Slimme Regels
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always.svg" class=""></td>
+				<td>
+					Proxy wordt toegepast op alle verzoeken binnen het huidige tabblad. (Whitelisted domeinen worden weergegeven in
+					Chrome-gebaseerde browsers)
+					<br />
+					Profiel: <i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i>
+					Altijd Inschakelen
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-system.svg" class=""></td>
+				<td>
+					De beslissing over het gebruik van een proxy wordt doorgegeven aan het besturingssysteem.
+					<br/>
+					Profiel: Systeem
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>Pictogram Legenda (Alleen Firefox):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">Pictogram</th>
+				<th>Betekenis</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-green.svg" class=""></td>
+				<td>
+					Een regel komt overeen voor het huidige tabblad. Alle volgende verzoeken gaan door de proxy.
+					<br />
+					Profiel: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Slimme Regels
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-failed.svg" class=""></td>
+				<td>
+					Een regel komt overeen voor het huidige tabblad. Er is minstens één niet-reagerend / mislukt verzoek.
+					<br />
+					Profiel: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Slimme Regels
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-bypassed.svg" class=""></td>
+				<td>
+					Een regel komt overeen voor het huidige tabblad. Minstens één volgend verzoek heeft de proxy omzeild via een regel.
+					<br />
+					Profiel: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Slimme Regels
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-unmatched.svg" class=""></td>
+				<td>
+					Een regel komt overeen voor het huidige tabblad. Minstens één volgend verzoek komt niet overeen met een regel en gaat niet door de proxy.
+					<br />
+					Profiel: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Slimme Regels
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-noproxy-has-matched.svg" class=""></td>
+				<td>
+					Geen regel komt overeen voor het huidige tabblad. Minstens één volgend verzoek komt overeen met een regel en gaat door een proxy.
+					<br />
+					Profiel: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> Slimme Regels
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always-bypassed.svg" class=""></td>
+				<td>
+					Proxy wordt toegepast op alle verzoeken binnen het huidige tabblad. Minstens één volgend verzoek heeft de proxy omzeild via een regel.
+					<br />
+					Profiel: <i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i> Altijd
+					Inschakelen
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</p>

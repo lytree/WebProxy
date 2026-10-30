@@ -1,0 +1,168 @@
+<h2 class="text-primary">
+	SmartProxy
+</h2>
+<p data-localize="settingsTabAboutDescription">
+	فكر فيه كحل قم بتكوينه مرة واحدة وانساه. استخدام البروكسيات لم يكن أسهل من ذلك مع SmartProxy.
+	مع SmartProxy، لا تحتاج إلى تغيير إعدادات البروكسي يدويًا أو تشغيله وإيقافه.
+	ببساطة أخبر SmartProxy بتفعيل البروكسي للموقع الذي تريده بنقرة واحدة فقط.
+	بعد ذلك، كلما قمت بزيارة هذا الموقع المحدد، سيقوم SmartProxy تلقائيًا بتوجيه
+	جميع بياناتك عبر البروكسي دون الحاجة إلى أي إجراء إضافي منك.
+</p>
+<p>
+	يقدم SmartProxy مجموعة متنوعة من الميزات المناسبة للمبتدئين والمستخدمين المتقدمين، بما في ذلك:
+</p>
+<ul>
+	<li>تفعيل البروكسي لموقع واحد في علامة تبويب، وكل شيء في تلك العلامة سيستخدم
+		البروكسي تلقائيًا. تسمى هذه الميزة بروكسي-لكل-علامة-تبويب.</li>
+	<li>الكشف التلقائي عن موعد تفعيل أو تعطيل البروكسي لمواقع معينة بناءً على أنماط القواعد.</li>
+	<li>التبديل بسهولة بين خوادم بروكسي متعددة كإعداد خادم البروكسي النشط.</li>
+	<li>تفعيل البروكسي للموقع الحالي الذي تتواجد فيه بنقرة واحدة فقط.</li>
+	<li>عرض موارد وطلبات الموقع الحالي وتحديد ما إذا كنت تريد تفعيل البروكسي
+		لها بنقرة واحدة.</li>
+	<li>التبديل بسهولة بين أوضاع البروكسي أو تفعيل البروكسي لجميع النطاقات.</li>
+	<li>النسخ الاحتياطي/استعادة الإعدادات والقواعد.</li>
+</ul>
+<br />
+<h3>يرجى ملاحظة أن:</h3>
+<p>
+<div class="text-info">
+	<i class="fas fa-info-circle" aria-hidden="true"></i>
+	SmartProxy لا يوفر أي نوع من خوادم البروكسي.
+</div>
+<div class="text-danger">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy لا يتتبعك بأي شكل من الأشكال.
+</div>
+<div class="text-warning">
+	<i class="fas fa-eye-slash" aria-hidden="true"></i>
+	SmartProxy لا يتدخل في صفحات الويب والمحتويات.
+</div>
+</p>
+<br>
+<h3>ملاحظاتك مهمة</h3>
+<p>
+<div>
+	<i class="fas fa-star text-warning"></i>
+	إذا كنت <i class="fas fa-heart text-danger"></i> تحب SmartProxy، يرجى تقييمه في
+	صفحة <a id="linkAddonsMarket" href="#" target="_blank">الإضافات</a>.
+</div>
+<div class="">
+	<i class="fas fa-question-circle text-primary"></i>
+	إذا كان لديك أسئلة أو مشاكل، يرجى زيارة صفحة المشاكل وفتح تذكرة
+	<a href="https://github.com/salarcode/SmartProxy/issues" target="_blank">للإبلاغ عن المشاكل</a>.
+</div>
+</p>
+<br>
+<h3>شرح رموز شريط الأدوات</h3>
+<p>
+	سيتغير الرمز في شريط أدوات المتصفح لتمثيل حالة SmartProxy. إليك ما تعنيه الرموز المختلفة:
+	<br />
+
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>شرح الرموز (جميع المتصفحات):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">الرمز</th>
+				<th>المعنى</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-disabled.svg" class=""></td>
+				<td>الطلبات لن تستخدم البروكسيات.</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/smartproxy.svg" class=""></td>
+				<td>
+					تم تطبيق البروكسي أو سيتم تطبيقه على الطلبات التي تطابق القواعد المحددة.
+					<br /> أو لا توجد قاعدة مطابقة لعلامة التبويب.
+					<br />
+					الملف الشخصي: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i>
+					القواعد الذكية
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always.svg" class=""></td>
+				<td>
+					يتم تطبيق البروكسي على جميع الطلبات ضمن علامة التبويب الحالية. (يتم تمثيل النطاقات المدرجة في القائمة البيضاء في
+					المتصفحات المبنية على Chrome)
+					<br />
+					الملف الشخصي: <i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i>
+					التفعيل الدائم
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-system.svg" class=""></td>
+				<td>
+					يتم تمرير قرار استخدام أي بروكسي إلى نظام التشغيل.
+					<br/>
+					الملف الشخصي: النظام
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="table-responsive">
+	<table class="table table-sm table table-striped caption-top table-borderless  align-middle table-responsive">
+		<caption><b>شرح الرموز (Firefox فقط):</b></caption>
+		<thead>
+			<tr>
+				<th style="width: 70px;">الرمز</th>
+				<th>المعنى</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-green.svg" class=""></td>
+				<td>
+					تم مطابقة قاعدة لعلامة التبويب الحالية. جميع الطلبات اللاحقة تمر عبر البروكسي.
+					<br />
+					الملف الشخصي: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> القواعد الذكية
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-failed.svg" class=""></td>
+				<td>
+					تم مطابقة قاعدة لعلامة التبويب الحالية. يوجد طلب واحد على الأقل غير مستجيب / فاشل.
+					<br />
+					الملف الشخصي: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> القواعد الذكية
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-bypassed.svg" class=""></td>
+				<td>
+					تم مطابقة قاعدة لعلامة التبويب الحالية. طلب لاحق واحد على الأقل قد تجاوز البروكسي عبر قاعدة.
+					<br />
+					الملف الشخصي: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> القواعد الذكية
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-has-unmatched.svg" class=""></td>
+				<td>
+					تم مطابقة قاعدة لعلامة التبويب الحالية. طلب لاحق واحد على الأقل لم يطابق أي قاعدة ولا يمر عبر البروكسي.
+					<br />
+					الملف الشخصي: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> القواعد الذكية
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-smartrules-noproxy-has-matched.svg" class=""></td>
+				<td>
+					لا توجد قاعدة مطابقة لعلامة التبويب الحالية. طلب لاحق واحد على الأقل قد طابق قاعدة ويمر عبر بروكسي.
+					<br />
+					الملف الشخصي: <i class="icon fa-sm fas fa-magic text-primary" aria-hidden="true"></i> القواعد الذكية
+				</td>
+			</tr>
+			<tr>
+				<td class="p-2"><img src="../icons/profile-always-bypassed.svg" class=""></td>
+				<td>
+					يتم تطبيق البروكسي على جميع الطلبات ضمن علامة التبويب الحالية. طلب لاحق واحد على الأقل قد تجاوز البروكسي عبر قاعدة.
+					<br />
+					الملف الشخصي: <i class="icon fa-sm fas fa-globe-americas text-success" aria-hidden="true"></i> التفعيل
+					الدائم
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</p>
