@@ -7,10 +7,10 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
-		"message": "Smart Proxy zal automatisch inschakelen/uitschakelen proxy voor de sites die u bezoekt, op basis van aanpasbare patronen."
+		"message": "WebProxy zal automatisch inschakelen/uitschakelen proxy voor de sites die u bezoekt, op basis van aanpasbare patronen."
 	},
 	"toolbarTooltipEffectiveRule": {
 		"message": "Bron van overeenkomende regel:"
@@ -22,7 +22,7 @@
 		"message": "Regelpatroon:"
 	},
 	"popupTitle": {
-		"message": "SmartProxy Activering"
+		"message": "WebProxy Activering"
 	},
 	"popupPrivateBrowsingMode": {
 		"message": "Privé Browsermodus"
@@ -30,7 +30,7 @@
 	"popupNoProxy": {
 		"message": "Direct (geen Proxy)"
 	},
-	"popupSmartProxy": {
+	"popupWebProxy": {
 		"message": "Slimme Proxy"
 	},
 	"popupAlwaysEnable": {
@@ -88,10 +88,10 @@
 		"message": "Weet u zeker dat u de geselecteerde fouten wilt negeren? Als u dat doet, ontvangt u geen foutmeldingen meer van hen. U kunt dit later wijzigen in de instellingen."
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "Helaas vereist het wijzigen van browserinstellingen om de systeemproxy te gebruiken de `incognito` toestemming. Ga naar de instellingen van de SmartProxy-extensie in de browser en vink de `Toestaan in incognito` toestemming aan. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Leer hoe</a>."
+		"message": "Helaas vereist het wijzigen van browserinstellingen om de systeemproxy te gebruiken de `incognito` toestemming. Ga naar de instellingen van de WebProxy-extensie in de browser en vink de `Toestaan in incognito` toestemming aan. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Leer hoe</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "Sinds Firefox 67 vereist het wijzigen van browserinstellingen om de systeemproxy te gebruiken de `Privé Browsen` toestemming. Ga naar de instellingen van de SmartProxy-add-on in de browser en `Sta toe` de `Uitvoeren in privévensters` toestemming. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Leer hoe</a>."
+		"message": "Sinds Firefox 67 vereist het wijzigen van browserinstellingen om de systeemproxy te gebruiken de `Privé Browsen` toestemming. Ga naar de instellingen van de WebProxy-add-on in de browser en `Sta toe` de `Uitvoeren in privévensters` toestemming. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Leer hoe</a>."
 	},
 	"proxyableTitle": {
 		"message": "Proxy Bronnen"
@@ -187,7 +187,7 @@
 		"message": "Altijd ingeschakeld <br> Gedwongen door regels"
 	},
 	"settingsTitle": {
-		"message": "SmartProxy instellingen"
+		"message": "WebProxy instellingen"
 	},
 	"settingsTabAbout": {
 		"message": "Over"
@@ -214,7 +214,7 @@
 		"message": "Update naar {0}"
 	},
 	"settingsTabAboutDescription": {
-		"message": "Het gebruik van proxies kan niet eenvoudiger zijn met SmartProxy. Beschouw het als een configureer-eens-en-vergeet-oplossing. Met SmartProxy hoef je je proxy niet handmatig te veranderen of aan en uit te zetten. Alles wat je hoeft te doen is SmartProxy vertellen dat je proxy wilt inschakelen voor je gewenste website met slechts één klik. Daarna, wanneer je die specifieke website bezoekt, zal SmartProxy optreden en al je gegevens voor die website worden overgedragen via de proxy, zonder dat je iets doet."
+		"message": "Het gebruik van proxies kan niet eenvoudiger zijn met WebProxy. Beschouw het als een configureer-eens-en-vergeet-oplossing. Met WebProxy hoef je je proxy niet handmatig te veranderen of aan en uit te zetten. Alles wat je hoeft te doen is WebProxy vertellen dat je proxy wilt inschakelen voor je gewenste website met slechts één klik. Daarna, wanneer je die specifieke website bezoekt, zal WebProxy optreden en al je gegevens voor die website worden overgedragen via de proxy, zonder dat je iets doet."
 	},
 	"settingsGeneralSmartFeatures": {
 		"message": "Slimme functies"
@@ -1243,10 +1243,10 @@
 		"message": "Regel heeft geen patroon gedefinieerd"
 	},
 	"settingsWelcomeTitle": {
-		"message": "Welkom bij SmartProxy"
+		"message": "Welkom bij WebProxy"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\tWelkom! Fijn dat u voor SmartProxy heeft gekozen, de slimme proxy-switcher.\n\t<br>\n\tVolg de volgende stappen om aan de slag te gaan:\n</p>\n<ol>\n\t<li>\n\t\tVoeg een proxyserver toe\n\t\t<br>\n\t\t<small>(Ga naar het tabblad Proxy Servers en voeg daar een proxyserver toe)</small>\n\t</li>\n\t<li>\n\t\tStel de proxymode in op Smart Proxy\n\t\t<br>\n\t\t<small>(Gebruik het pop-upmenu in de werkbalk om de actieve modus te wijzigen naar Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tDefinieer proxregels\n\t\t<br>\n\t\t<small>(Gebruik het pop-upmenu in de werkbalk om regels toe te voegen of wijzig regels in het tabblad Proxy Rules)</small>\n\t</li>\n\t<li>\n\t\tU bent klaar.\n\t</li>\n</ol>"
+		"message": "<p>\n\tWelkom! Fijn dat u voor WebProxy heeft gekozen, de slimme proxy-switcher.\n\t<br>\n\tVolg de volgende stappen om aan de slag te gaan:\n</p>\n<ol>\n\t<li>\n\t\tVoeg een proxyserver toe\n\t\t<br>\n\t\t<small>(Ga naar het tabblad Proxy Servers en voeg daar een proxyserver toe)</small>\n\t</li>\n\t<li>\n\t\tStel de proxymode in op Smart Proxy\n\t\t<br>\n\t\t<small>(Gebruik het pop-upmenu in de werkbalk om de actieve modus te wijzigen naar Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tDefinieer proxregels\n\t\t<br>\n\t\t<small>(Gebruik het pop-upmenu in de werkbalk om regels toe te voegen of wijzig regels in het tabblad Proxy Rules)</small>\n\t</li>\n\t<li>\n\t\tU bent klaar.\n\t</li>\n</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "Begrepen"
@@ -1309,7 +1309,7 @@
 		"message": "Er is geen vorige proxyserver beschikbaar"
 	},
 	"notificationShortcutTitle": {
-		"message": "SmartProxy sneltoetsmelding"
+		"message": "WebProxy sneltoetsmelding"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "Proxymodus gewijzigd naar {0}"

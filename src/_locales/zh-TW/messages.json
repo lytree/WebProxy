@@ -7,10 +7,10 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
-		"message": "Smart Proxy 將基於用戶設定的規則自動決定是否在訪問時使用代理。"
+		"message": "WebProxy 將基於用戶設定的規則自動決定是否在訪問時使用代理。"
 	},
 	"toolbarTooltipEffectiveRule": {
 		"message": "匹配的規則來源："
@@ -22,7 +22,7 @@
 		"message": "規則模式："
 	},
 	"popupTitle": {
-		"message": "SmartProxy 模式："
+		"message": "WebProxy 模式："
 	},
 	"popupPrivateBrowsingMode": {
 		"message": "隱私瀏覽模式"
@@ -30,7 +30,7 @@
 	"popupNoProxy": {
 		"message": "直接連接（無代理）"
 	},
-	"popupSmartProxy": {
+	"popupWebProxy": {
 		"message": "智能判斷"
 	},
 	"popupAlwaysEnable": {
@@ -88,10 +88,10 @@
 		"message": "確定要忽略所選的失敗項目嗎？忽略後將不會再收到相關錯誤。之後可在設定中變更。"
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "修改瀏覽器使用系統代理需要`incognito`權限。請打開SmartProxy擴展的設置，請允許`incognito`權限。 <a href='https://support.google.com/chrome_webstore/answer/2664769'>點擊瞭解如何操作</a>."
+		"message": "修改瀏覽器使用系統代理需要`incognito`權限。請打開WebProxy擴展的設置，請允許`incognito`權限。 <a href='https://support.google.com/chrome_webstore/answer/2664769'>點擊瞭解如何操作</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "自Firefox 67 開始，修改瀏覽器使用系統代理需要`Private Browsing` 權限。請在瀏覽器附加組件管理中 允許SmartProxy組件的`在隱私窗口中運行`權限。 <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>點擊瞭解如何操作</a>。"
+		"message": "自Firefox 67 開始，修改瀏覽器使用系統代理需要`Private Browsing` 權限。請在瀏覽器附加組件管理中 允許WebProxy組件的`在隱私窗口中運行`權限。 <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>點擊瞭解如何操作</a>。"
 	},
 	"proxyableTitle": {
 		"message": "可代理的資源"
@@ -187,7 +187,7 @@
 		"message": "始終啟用 <br> 被規則強制套用"
 	},
 	"settingsTitle": {
-		"message": "SmartProxy 設置"
+		"message": "WebProxy 設置"
 	},
 	"settingsTabAbout": {
 		"message": "關於"
@@ -214,7 +214,7 @@
 		"message": "更新至版本 {0}"
 	},
 	"settingsTabAboutDescription": {
-		"message": "使用模式來自動化定義用於代理你的網頁的規則。SmartProxy 將讓你無需手動改變和開關代理。你可以將所需頁面添加到規則，之後，當你訪問這些特定頁面，SmartProxy 就會爲頁面自動啓動代理。"
+		"message": "使用模式來自動化定義用於代理你的網頁的規則。WebProxy 將讓你無需手動改變和開關代理。你可以將所需頁面添加到規則，之後，當你訪問這些特定頁面，WebProxy 就會爲頁面自動啓動代理。"
 	},
 	"settingsGeneralSmartFeatures": {
 		"message": "智能功能"
@@ -1243,10 +1243,10 @@
 		"message": "規則未定義模板"
 	},
 	"settingsWelcomeTitle": {
-		"message": "歡迎使用 SmartProxy"
+		"message": "歡迎使用 WebProxy"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\t\t\t\t\t\t歡迎！很高興您選擇了智能代理切換器——SmartProxy。\n\t\t\t\t\t\t<br>\n\t\t\t\t\t\t請按照以下步驟開始：\n\t\t\t\t\t</p>\n\t\t\t\t\t<ol>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t添加代理服務器\n\t\t\t\t\t\t\t<br>\n\t\t\t\t\t\t\t<small>（轉到“代理服務器”頁並在其中添加代理服務器）</small>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t設定代理模式爲“智能代理”模式\n\t\t\t\t\t\t\t<br>\n\t\t\t\t\t\t\t<small>（使用工具欄彈出菜單來更改激活模式爲“智能代理”）</small>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t定義代理規則\n\t\t\t\t\t\t\t<br>\n\t\t\t\t\t\t\t<small>（使用工具欄彈出菜單來添加規則或是從“代理規則”頁中添加/修改規則）</small>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t設定完畢。\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ol>"
+		"message": "<p>\n\t\t\t\t\t\t歡迎！很高興您選擇了智能代理切換器——WebProxy。\n\t\t\t\t\t\t<br>\n\t\t\t\t\t\t請按照以下步驟開始：\n\t\t\t\t\t</p>\n\t\t\t\t\t<ol>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t添加代理服務器\n\t\t\t\t\t\t\t<br>\n\t\t\t\t\t\t\t<small>（轉到“代理服務器”頁並在其中添加代理服務器）</small>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t設定代理模式爲“智能代理”模式\n\t\t\t\t\t\t\t<br>\n\t\t\t\t\t\t\t<small>（使用工具欄彈出菜單來更改激活模式爲“智能代理”）</small>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t定義代理規則\n\t\t\t\t\t\t\t<br>\n\t\t\t\t\t\t\t<small>（使用工具欄彈出菜單來添加規則或是從“代理規則”頁中添加/修改規則）</small>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t設定完畢。\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "明白"
@@ -1309,7 +1309,7 @@
 		"message": "沒有其他之前的代理服務器"
 	},
 	"notificationShortcutTitle": {
-		"message": "SmartProxy 快鍵鍵提示"
+		"message": "WebProxy 快鍵鍵提示"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "代理模式更改爲 {0}"

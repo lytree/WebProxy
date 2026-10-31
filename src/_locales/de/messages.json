@@ -7,10 +7,10 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
-		"message": "SmartProxy wird automatisch den Proxy aktivieren/deaktivieren für die Seiten, die Sie besuchen, basierend auf anpassbaren Mustern."
+		"message": "WebProxy wird automatisch den Proxy aktivieren/deaktivieren für die Seiten, die Sie besuchen, basierend auf anpassbaren Mustern."
 	},
 	"toolbarTooltipEffectiveRule": {
 		"message": "Quelle der passenden Regel:"
@@ -22,7 +22,7 @@
 		"message": "Regelmuster:"
 	},
 	"popupTitle": {
-		"message": "SmartProxy Aktivierung"
+		"message": "WebProxy Aktivierung"
 	},
 	"popupPrivateBrowsingMode": {
 		"message": "Privater Modus"
@@ -30,8 +30,8 @@
 	"popupNoProxy": {
 		"message": "Direkt (Kein Proxy)"
 	},
-	"popupSmartProxy": {
-		"message": "SmartProxy"
+	"popupWebProxy": {
+		"message": "WebProxy"
 	},
 	"popupAlwaysEnable": {
 		"message": "Immer Aktiv"
@@ -88,10 +88,10 @@
 		"message": "Sind Sie sich sicher, dass Sie die ausgewählten Fehler ignorieren möchten? Falls ja, werden Sie keine weiteren Fehler von ihnen erhalten. Sie können dies später in den Einstellungen abändern."
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "Leider ist die Inkognito-Berechtigung nötig, um die Browsereinstellungen so zu ändern, dass der Systemproxy verwendet wird. Bitte gehen Sie zu den Einstellungen des SmartProxy-Addons im Browser und gewähren Sie die Berechtigung „In privaten Fenstern ausführen“. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Erfahre wie</a>."
+		"message": "Leider ist die Inkognito-Berechtigung nötig, um die Browsereinstellungen so zu ändern, dass der Systemproxy verwendet wird. Bitte gehen Sie zu den Einstellungen des WebProxy-Addons im Browser und gewähren Sie die Berechtigung „In privaten Fenstern ausführen“. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Erfahre wie</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "Seit Firefox 67 ist die „Privater-Modus“-Berechtigung erforderlich, um die Browsereinstellungen so zu ändern, dass der Systemproxy verwendet wird. Bitte gehe in die SmartProxy-Addon-Einstellungen im Browser und gewähre die Berechtigung „In privaten Fenstern auführen“."
+		"message": "Seit Firefox 67 ist die „Privater-Modus“-Berechtigung erforderlich, um die Browsereinstellungen so zu ändern, dass der Systemproxy verwendet wird. Bitte gehe in die WebProxy-Addon-Einstellungen im Browser und gewähre die Berechtigung „In privaten Fenstern auführen“."
 	},
 	"proxyableTitle": {
 		"message": "Proxyfähige Quellen"
@@ -187,7 +187,7 @@
 		"message": "„Immer aktiviert“ <br> erzwungen durch Regeln"
 	},
 	"settingsTitle": {
-		"message": "SmartProxy-Einstellungen"
+		"message": "WebProxy-Einstellungen"
 	},
 	"settingsTabAbout": {
 		"message": "Über"
@@ -214,7 +214,7 @@
 		"message": "Zu {0} aktualisieren"
 	},
 	"settingsTabAboutDescription": {
-		"message": "Proxys zu verwenden, könnte dank SmartProxy nicht einfacher sein. Es handelt sich quasi um eine Einmal-konfigurieren-und-dann-vergessen-Lösung. Mit SmartProxy müssen Sie Ihren Proxy weder manuell ändern noch an- oder ausschalten. Ein Klick reicht aus, um SmartProxy mitzuteilen, ob Sie den Proxy für eine bestimmte Website einschalten wollen. Wenn Sie danach jene Website aufrufen, wird SmartProxy alle übertragenen Daten durch den Proxy leiten, ohne dass Sie irgendetwas tun müssen."
+		"message": "Proxys zu verwenden, könnte dank WebProxy nicht einfacher sein. Es handelt sich quasi um eine Einmal-konfigurieren-und-dann-vergessen-Lösung. Mit WebProxy müssen Sie Ihren Proxy weder manuell ändern noch an- oder ausschalten. Ein Klick reicht aus, um WebProxy mitzuteilen, ob Sie den Proxy für eine bestimmte Website einschalten wollen. Wenn Sie danach jene Website aufrufen, wird WebProxy alle übertragenen Daten durch den Proxy leiten, ohne dass Sie irgendetwas tun müssen."
 	},
 	"settingsGeneralSmartFeatures": {
 		"message": "Intelligente Funktionen"
@@ -1243,10 +1243,10 @@
 		"message": "Für die Regel wurde kein Muster definiert"
 	},
 	"settingsWelcomeTitle": {
-		"message": "Willkommen bei SmartProxy"
+		"message": "Willkommen bei WebProxy"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\tWillkommen! Ich bin froh, dass Sie sich für SmartProxy entschieden haben, den intelligenten Proxy-Wechsler.\n\t<br>\n\tBitte befolgen Sie diese Schritte, um loszulegen:\n</p>\n<ol>\n\t<li>\n\t\tProxy-Server hinzufügen\n\t\t<br>\n\t\t<small>(Gehen Sie zum Proxy-Server-Tab und fügen Sie dort einen Proxy-Server hinzu)</small>\n\t</li>\n\t<li>\n\t\tProxy-Modus „Intelligenter Proxy“ einstellen\n\t\t<br>\n\t\t<small>(Verwenden Sie das Popup-Menü in der Menüleiste, um „Intelligenter Proxy“ als aktiven Modus zu wählen.)</small>\n\t</li>\n\t<li>\n\t\tProxy-Regeln definieren\n\t\t<br>\n\t\t<small>(Verwenden Sie das Popup-Menü in der Menüleiste, um Regeln hinzuzufügen, oder bearbeiten Sie die Regeln im Proxy-Regeln-Tab.)</small>\n\t</li>\n\t<li>\n\t\tSchon geschafft!\n\t</li>\n</ol>"
+		"message": "<p>\n\tWillkommen! Ich bin froh, dass Sie sich für WebProxy entschieden haben, den intelligenten Proxy-Wechsler.\n\t<br>\n\tBitte befolgen Sie diese Schritte, um loszulegen:\n</p>\n<ol>\n\t<li>\n\t\tProxy-Server hinzufügen\n\t\t<br>\n\t\t<small>(Gehen Sie zum Proxy-Server-Tab und fügen Sie dort einen Proxy-Server hinzu)</small>\n\t</li>\n\t<li>\n\t\tProxy-Modus „Intelligenter Proxy“ einstellen\n\t\t<br>\n\t\t<small>(Verwenden Sie das Popup-Menü in der Menüleiste, um „Intelligenter Proxy“ als aktiven Modus zu wählen.)</small>\n\t</li>\n\t<li>\n\t\tProxy-Regeln definieren\n\t\t<br>\n\t\t<small>(Verwenden Sie das Popup-Menü in der Menüleiste, um Regeln hinzuzufügen, oder bearbeiten Sie die Regeln im Proxy-Regeln-Tab.)</small>\n\t</li>\n\t<li>\n\t\tSchon geschafft!\n\t</li>\n</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "Verstanden"
@@ -1309,7 +1309,7 @@
 		"message": "Es gibt keinen vorherigen Proxy-Server"
 	},
 	"notificationShortcutTitle": {
-		"message": "SmartProxy-Tastenkürzel-Benachrichtigung"
+		"message": "WebProxy-Tastenkürzel-Benachrichtigung"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "Proxy-Modus zu {0} geändert"

@@ -7,10 +7,10 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
-		"message": "Smart Proxy automatycznie włączy/wyłączy proxy dla stron, które odwiedzasz, bazując na konfigurowalnych wzorcach."
+		"message": "WebProxy automatycznie włączy/wyłączy proxy dla stron, które odwiedzasz, bazując na konfigurowalnych wzorcach."
 	},
 	"toolbarTooltipEffectiveRule": {
 		"message": "Źródło dopasowanej reguły:"
@@ -22,7 +22,7 @@
 		"message": "Wzorzec reguły:"
 	},
 	"popupTitle": {
-		"message": "Aktywacja SmartProxy"
+		"message": "Aktywacja WebProxy"
 	},
 	"popupPrivateBrowsingMode": {
 		"message": "Tryb przeglądania prywatnego"
@@ -30,7 +30,7 @@
 	"popupNoProxy": {
 		"message": "Bezpośrednio (bez proxy)"
 	},
-	"popupSmartProxy": {
+	"popupWebProxy": {
 		"message": "Inteligentny Proxy"
 	},
 	"popupAlwaysEnable": {
@@ -88,10 +88,10 @@
 		"message": "Czy na pewno chcesz zignorować wybrane błędy? Jeśli to zrobisz, nie otrzymasz więcej błędów z ich powodu. Możesz to później zmienić w ustawieniach."
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "Niestety zmiana ustawień przeglądarki aby używać Proxy systemowego wymaga uprawnienia `incognito`. Przejdź do ustawień rozszerzenia SmartProxy w przeglądarce i zaznacz uprawnienie `Zezwalaj w trybie incognito`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Dowiedz się jak</a>."
+		"message": "Niestety zmiana ustawień przeglądarki aby używać Proxy systemowego wymaga uprawnienia `incognito`. Przejdź do ustawień rozszerzenia WebProxy w przeglądarce i zaznacz uprawnienie `Zezwalaj w trybie incognito`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Dowiedz się jak</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "Od Firefoksa 67 zmiana ustawień przeglądarki aby używać Proxy systemowego wymaga uprawnienia `Przeglądanie prywatne`. Przejdź do ustawień dodatku SmartProxy w przeglądarce i `Zezwól` na uprawnienie `Uruchamianie w oknach prywatnych`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Dowiedz się jak</a>."
+		"message": "Od Firefoksa 67 zmiana ustawień przeglądarki aby używać Proxy systemowego wymaga uprawnienia `Przeglądanie prywatne`. Przejdź do ustawień dodatku WebProxy w przeglądarce i `Zezwól` na uprawnienie `Uruchamianie w oknach prywatnych`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Dowiedz się jak</a>."
 	},
 	"proxyableTitle": {
 		"message": "Zasoby obsługujące proxy"
@@ -187,7 +187,7 @@
 		"message": "Zawsze włączone <br> Wymuszone przez reguły"
 	},
 	"settingsTitle": {
-		"message": "Ustawienia SmartProxy"
+		"message": "Ustawienia WebProxy"
 	},
 	"settingsTabAbout": {
 		"message": "O programie"
@@ -214,7 +214,7 @@
 		"message": "Aktualizuj do {0}"
 	},
 	"settingsTabAboutDescription": {
-		"message": "Korzystanie z proxy nie może być łatwiejsze dzięki SmartProxy. Pomyśl o tym jak o rozwiązaniu: skonfiguruj raz i zapomnij. Dzięki SmartProxy nie musisz ręcznie zmieniać swojego proxy ani włączać i wyłączać go. Wszystko co musisz zrobić to powiedzieć SmartProxy, że chcesz włączyć proxy dla wybranej strony jednym kliknięciem. Potem, gdy odwiedzisz tę konkretną stronę, SmartProxy zadziała i wszystkie twoje dane dla tej strony będą przesyłane przez proxy, bez żadnego twojego działania."
+		"message": "Korzystanie z proxy nie może być łatwiejsze dzięki WebProxy. Pomyśl o tym jak o rozwiązaniu: skonfiguruj raz i zapomnij. Dzięki WebProxy nie musisz ręcznie zmieniać swojego proxy ani włączać i wyłączać go. Wszystko co musisz zrobić to powiedzieć WebProxy, że chcesz włączyć proxy dla wybranej strony jednym kliknięciem. Potem, gdy odwiedzisz tę konkretną stronę, WebProxy zadziała i wszystkie twoje dane dla tej strony będą przesyłane przez proxy, bez żadnego twojego działania."
 	},
 	"settingsGeneralSmartFeatures": {
 		"message": "Funkcje inteligentne"
@@ -1243,10 +1243,10 @@
 		"message": "Reguła nie ma zdefiniowanego wzorca"
 	},
 	"settingsWelcomeTitle": {
-		"message": "Witamy w SmartProxy"
+		"message": "Witamy w WebProxy"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\tWitamy! Cieszę się, że wybrałeś SmartProxy, inteligentny przełącznik proxy.\n\t<br>\n\tProszę wykonaj te kroki, aby rozpocząć:\n</p>\n<ol>\n\t<li>\n\t\tDodaj serwer proxy\n\t\t<br>\n\t\t<small>(Przejdź do zakładki Serwery proxy i dodaj tam serwer proxy)</small>\n\t</li>\n\t<li>\n\t\tUstaw tryb proxy na Smart Proxy\n\t\t<br>\n\t\t<small>(Użyj menu wyskakującego paska narzędzi, aby zmienić aktywny tryb na Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tZdefiniuj reguły proxy\n\t\t<br>\n\t\t<small>(Użyj menu wyskakującego paska narzędzi, aby dodać reguły lub dodaj/modyfikuj reguły z zakładki Reguły proxy)</small>\n\t</li>\n\t<li>\n\t\tGotowe.\n\t</li>\n</ol>"
+		"message": "<p>\n\tWitamy! Cieszę się, że wybrałeś WebProxy, inteligentny przełącznik proxy.\n\t<br>\n\tProszę wykonaj te kroki, aby rozpocząć:\n</p>\n<ol>\n\t<li>\n\t\tDodaj serwer proxy\n\t\t<br>\n\t\t<small>(Przejdź do zakładki Serwery proxy i dodaj tam serwer proxy)</small>\n\t</li>\n\t<li>\n\t\tUstaw tryb proxy na Smart Proxy\n\t\t<br>\n\t\t<small>(Użyj menu wyskakującego paska narzędzi, aby zmienić aktywny tryb na Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tZdefiniuj reguły proxy\n\t\t<br>\n\t\t<small>(Użyj menu wyskakującego paska narzędzi, aby dodać reguły lub dodaj/modyfikuj reguły z zakładki Reguły proxy)</small>\n\t</li>\n\t<li>\n\t\tGotowe.\n\t</li>\n</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "Rozumiem"
@@ -1309,7 +1309,7 @@
 		"message": "Nie ma poprzedniego serwera proxy"
 	},
 	"notificationShortcutTitle": {
-		"message": "Powiadomienie o skrócie SmartProxy"
+		"message": "Powiadomienie o skrócie WebProxy"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "Tryb proxy zmieniony na {0}"

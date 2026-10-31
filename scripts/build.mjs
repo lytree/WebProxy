@@ -86,7 +86,7 @@ function buildEntry(entry) {
 				input: "virtual:smartproxy-entry",
 				output: {
 					format: "iife",
-					name: `SmartProxy_${entry.id}`,
+					name: `WebProxy_${entry.id}`,
 					entryFileNames: entry.output,
 				},
 			},

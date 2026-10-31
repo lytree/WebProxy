@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for your interest in making SmartProxy better. Although I'm the sole developer of the project, I'm always open to new ideas and suggestions. Please fill out the form below to submit your feature request.
+        Thank you for your interest in making WebProxy better. Although I'm the sole developer of the project, I'm always open to new ideas and suggestions. Please fill out the form below to submit your feature request.
         Please note that I'm not able to implement every feature request. I will try to implement as many as I can, but I'm only human and have limited time. I will try to respond to every feature request, but I can't guarantee that I will be able to do so.
   - type: textarea
     id: description

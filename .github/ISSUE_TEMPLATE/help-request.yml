@@ -48,11 +48,11 @@ body:
     validations:
       required: false
   - type: input
-    id: SmartProxy-versions
+    id: WebProxy-versions
     attributes:
-      label: SmartProxy versions
-      description: Please provide the version numbers of the SmartProxy
-      placeholder: E.g. SmartProxy 1.2.0
+      label: WebProxy versions
+      description: Please provide the version numbers of the WebProxy
+      placeholder: E.g. WebProxy 1.2.0
     validations:
       required: false
   - type: textarea

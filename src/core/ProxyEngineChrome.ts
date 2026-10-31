@@ -142,7 +142,7 @@ const verboseDiagnostics = ${(DiagDebug?.enabled == true)}; // set to true for v
 function FindProxyForURL(url, host, noDiagnostics) {
 	if (verboseDiagnostics && !noDiagnostics) {
 		let finalResult = FindProxyForURL(url, host, true);
-		alert('SmartProxy-FindProxyForURL-Result=' + finalResult + '; host=' + host + '; url=' + url + '; activeProfile=' + activeProfileType);
+		alert('WebProxy-FindProxyForURL-Result=' + finalResult + '; host=' + host + '; url=' + url + '; activeProfile=' + activeProfileType);
 		return finalResult;
 	}
 
@@ -405,7 +405,7 @@ function findMatchedUrlInRules(searchUrl, host, hostAndPort, rules) {
 		}
 
 	} catch (e) {
-		console.warn('SmartProxy> findMatchForUrl failed for ' + lowerCaseUrl, e);
+		console.warn('WebProxy> findMatchForUrl failed for ' + lowerCaseUrl, e);
 	}
 	return null;
 }

@@ -58,11 +58,11 @@ body:
     validations:
       required: false
   - type: input
-    id: SmartProxy-versions
+    id: WebProxy-versions
     attributes:
-      label: Affected SmartProxy versions
-      description: Please provide the version numbers of the SmartProxy you see this issue on.
-      placeholder: E.g. SmartProxy 1.2.0
+      label: Affected WebProxy versions
+      description: Please provide the version numbers of the WebProxy you see this issue on.
+      placeholder: E.g. WebProxy 1.2.0
     validations:
       required: false
   - type: textarea

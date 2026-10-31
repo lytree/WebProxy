@@ -4,20 +4,20 @@ import { Utils } from '../lib/Utils';
 import { ProfileOperations } from './ProfileOperations';
 
 /*
- * This file is part of SmartProxy <https://github.com/salarcode/SmartProxy>,
+ * This file is part of WebProxy <https://github.com/salarcode/SmartProxy>,
  * Copyright (C) 2024 Salar Khalilzadeh <salar2k@gmail.com>
  *
- * SmartProxy is free software: you can redistribute it and/or modify
+ * WebProxy is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
- * SmartProxy is distributed in the hope that it will be useful,
+ * WebProxy is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with SmartProxy.  If not, see <http://www.gnu.org/licenses/>.
+ * along with WebProxy.  If not, see <http://www.gnu.org/licenses/>.
  */
 export const proxyServerProtocols = ['HTTP', 'HTTPS', 'SOCKS4', 'SOCKS5'];
 export const proxyServerSubscriptionObfuscate = ['None', 'Base64'];
@@ -355,7 +355,7 @@ export class ProxyableLogDataType {
 
 export class SettingsConfig implements Cloneable {
 	constructor() { }
-	public product: string = 'SmartProxy';
+	public product: string = 'WebProxy';
 	public version: string = '';
 	public configVersion: string = '';
 	public syncHash: string = '';
@@ -556,7 +556,7 @@ export function getBuiltinSmartProfiles(): SmartProfile[] {
 			profileId: SmartProfileTypeBuiltinIds.SmartRules,
 			profileType: SmartProfileType.SmartRules,
 			profileTypeConfig: getSmartProfileTypeConfig(SmartProfileType.SmartRules),
-			profileName: api.i18n.getMessage('popupSmartProxy'),
+			profileName: api.i18n.getMessage('popupWebProxy'),
 			proxyRules: [],
 			enabled: true,
 			rulesSubscriptions: [],

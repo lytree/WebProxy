@@ -52,15 +52,15 @@ jobs:
             pnpm run "build-$target"
             version=$(node -p "require('./extension/manifest.json').version")
             pnpm run pack:zip
-            mv extension.zip "SmartProxy-v${version}-${target}.zip"
+            mv extension.zip "WebProxy-v${version}-${target}.zip"
             case "$target" in
               ch|ed|op)
                 pnpm run pack:crx
-                mv extension.crx "SmartProxy-v${version}-${target}.crx"
+                mv extension.crx "WebProxy-v${version}-${target}.crx"
                 ;;
               *)
                 pnpm run pack:xpi
-                mv extension.xpi "SmartProxy-v${version}-${target}.xpi"
+                mv extension.xpi "WebProxy-v${version}-${target}.xpi"
                 ;;
             esac
             echo "::endgroup::"
@@ -70,6 +70,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: smartproxy-extensions
-          path: SmartProxy-*
+          path: WebProxy-*
           if-no-files-found: error
           retention-days: 14

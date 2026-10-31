@@ -7,10 +7,10 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
-		"message": "SmartProxy, ziyaret ettiğiniz siteler için, özelleştirilebilir kalıplara dayalı olarak otomatik olarak proxy'yi etkinleştirecek / devre dışı bırakacaktır."
+		"message": "WebProxy, ziyaret ettiğiniz siteler için, özelleştirilebilir kalıplara dayalı olarak otomatik olarak proxy'yi etkinleştirecek / devre dışı bırakacaktır."
 	},
 	"toolbarTooltipEffectiveRule": {
 		"message": "Eşleşen kural kaynağı:"
@@ -22,7 +22,7 @@
 		"message": "Kural deseni:"
 	},
 	"popupTitle": {
-		"message": "SmartProxy Etkinleştirme"
+		"message": "WebProxy Etkinleştirme"
 	},
 	"popupPrivateBrowsingMode": {
 		"message": "Özel Tarama Modu"
@@ -30,8 +30,8 @@
 	"popupNoProxy": {
 		"message": "Doğrudan (Proxy Yok)"
 	},
-	"popupSmartProxy": {
-		"message": "SmartProxy"
+	"popupWebProxy": {
+		"message": "WebProxy"
 	},
 	"popupAlwaysEnable": {
 		"message": "Daima Etkinle"
@@ -88,10 +88,10 @@
 		"message": "Seçili hataları yoksaymak istediğinizden emin misiniz? Yaparsanız, bunlardan artık hata almayacaksınız. Bunu sonradan ayarlardan değiştirebilirsiniz."
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "Maalesef tarayıcı ayarlarını Sistem Proxy`s kullanacak şekilde değiştirmek `incognito` izni gerektirir. Lütfen tarayıcıdaki SmartProxy eklenti ayarlarına gidip `Gizli modda çalıştırmaya izin ver` iznini etkinleştirin. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Daha fazla bilgi</a>."
+		"message": "Maalesef tarayıcı ayarlarını Sistem Proxy`s kullanacak şekilde değiştirmek `incognito` izni gerektirir. Lütfen tarayıcıdaki WebProxy eklenti ayarlarına gidip `Gizli modda çalıştırmaya izin ver` iznini etkinleştirin. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Daha fazla bilgi</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "Firefox 67 ve sonrası için tarayıcı ayarlarını Sistem Proxy`s kullanacak şekilde değiştirmek `Özel Tarama` izni gerektirir. Lütfen tarayıcıdaki SmartProxy eklenti ayarlarına gidip `Özel Pencerelerde Çalıştır` iznini verin. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Daha fazla bilgi</a>."
+		"message": "Firefox 67 ve sonrası için tarayıcı ayarlarını Sistem Proxy`s kullanacak şekilde değiştirmek `Özel Tarama` izni gerektirir. Lütfen tarayıcıdaki WebProxy eklenti ayarlarına gidip `Özel Pencerelerde Çalıştır` iznini verin. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Daha fazla bilgi</a>."
 	},
 	"proxyableTitle": {
 		"message": "Yedeklenebilir Kaynaklar"
@@ -187,7 +187,7 @@
 		"message": "HerZamanEtkin <br> Kurallar tarafından Zorlandı"
 	},
 	"settingsTitle": {
-		"message": "SmartProxy ayarları"
+		"message": "WebProxy ayarları"
 	},
 	"settingsTabAbout": {
 		"message": "Hakkında"
@@ -214,7 +214,7 @@
 		"message": "{0} için güncelleme"
 	},
 	"settingsTabAboutDescription": {
-		"message": "SmartProxy ile proxy kullanmak hiç bu kadar kolay olmamıştı. Bir kez yapılandır ve unut çözümü olarak düşünebilirsiniz. SmartProxy ile proxy'yi elle değiştirmeye veya açıp kapamaya gerek yok. Yapmanız gereken tek şey, istediğiniz web sitesi için proxy'yi etkinleştirmek istediğinizi SmartProxy'ye bir tıklama ile söylemektir. Ardından o siteyi ziyaret ettiğinizde SmartProxy devreye girer ve o siteye ait tüm veriler proxy üzerinden aktarılır."
+		"message": "WebProxy ile proxy kullanmak hiç bu kadar kolay olmamıştı. Bir kez yapılandır ve unut çözümü olarak düşünebilirsiniz. WebProxy ile proxy'yi elle değiştirmeye veya açıp kapamaya gerek yok. Yapmanız gereken tek şey, istediğiniz web sitesi için proxy'yi etkinleştirmek istediğinizi WebProxy'ye bir tıklama ile söylemektir. Ardından o siteyi ziyaret ettiğinizde WebProxy devreye girer ve o siteye ait tüm veriler proxy üzerinden aktarılır."
 	},
 	"settingsGeneralSmartFeatures": {
 		"message": "Akıllı Özellikler"
@@ -1243,10 +1243,10 @@
 		"message": "Kuralda herhangi bir şablon tanımlanmamış"
 	},
 	"settingsWelcomeTitle": {
-		"message": "SmartProxy'e Hoş Geldiniz"
+		"message": "WebProxy'e Hoş Geldiniz"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\tHoş geldiniz! SmartProxy'yi, akıllı proxy anahtarını seçtiğiniz için memnunuz.\n\t<br>\n\tBaşlarken lütfen şu adımları izleyin:\n</p>\n<ol>\n\t<li>\n\t\tProxy Sunucusu ekleyin\n\t\t<br>\n\t\t<small>(Proxy Sunucuları sekmesine gidip oraya bir proxy sunucusu ekleyin)</small>\n\t</li>\n\t<li>\n\t\tProxy modunu Akıllı Proxy olarak ayarlayın\n\t\t<br>\n\t\t<small>(Aktif modu Akıllı Proxy olarak değiştirmek için araç çubuğu açılır menüsünü kullanın)</small>\n\t</li>\n\t<li>\n\t\tProxy Kurallarını tanımlayın\n\t\t<br>\n\t\t<small>(Kural eklemek için araç çubuğu açılır menüsünü kullanın veya Proxy Kuralları sekmesinden ekleyin/değiştirin)</small>\n\t</li>\n\t<li>\n\t\tHer şey hazır.\n\t</li>\n</ol>"
+		"message": "<p>\n\tHoş geldiniz! WebProxy'yi, akıllı proxy anahtarını seçtiğiniz için memnunuz.\n\t<br>\n\tBaşlarken lütfen şu adımları izleyin:\n</p>\n<ol>\n\t<li>\n\t\tProxy Sunucusu ekleyin\n\t\t<br>\n\t\t<small>(Proxy Sunucuları sekmesine gidip oraya bir proxy sunucusu ekleyin)</small>\n\t</li>\n\t<li>\n\t\tProxy modunu Akıllı Proxy olarak ayarlayın\n\t\t<br>\n\t\t<small>(Aktif modu Akıllı Proxy olarak değiştirmek için araç çubuğu açılır menüsünü kullanın)</small>\n\t</li>\n\t<li>\n\t\tProxy Kurallarını tanımlayın\n\t\t<br>\n\t\t<small>(Kural eklemek için araç çubuğu açılır menüsünü kullanın veya Proxy Kuralları sekmesinden ekleyin/değiştirin)</small>\n\t</li>\n\t<li>\n\t\tHer şey hazır.\n\t</li>\n</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "Anladım"
@@ -1309,7 +1309,7 @@
 		"message": "Önceki bir proxy sunucusu yok."
 	},
 	"notificationShortcutTitle": {
-		"message": "SmartProxy kısayol bildirimi"
+		"message": "WebProxy kısayol bildirimi"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "Proxy modu {0} olarak değiştirildi"

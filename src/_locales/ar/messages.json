@@ -7,7 +7,7 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
 		"message": "سمارت بروكسي سوف يفعل / يعطل البروكسي تلقائيا للمواقع التي تزورها، استنادا إلى أنماط للتخصيص."
@@ -30,7 +30,7 @@
 	"popupNoProxy": {
 		"message": "مباشرة (بدون بروكسي)"
 	},
-	"popupSmartProxy": {
+	"popupWebProxy": {
 		"message": "سمارت بروكسي"
 	},
 	"popupAlwaysEnable": {
@@ -88,10 +88,10 @@
 		"message": "هل أنت متأكد من تجاهل الأخطاء المحددة؟ إذا فعلت ذلك، لن تتلقى أي أخطاء إضافية منها. يمكنك تغيير ذلك لاحقًا من الإعدادات."
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "للأسف تغيير إعدادات المتصفح لاستخدام بروكسي النظام يتطلب صلاحية `incognito`. الرجاء الذهاب إلى إعدادات ملحق SmartProxy في المتصفح وتفعيل صلاحية `Allow in incognito`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>تعرف على الطريقة</a>."
+		"message": "للأسف تغيير إعدادات المتصفح لاستخدام بروكسي النظام يتطلب صلاحية `incognito`. الرجاء الذهاب إلى إعدادات ملحق WebProxy في المتصفح وتفعيل صلاحية `Allow in incognito`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>تعرف على الطريقة</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "بما أن Firefox 67، تغيير إعدادات المتصفح لاستخدام بروكسي النظام يتطلب صلاحية `Private Browsing`. الرجاء الذهاب إلى إعدادات ملحق SmartProxy في المتصفح وتفعيل `Run in Private Windows`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>تعرف على الطريقة</a>."
+		"message": "بما أن Firefox 67، تغيير إعدادات المتصفح لاستخدام بروكسي النظام يتطلب صلاحية `Private Browsing`. الرجاء الذهاب إلى إعدادات ملحق WebProxy في المتصفح وتفعيل `Run in Private Windows`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>تعرف على الطريقة</a>."
 	},
 	"proxyableTitle": {
 		"message": "الموارد القابلة للتنفيذ"
@@ -214,7 +214,7 @@
 		"message": "تحديث إلى {0}"
 	},
 	"settingsTabAboutDescription": {
-		"message": "استخدام البروكسي أصبح أسهل مع SmartProxy. اعتبره حلًا \"اضبط مرة وانسَ\". مع SmartProxy لا تحتاج لتغيير البروكسي يدويًا أو تشغيله وإيقافه. كل ما عليك هو إخبار SmartProxy بأنك تريد تفعيل البروكسي لموقع معين بنقرة واحدة. بعد ذلك، عندما تزور ذلك الموقع، سيتولى SmartProxy توجيه جميع بيانات ذلك الموقع عبر البروكسي تلقائيًا."
+		"message": "استخدام البروكسي أصبح أسهل مع WebProxy. اعتبره حلًا \"اضبط مرة وانسَ\". مع WebProxy لا تحتاج لتغيير البروكسي يدويًا أو تشغيله وإيقافه. كل ما عليك هو إخبار WebProxy بأنك تريد تفعيل البروكسي لموقع معين بنقرة واحدة. بعد ذلك، عندما تزور ذلك الموقع، سيتولى WebProxy توجيه جميع بيانات ذلك الموقع عبر البروكسي تلقائيًا."
 	},
 	"settingsGeneralSmartFeatures": {
 		"message": "ميزات ذكية"
@@ -1243,10 +1243,10 @@
 		"message": "القاعدة ليس لديها نمط محدد"
 	},
 	"settingsWelcomeTitle": {
-		"message": "مرحبًا بك في SmartProxy"
+		"message": "مرحبًا بك في WebProxy"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\tمرحبًا! يسعدنا اختيارك SmartProxy، مفعل البروكسي الذكي.\n\t<br>\n\tاتبع الخطوات التالية للبدء:\n</p>\n<ol>\n\t<li>\n\t\tأضف خادم بروكسي\n\t\t<br>\n\t\t<small>(انتقل إلى تبويب خوادم البروكسي وأضف خادمًا هناك)</small>\n\t</li>\n\t<li>\n\t\tاضبط وضع البروكسي على الوضع الذكي\n\t\t<br>\n\t\t<small>(استخدم قائمة النافذة المنبثقة في الشريط لتغيير الوضع إلى Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tحدد قواعد البروكسي\n\t\t<br>\n\t\t<small>(استخدم قائمة النافذة المنبثقة لإضافة القواعد أو أضف/حرر من تبويب قواعد البروكسي)</small>\n\t</li>\n\t<li>\n\t\tأنت جاهز الآن.\n\t</li>\n</ol>"
+		"message": "<p>\n\tمرحبًا! يسعدنا اختيارك WebProxy، مفعل البروكسي الذكي.\n\t<br>\n\tاتبع الخطوات التالية للبدء:\n</p>\n<ol>\n\t<li>\n\t\tأضف خادم بروكسي\n\t\t<br>\n\t\t<small>(انتقل إلى تبويب خوادم البروكسي وأضف خادمًا هناك)</small>\n\t</li>\n\t<li>\n\t\tاضبط وضع البروكسي على الوضع الذكي\n\t\t<br>\n\t\t<small>(استخدم قائمة النافذة المنبثقة في الشريط لتغيير الوضع إلى Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tحدد قواعد البروكسي\n\t\t<br>\n\t\t<small>(استخدم قائمة النافذة المنبثقة لإضافة القواعد أو أضف/حرر من تبويب قواعد البروكسي)</small>\n\t</li>\n\t<li>\n\t\tأنت جاهز الآن.\n\t</li>\n</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "حسنًا"
@@ -1309,7 +1309,7 @@
 		"message": "لا يوجد خادم بروكسي سابق"
 	},
 	"notificationShortcutTitle": {
-		"message": "إشعار اختصار SmartProxy"
+		"message": "إشعار اختصار WebProxy"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "تم تغيير وضع البروكسي إلى {0}"

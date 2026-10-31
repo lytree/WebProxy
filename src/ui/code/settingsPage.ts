@@ -1,18 +1,18 @@
 /*
- * This file is part of SmartProxy <https://github.com/salarcode/SmartProxy>,
+ * This file is part of WebProxy <https://github.com/salarcode/SmartProxy>,
  * Copyright (C) 2022 Salar Khalilzadeh <salar2k@gmail.com>
  *
- * SmartProxy is free software: you can redistribute it and/or modify
+ * WebProxy is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 3 as
  * published by the Free Software Foundation.
  *
- * SmartProxy is distributed in the hope that it will be useful,
+ * WebProxy is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with SmartProxy.  If not, see <http://www.gnu.org/licenses/>.
+ * along with WebProxy.  If not, see <http://www.gnu.org/licenses/>.
  */
 import { CommonUi } from "./CommonUi";
 import { PolyFill } from "../../lib/PolyFill";
@@ -1388,7 +1388,7 @@ export class settingsPage {
 
 	private static exportServersListFormatted(): string {
 		let proxyList = settingsPage.readServers();
-		let result = `[SmartProxy Servers]\r\n`;
+		let result = `[WebProxy Servers]\r\n`;
 
 		for (let proxy of proxyList) {
 			let proxyExport = `${proxy.host}:${proxy.port} [${proxy.protocol}]`;
@@ -4277,7 +4277,7 @@ export class settingsPage {
 		onClickExportProxyServerOpenBackup() {
 			let proxyList = settingsPage.exportServersListFormatted();
 
-			CommonUi.downloadData(proxyList, "SmartProxy-Servers.txt");
+			CommonUi.downloadData(proxyList, "WebProxy-Servers.txt");
 		},
 		onClickImportProxyServer() {
 			let modalContainer = jq("#modalImportProxyServer");
@@ -4381,7 +4381,7 @@ export class settingsPage {
 
 			let backupSettings = SettingsOperation.getBackupOfSettings(settingsPage.currentSettings);
 			let data = JSON.stringify(backupSettings);
-			CommonUi.downloadData(data, "SmartProxy-FullBackup.json");
+			CommonUi.downloadData(data, "WebProxy-FullBackup.json");
 		},
 		onClickRestoreBackup() {
 			function callRestoreSettings(fileData: any) {

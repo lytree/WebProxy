@@ -7,7 +7,7 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
 		"message": "Proxy inteligente automáticamente habilitará/deshabilitará proxy para los sitios que visites, basado en patrones personalizables."
@@ -30,7 +30,7 @@
 	"popupNoProxy": {
 		"message": "Directo (Sin Proxy)"
 	},
-	"popupSmartProxy": {
+	"popupWebProxy": {
 		"message": "Proxy Inteligente"
 	},
 	"popupAlwaysEnable": {
@@ -88,10 +88,10 @@
 		"message": "¿Estás seguro de ignorar los fallos seleccionados? Si lo haces, no recibirás más errores de ellos. Puedes cambiar esto desde la configuración más tarde."
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "Desafortunadamente, cambiar la configuración del navegador para usar el proxy del sistema requiere el permiso de 'incógnito'. Por favor, ve a la configuración de la extensión SmartProxy en el navegador y marca el permiso 'Permitir en incógnito'. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Aprende cómo</a>."
+		"message": "Desafortunadamente, cambiar la configuración del navegador para usar el proxy del sistema requiere el permiso de 'incógnito'. Por favor, ve a la configuración de la extensión WebProxy en el navegador y marca el permiso 'Permitir en incógnito'. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Aprende cómo</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "Desde Firefox 67, cambiar la configuración del navegador para usar el proxy del sistema requiere el permiso de 'Navegación privada'. Por favor, ve a la configuración del complemento SmartProxy en el navegador y permite la opción 'Ejecutar en ventanas privadas'. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Aprende cómo</a>."
+		"message": "Desde Firefox 67, cambiar la configuración del navegador para usar el proxy del sistema requiere el permiso de 'Navegación privada'. Por favor, ve a la configuración del complemento WebProxy en el navegador y permite la opción 'Ejecutar en ventanas privadas'. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Aprende cómo</a>."
 	},
 	"proxyableTitle": {
 		"message": "Recursos del Proxy"
@@ -1243,10 +1243,10 @@
 		"message": "La regla no tiene un patrón definido"
 	},
 	"settingsWelcomeTitle": {
-		"message": "Bienvenido a SmartProxy"
+		"message": "Bienvenido a WebProxy"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\t¡Bienvenido! Me alegra que haya elegido SmartProxy, el conmutador de proxy inteligente.\n\t<br>\n\tPor favor siga estos pasos para comenzar:\n</p>\n<ol>\n\t<li>\n\t\tAgregar un servidor proxy\n\t\t<br>\n\t\t<small>(Vaya a la pestaña Servidores proxy y agregue un servidor proxy allí)</small>\n\t</li>\n\t<li>\n\t\tConfigurar el modo a Proxy inteligente\n\t\t<br>\n\t\t<small>(Utilice el menú emergente de la barra de herramientas para cambiar el modo activo a Proxy inteligente)</small>\n\t</li>\n\t<li>\n\t\tDefinir reglas de proxy\n\t\t<br>\n\t\t<small>(Utilice el menú emergente de la barra de herramientas para agregar reglas o agregue/modifique reglas desde la pestaña Reglas de proxy)</small>\n\t</li>\n\t<li>\n\t\tYa está todo listo.\n\t</li>\n</ol>"
+		"message": "<p>\n\t¡Bienvenido! Me alegra que haya elegido WebProxy, el conmutador de proxy inteligente.\n\t<br>\n\tPor favor siga estos pasos para comenzar:\n</p>\n<ol>\n\t<li>\n\t\tAgregar un servidor proxy\n\t\t<br>\n\t\t<small>(Vaya a la pestaña Servidores proxy y agregue un servidor proxy allí)</small>\n\t</li>\n\t<li>\n\t\tConfigurar el modo a Proxy inteligente\n\t\t<br>\n\t\t<small>(Utilice el menú emergente de la barra de herramientas para cambiar el modo activo a Proxy inteligente)</small>\n\t</li>\n\t<li>\n\t\tDefinir reglas de proxy\n\t\t<br>\n\t\t<small>(Utilice el menú emergente de la barra de herramientas para agregar reglas o agregue/modifique reglas desde la pestaña Reglas de proxy)</small>\n\t</li>\n\t<li>\n\t\tYa está todo listo.\n\t</li>\n</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "Entendido"
@@ -1309,7 +1309,7 @@
 		"message": "No hay un servidor proxy anterior"
 	},
 	"notificationShortcutTitle": {
-		"message": "Notificación de atajo de SmartProxy"
+		"message": "Notificación de atajo de WebProxy"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "El modo de proxy cambió a {0}"

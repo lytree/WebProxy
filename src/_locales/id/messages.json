@@ -7,10 +7,10 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
-		"message": "Smart Proxy akan secara otomatis mengaktifkan/menonaktifkan proksi untuk situs yang Anda kunjungi, berdasarkan pola yang sudah ditentukan."
+		"message": "WebProxy akan secara otomatis mengaktifkan/menonaktifkan proksi untuk situs yang Anda kunjungi, berdasarkan pola yang sudah ditentukan."
 	},
 	"toolbarTooltipEffectiveRule": {
 		"message": "Sumber aturan yang cocok:"
@@ -22,7 +22,7 @@
 		"message": "Pola aturan:"
 	},
 	"popupTitle": {
-		"message": "Penggiatan SmartProxy"
+		"message": "Penggiatan WebProxy"
 	},
 	"popupPrivateBrowsingMode": {
 		"message": "Mode Penelusuran Pribadi"
@@ -30,7 +30,7 @@
 	"popupNoProxy": {
 		"message": "Langsung (Tanpa Proksi)"
 	},
-	"popupSmartProxy": {
+	"popupWebProxy": {
 		"message": "Proksi Pintar"
 	},
 	"popupAlwaysEnable": {
@@ -88,10 +88,10 @@
 		"message": "Yakin ingin mengabaikan kegagalan yang dipilih? Jika iya, Anda tidak akan menerima kesalahan lagi dari mereka. Anda bisa mengubahnya di pengaturan nanti."
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "Sayangnya, mengubah pengaturan browser untuk menggunakan Proxy Sistem memerlukan izin `incognito`. Buka pengaturan ekstensi SmartProxy di browser dan aktifkan izin `Allow in incognito`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Lihat panduan</a>."
+		"message": "Sayangnya, mengubah pengaturan browser untuk menggunakan Proxy Sistem memerlukan izin `incognito`. Buka pengaturan ekstensi WebProxy di browser dan aktifkan izin `Allow in incognito`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Lihat panduan</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "Sejak Firefox 67, mengubah pengaturan browser untuk menggunakan Proxy Sistem memerlukan izin `Private Browsing`. Buka pengaturan add-on SmartProxy dan `Allow` izin `Run in Private Windows`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Lihat panduan</a>."
+		"message": "Sejak Firefox 67, mengubah pengaturan browser untuk menggunakan Proxy Sistem memerlukan izin `Private Browsing`. Buka pengaturan add-on WebProxy dan `Allow` izin `Run in Private Windows`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Lihat panduan</a>."
 	},
 	"proxyableTitle": {
 		"message": "Sumber Proksi"
@@ -187,7 +187,7 @@
 		"message": "Selalu Diaktifkan <br> Dipaksa oleh Aturan"
 	},
 	"settingsTitle": {
-		"message": "Pengaturan SmartProxy"
+		"message": "Pengaturan WebProxy"
 	},
 	"settingsTabAbout": {
 		"message": "Tentang"
@@ -214,7 +214,7 @@
 		"message": "Perbarui ke {0}"
 	},
 	"settingsTabAboutDescription": {
-		"message": "Menggunakan proxy jadi lebih mudah dengan SmartProxy. Anggap ini sebagai solusi \"konfigurasi sekali, lupakan\". Dengan SmartProxy Anda tidak perlu mengubah proxy secara manual atau menyalakan/mematikan. Cukup beri tahu SmartProxy bahwa Anda ingin mengaktifkan proxy untuk situs yang diinginkan dengan satu klik. Setelah itu, ketika Anda mengunjungi situs tersebut, SmartProxy akan bekerja dan semua data untuk situs itu akan dikirim melalui proxy tanpa tindakan tambahan dari Anda."
+		"message": "Menggunakan proxy jadi lebih mudah dengan WebProxy. Anggap ini sebagai solusi \"konfigurasi sekali, lupakan\". Dengan WebProxy Anda tidak perlu mengubah proxy secara manual atau menyalakan/mematikan. Cukup beri tahu WebProxy bahwa Anda ingin mengaktifkan proxy untuk situs yang diinginkan dengan satu klik. Setelah itu, ketika Anda mengunjungi situs tersebut, WebProxy akan bekerja dan semua data untuk situs itu akan dikirim melalui proxy tanpa tindakan tambahan dari Anda."
 	},
 	"settingsGeneralSmartFeatures": {
 		"message": "Fitur Pintar"
@@ -1243,10 +1243,10 @@
 		"message": "Aturan belum memiliki pola yang didefinisikan"
 	},
 	"settingsWelcomeTitle": {
-		"message": "Selamat datang di SmartProxy"
+		"message": "Selamat datang di WebProxy"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\tSelamat! Terima kasih telah memilih SmartProxy, pengalih proxy pintar.\n\t<br>\n\tSilakan ikuti langkah-langkah berikut untuk memulai:\n</p>\n<ol>\n\t<li>\n\t\tTambahkan Server Proxy\n\t\t<br>\n\t\t<small>(Buka tab Proxy Servers dan tambahkan server proxy di sana)</small>\n\t</li>\n\t<li>\n\t\tAtur mode proxy ke Smart Proxy\n\t\t<br>\n\t\t<small>(Gunakan menu popup pada toolbar untuk mengubah mode aktif ke Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tDefinisikan Aturan Proxy\n\t\t<br>\n\t\t<small>(Gunakan menu popup pada toolbar untuk menambah aturan atau tambahkan/ubah aturan dari tab Proxy Rules)</small>\n\t</li>\n\t<li>\n\t\tSelesai.\n\t</li>\n</ol>"
+		"message": "<p>\n\tSelamat! Terima kasih telah memilih WebProxy, pengalih proxy pintar.\n\t<br>\n\tSilakan ikuti langkah-langkah berikut untuk memulai:\n</p>\n<ol>\n\t<li>\n\t\tTambahkan Server Proxy\n\t\t<br>\n\t\t<small>(Buka tab Proxy Servers dan tambahkan server proxy di sana)</small>\n\t</li>\n\t<li>\n\t\tAtur mode proxy ke Smart Proxy\n\t\t<br>\n\t\t<small>(Gunakan menu popup pada toolbar untuk mengubah mode aktif ke Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tDefinisikan Aturan Proxy\n\t\t<br>\n\t\t<small>(Gunakan menu popup pada toolbar untuk menambah aturan atau tambahkan/ubah aturan dari tab Proxy Rules)</small>\n\t</li>\n\t<li>\n\t\tSelesai.\n\t</li>\n</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "Mengerti"
@@ -1309,7 +1309,7 @@
 		"message": "Tidak ada server proxy sebelumnya"
 	},
 	"notificationShortcutTitle": {
-		"message": "Notifikasi pintasan SmartProxy"
+		"message": "Notifikasi pintasan WebProxy"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "Mode proxy diubah menjadi {0}"

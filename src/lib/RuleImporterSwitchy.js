@@ -1,7 +1,7 @@
 // -----------------------------------------------
 /*!
 * This piece of code is from SwitchyOmega_Chrome <omega_webext_proxy_script.min.js>
-* Modified to be in taste of SmartProxy
+* Modified to be in taste of WebProxy
 *
 * @source  https://github.com/FelisCatus/SwitchyOmega
 * @license  GPL3

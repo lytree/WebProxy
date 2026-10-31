@@ -7,10 +7,10 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
-		"message": "Smart Proxy va automatiquement activer/desactiver proxy pour les sites que vous visitez, basé sur des modèles personnalisables."
+		"message": "WebProxy va automatiquement activer/desactiver proxy pour les sites que vous visitez, basé sur des modèles personnalisables."
 	},
 	"toolbarTooltipEffectiveRule": {
 		"message": "Source de la règle correspondante :"
@@ -22,7 +22,7 @@
 		"message": "Modèle de règle :"
 	},
 	"popupTitle": {
-		"message": "Activation de SmartProxy"
+		"message": "Activation de WebProxy"
 	},
 	"popupPrivateBrowsingMode": {
 		"message": "Mode de navigation privée"
@@ -30,7 +30,7 @@
 	"popupNoProxy": {
 		"message": "Direct (sans Proxy)"
 	},
-	"popupSmartProxy": {
+	"popupWebProxy": {
 		"message": "Smart Proxy"
 	},
 	"popupAlwaysEnable": {
@@ -88,10 +88,10 @@
 		"message": "Êtes-vous sûr d'ignorer les échecs sélectionnés ? Si vous le faites, vous ne recevrez plus d'erreurs de leur part. Vous pouvez modifier cela dans les paramètres plus tard."
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "Malheureusement, la modification des paramètres du navigateur pour utiliser le proxy système nécessite la permission `incognito`. Veuillez aller dans les paramètres de l'extension SmartProxy dans le navigateur et cocher la permission `Autoriser en mode privé`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Apprendre comment</a>."
+		"message": "Malheureusement, la modification des paramètres du navigateur pour utiliser le proxy système nécessite la permission `incognito`. Veuillez aller dans les paramètres de l'extension WebProxy dans le navigateur et cocher la permission `Autoriser en mode privé`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Apprendre comment</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "Depuis Firefox 67, la modification des paramètres du navigateur pour utiliser le proxy système nécessite la permission `Navigation privée`. Veuillez aller dans les paramètres de l'addon SmartProxy dans le navigateur et `Autoriser` la permission `Exécuter dans les fenêtres privées`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Apprendre comment</a>."
+		"message": "Depuis Firefox 67, la modification des paramètres du navigateur pour utiliser le proxy système nécessite la permission `Navigation privée`. Veuillez aller dans les paramètres de l'addon WebProxy dans le navigateur et `Autoriser` la permission `Exécuter dans les fenêtres privées`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Apprendre comment</a>."
 	},
 	"proxyableTitle": {
 		"message": "Ressources Proxyable"
@@ -187,7 +187,7 @@
 		"message": "Toujours activé <br> Forcé par les règles"
 	},
 	"settingsTitle": {
-		"message": "SmartProxy Paramètres"
+		"message": "WebProxy Paramètres"
 	},
 	"settingsTabAbout": {
 		"message": "À propos"
@@ -214,7 +214,7 @@
 		"message": "Metre à jour {0}"
 	},
 	"settingsTabAboutDescription": {
-		"message": "Utiliser des proxies ne peut pas être plus facile avec SmartProxy. Pensez-y comme une solution de configuration unique et oubli. Avec SmartProxy, vous n'avez pas besoin de changer votre proxy manuellement ou de l'activer et le désactiver. Tout ce que vous avez à faire est de dire à SmartProxy que vous voulez activer le proxy pour votre site web souhaité avec juste un clic. Après cela, lorsque vous visitez ce site web spécifique, SmartProxy agira et toutes vos données pour ce site web seront transférées via le proxy, sans que vous fassiez quoi que ce soit."
+		"message": "Utiliser des proxies ne peut pas être plus facile avec WebProxy. Pensez-y comme une solution de configuration unique et oubli. Avec WebProxy, vous n'avez pas besoin de changer votre proxy manuellement ou de l'activer et le désactiver. Tout ce que vous avez à faire est de dire à WebProxy que vous voulez activer le proxy pour votre site web souhaité avec juste un clic. Après cela, lorsque vous visitez ce site web spécifique, WebProxy agira et toutes vos données pour ce site web seront transférées via le proxy, sans que vous fassiez quoi que ce soit."
 	},
 	"settingsGeneralSmartFeatures": {
 		"message": "Fonctionnalités Smart"
@@ -1243,10 +1243,10 @@
 		"message": "La règle n'a pas de modèle défini"
 	},
 	"settingsWelcomeTitle": {
-		"message": "Bienvenue dans SmartProxy"
+		"message": "Bienvenue dans WebProxy"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\tBienvenue ! Je suis heureux que vous ayez choisi SmartProxy, le commutateur proxy intelligent.\n\t<br>\n\tVeuillez suivre ces étapes pour commencer :\n</p>\n<ol>\n\t<li>\n\t\tAjouter un serveur proxy\n\t\t<br>\n\t\t<small>(Allez à l'onglet Serveurs proxy et ajoutez un serveur proxy là)</small>\n\t</li>\n\t<li>\n\t\tDéfinissez le mode proxy en mode Smart Proxy\n\t\t<br>\n\t\t<small>(Utilisez le menu contextuel de la barre d'outils pour modifier le mode actif en Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tDéfinir les règles de proxy\n\t\t<br>\n\t\t<small>(Utilisez le menu contextuel de la barre d'outils pour ajouter des règles ou ajouter/modifier des règles depuis l'onglet Règles de proxy)</small>\n\t</li>\n\t<li>\n\t\tVous êtes tous prêts.\n\t</li>\n</ol>"
+		"message": "<p>\n\tBienvenue ! Je suis heureux que vous ayez choisi WebProxy, le commutateur proxy intelligent.\n\t<br>\n\tVeuillez suivre ces étapes pour commencer :\n</p>\n<ol>\n\t<li>\n\t\tAjouter un serveur proxy\n\t\t<br>\n\t\t<small>(Allez à l'onglet Serveurs proxy et ajoutez un serveur proxy là)</small>\n\t</li>\n\t<li>\n\t\tDéfinissez le mode proxy en mode Smart Proxy\n\t\t<br>\n\t\t<small>(Utilisez le menu contextuel de la barre d'outils pour modifier le mode actif en Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tDéfinir les règles de proxy\n\t\t<br>\n\t\t<small>(Utilisez le menu contextuel de la barre d'outils pour ajouter des règles ou ajouter/modifier des règles depuis l'onglet Règles de proxy)</small>\n\t</li>\n\t<li>\n\t\tVous êtes tous prêts.\n\t</li>\n</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "Compris"
@@ -1309,7 +1309,7 @@
 		"message": "Il n'y a pas d'autre serveur proxy précédent"
 	},
 	"notificationShortcutTitle": {
-		"message": "Notification de raccourci SmartProxy"
+		"message": "Notification de raccourci WebProxy"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "Mode proxy changé à {0}"

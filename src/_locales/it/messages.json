@@ -7,10 +7,10 @@
 		"description": "We need to know the code which might not match what browser UI has"
 	},
 	"extensionName": {
-		"message": "SmartProxy"
+		"message": "WebProxy"
 	},
 	"extensionDescription": {
-		"message": "Smart Proxy abiliterà / disabiliterà automaticamente il proxy per i siti che visiti, in base a modelli personalizzabili."
+		"message": "WebProxy abiliterà / disabiliterà automaticamente il proxy per i siti che visiti, in base a modelli personalizzabili."
 	},
 	"toolbarTooltipEffectiveRule": {
 		"message": "Origine regola corrispondente:"
@@ -22,7 +22,7 @@
 		"message": "Modello di regola:"
 	},
 	"popupTitle": {
-		"message": "Attivazione SmartProxy"
+		"message": "Attivazione WebProxy"
 	},
 	"popupPrivateBrowsingMode": {
 		"message": "Modalità Navigazione Privata"
@@ -30,7 +30,7 @@
 	"popupNoProxy": {
 		"message": "Diretto (Nessun Proxy)"
 	},
-	"popupSmartProxy": {
+	"popupWebProxy": {
 		"message": "Proxy Intelligente"
 	},
 	"popupAlwaysEnable": {
@@ -88,10 +88,10 @@
 		"message": "Sei sicuro di voler ignorare gli errori selezionati? Se lo fai, non riceverai più errori da questi. Puoi cambiare questa impostazione più tardi."
 	},
 	"popupNotAllowedSetProxySettingsChrome": {
-		"message": "Sfortunatamente, per modificare le impostazioni del browser per utilizzare il Proxy di Sistema è richiesta l'autorizzazione `incognito`. Vai alle impostazioni dell'estensione SmartProxy nel browser e abilita l'autorizzazione `Consenti in modalità incognito`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Scopri come</a>."
+		"message": "Sfortunatamente, per modificare le impostazioni del browser per utilizzare il Proxy di Sistema è richiesta l'autorizzazione `incognito`. Vai alle impostazioni dell'estensione WebProxy nel browser e abilita l'autorizzazione `Consenti in modalità incognito`. <a href='https://support.google.com/chrome_webstore/answer/2664769'>Scopri come</a>."
 	},
 	"popupNotAllowedSetProxySettingsFirefox": {
-		"message": "Da Firefox 67, per modificare le impostazioni del browser per utilizzare il Proxy di Sistema è richiesta l'autorizzazione `Navigazione Privata`. Vai alle impostazioni dell'addon SmartProxy nel browser e `Consenti` l'autorizzazione `Esegui in finestre private`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Scopri come</a>."
+		"message": "Da Firefox 67, per modificare le impostazioni del browser per utilizzare il Proxy di Sistema è richiesta l'autorizzazione `Navigazione Privata`. Vai alle impostazioni dell'addon WebProxy nel browser e `Consenti` l'autorizzazione `Esegui in finestre private`. <a href='https://support.mozilla.org/en-US/kb/extensions-private-browsing'>Scopri come</a>."
 	},
 	"proxyableTitle": {
 		"message": "Risorse Proxyabili"
@@ -187,7 +187,7 @@
 		"message": "Sempre Abilitato <br> Forzato da Regole"
 	},
 	"settingsTitle": {
-		"message": "Impostazioni SmartProxy"
+		"message": "Impostazioni WebProxy"
 	},
 	"settingsTabAbout": {
 		"message": "Info"
@@ -214,7 +214,7 @@
 		"message": "Aggiornato A {0}"
 	},
 	"settingsTabAboutDescription": {
-		"message": "Utilizzare i proxy non può essere più facile con SmartProxy. Pensalo come una soluzione da configurare una volta e dimenticare. Con SmartProxy non è necessario modificare manualmente il proxy o accenderlo e spegnerlo. Tutto quello che devi fare è dire a SmartProxy che vuoi abilitare il proxy per il tuo sito web desiderato con un solo clic. Dopo di che, quando visiti quel sito specifico, SmartProxy agirà e tutti i tuoi dati per quel sito web verranno trasferiti attraverso il proxy, senza che tu faccia nulla."
+		"message": "Utilizzare i proxy non può essere più facile con WebProxy. Pensalo come una soluzione da configurare una volta e dimenticare. Con WebProxy non è necessario modificare manualmente il proxy o accenderlo e spegnerlo. Tutto quello che devi fare è dire a WebProxy che vuoi abilitare il proxy per il tuo sito web desiderato con un solo clic. Dopo di che, quando visiti quel sito specifico, WebProxy agirà e tutti i tuoi dati per quel sito web verranno trasferiti attraverso il proxy, senza che tu faccia nulla."
 	},
 	"settingsGeneralSmartFeatures": {
 		"message": "Funzionalità Smart"
@@ -1243,10 +1243,10 @@
 		"message": "La regola non ha un modello definito"
 	},
 	"settingsWelcomeTitle": {
-		"message": "Benvenuto in SmartProxy"
+		"message": "Benvenuto in WebProxy"
 	},
 	"settingsWelcomeMessage": {
-		"message": "<p>\n\tBenvenuto! Sono felice che tu abbia scelto SmartProxy, lo smart proxy switcher.\n\t<br>\n\tSegui questi passaggi per iniziare:\n</p>\n<ol>\n\t<li>\n\t\tAggiungi un Server Proxy\n\t\t<br>\n\t\t<small>(Vai alla scheda Server Proxy e aggiungi lì un server proxy)</small>\n\t</li>\n\t<li>\n\t\tImposta la modalità proxy su modalità Smart Proxy\n\t\t<br>\n\t\t<small>(Usa il menu popup della barra degli strumenti per cambiare la modalità attiva a Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tDefinisci Regole Proxy\n\t\t<br>\n\t\t<small>(Usa il menu popup della barra degli strumenti per aggiungere regole o aggiungi/modifica regole dalla scheda Regole Proxy)</small>\n\t</li>\n\t<li>\n\t\tSei a posto.\n\t</li>\n</ol>"
+		"message": "<p>\n\tBenvenuto! Sono felice che tu abbia scelto WebProxy, lo smart proxy switcher.\n\t<br>\n\tSegui questi passaggi per iniziare:\n</p>\n<ol>\n\t<li>\n\t\tAggiungi un Server Proxy\n\t\t<br>\n\t\t<small>(Vai alla scheda Server Proxy e aggiungi lì un server proxy)</small>\n\t</li>\n\t<li>\n\t\tImposta la modalità proxy su modalità Smart Proxy\n\t\t<br>\n\t\t<small>(Usa il menu popup della barra degli strumenti per cambiare la modalità attiva a Smart Proxy)</small>\n\t</li>\n\t<li>\n\t\tDefinisci Regole Proxy\n\t\t<br>\n\t\t<small>(Usa il menu popup della barra degli strumenti per aggiungere regole o aggiungi/modifica regole dalla scheda Regole Proxy)</small>\n\t</li>\n\t<li>\n\t\tSei a posto.\n\t</li>\n</ol>"
 	},
 	"settingsWelcomeSkipButton": {
 		"message": "Ho capito"
@@ -1309,7 +1309,7 @@
 		"message": "Non c'è un ulteriore server proxy precedente"
 	},
 	"notificationShortcutTitle": {
-		"message": "Notifica scorciatoia SmartProxy"
+		"message": "Notifica scorciatoia WebProxy"
 	},
 	"notificationShortcutProxyModeMessage": {
 		"message": "Modalità proxy cambiata in {0}"

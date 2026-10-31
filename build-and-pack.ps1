@@ -34,7 +34,7 @@ Function BuildAndPack($Build, $BuildName) {
 	if (!(Test-Path "..\!Releases\$global:version\")) {
 		New-Item -Path "..\!Releases\$global:version\" -ItemType Directory
 	}
-    $zipfile = "..\!Releases\$global:version\SmartProxy-v$global:version-$BuildName.zip"
+    $zipfile = "..\!Releases\$global:version\WebProxy-v$global:version-$BuildName.zip"
     $compress = @{
         Path = ".\extension\*"
         DestinationPath = $zipfile
@@ -56,5 +56,5 @@ BuildAndPack "th"  "Thunderbird"
 BuildAndPack "op"  "Opera"
 BuildAndPack "ff-unlisted" "firefox-unlisted"
 
-Invoke-Expression ("git archive --format zip -o ..\!Releases\$global:version\SmartProxy-$global:version-sources.zip HEAD")
-Write-Output "Sources are saved in SmartProxy-$global:version-sources.zip"
+Invoke-Expression ("git archive --format zip -o ..\!Releases\$global:version\WebProxy-$global:version-sources.zip HEAD")
+Write-Output "Sources are saved in WebProxy-$global:version-sources.zip"
