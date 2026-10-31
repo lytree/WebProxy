@@ -4,11 +4,11 @@
  */
 
 const icons = {
-	"16": "icons/smartproxy-16.png",
-	"24": "icons/smartproxy-24.png",
-	"48": "icons/smartproxy-48.png",
-	"96": "icons/smartproxy-96.png",
-	"128": "icons/smartproxy-128.png",
+	"16": "icons/webproxy-16.png",
+	"24": "icons/webproxy-24.png",
+	"48": "icons/webproxy-48.png",
+	"96": "icons/webproxy-96.png",
+	"128": "icons/webproxy-128.png",
 };
 
 const chromiumCommands = {

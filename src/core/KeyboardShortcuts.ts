@@ -25,7 +25,7 @@ export class KeyboardShortcuts {
                     KeyboardShortcuts.displayShortcutNotification(
                         api.i18n.getMessage("notificationShortcutProxyServerChanged").replace("{0}", nextResult.value.name),
                         "cycle-proxy-server",
-                        PolyFill.extensionGetURL("icons/smartproxy-48.png"));
+                        PolyFill.extensionGetURL("icons/webproxy-48.png"));
                 }
                 else {
                     KeyboardShortcuts.displayShortcutNotification(
@@ -42,7 +42,7 @@ export class KeyboardShortcuts {
                     KeyboardShortcuts.displayShortcutNotification(
                         api.i18n.getMessage("notificationShortcutProxyServerChanged").replace("{0}", previousResult.value.name),
                         "cycle-proxy-server",
-                        PolyFill.extensionGetURL("icons/smartproxy-48.png"));
+                        PolyFill.extensionGetURL("icons/webproxy-48.png"));
                 }
                 else {
                     KeyboardShortcuts.displayShortcutNotification(
@@ -69,7 +69,7 @@ export class KeyboardShortcuts {
                 KeyboardShortcuts.displayShortcutNotification(
                     api.i18n.getMessage("notificationShortcutProxyModeMessage").replace("{0}", getSmartProfileTypeName(SmartProfileType.SmartRules)),
                     CommandMessages.PopupChangeActiveProfile,
-                    PolyFill.extensionGetURL("icons/smartproxy-48.png"));
+                    PolyFill.extensionGetURL("icons/webproxy-48.png"));
                 break;
 
             case ShortcutCommands.BuiltinProfileAlways:
@@ -121,7 +121,7 @@ export class KeyboardShortcuts {
 
         if (environment.chrome) {
             if (iconUrl)
-                iconUrl = PolyFill.extensionGetURL("icons/smartproxy-48.png");
+                iconUrl = PolyFill.extensionGetURL("icons/webproxy-48.png");
         }
 
         PolyFill.browserNotificationsCreate(id, {
