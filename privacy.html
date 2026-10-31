@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>WebProxy Privacy Policy</title>
+	<meta name="description" content="Privacy policy for the WebProxy browser extension." />
+	<style>
+		:root {
+			--bg: #f6f8fb;
+			--card: #ffffff;
+			--text: #16202c;
+			--muted: #5a6b7d;
+			--accent: #1f6feb;
+			--accent-soft: #e8f0fe;
+			--border: #e2e8f0;
+			--radius: 14px;
+		}
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			background:
+				radial-gradient(1200px 500px at 50% -150px, #dce9ff 0%, transparent 70%),
+				var(--bg);
+			color: var(--text);
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+				"Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+			line-height: 1.7;
+		}
+		.wrap {
+			max-width: 820px;
+			margin: 0 auto;
+			padding: 56px 20px 80px;
+		}
+		header { margin-bottom: 36px; }
+		.badge {
+			display: inline-block;
+			padding: 4px 12px;
+			border-radius: 999px;
+			background: var(--accent-soft);
+			color: var(--accent);
+			font-size: 13px;
+			font-weight: 600;
+			letter-spacing: .3px;
+		}
+		h1 {
+			margin: 14px 0 8px;
+			font-size: clamp(30px, 5vw, 42px);
+			line-height: 1.2;
+			letter-spacing: -.02em;
+		}
+		.meta { color: var(--muted); font-size: 14px; }
+		.meta a { color: var(--accent); text-decoration: none; }
+		.meta a:hover { text-decoration: underline; }
+		.summary {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 12px;
+			margin: 28px 0 8px;
+		}
+		.summary div {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			padding: 14px 16px;
+			font-size: 14.5px;
+		}
+		.summary strong { display: block; margin-bottom: 2px; }
+		main {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: 18px;
+			padding: 8px 30px 34px;
+			box-shadow: 0 10px 30px rgba(22, 32, 44, .06);
+		}
+		section { padding-top: 26px; }
+		section + section { border-top: 1px solid var(--border); }
+		h2 {
+			margin: 0 0 10px;
+			font-size: 20px;
+			letter-spacing: -.01em;
+		}
+		h3 { margin: 18px 0 6px; font-size: 15.5px; }
+		p, ul { margin: 0 0 10px; }
+		ul { padding-left: 22px; }
+		li { margin: 4px 0; }
+		code {
+			background: #f1f5f9;
+			border-radius: 6px;
+			padding: 1px 6px;
+			font-size: 13px;
+		}
+		a { color: var(--accent); }
+		.note {
+			background: #f8fafc;
+			border-left: 3px solid var(--accent);
+			border-radius: 8px;
+			padding: 12px 14px;
+			color: var(--muted);
+			font-size: 14.5px;
+		}
+		footer {
+			margin-top: 28px;
+			text-align: center;
+			color: var(--muted);
+			font-size: 13.5px;
+		}
+		@media (max-width: 640px) {
+			.wrap { padding: 36px 14px 56px; }
+			main { padding: 4px 18px 26px; }
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<header>
+			<span class="badge">WEBPROXY · PRIVACY</span>
+			<h1>Privacy Policy</h1>
+			<div class="meta">
+				Last updated: 2026-10-31 ·
+				<a href="https://github.com/lytree/WebProxy">github.com/lytree/WebProxy</a>
+			</div>
+		</header>
+
+		<div class="summary">
+			<div><strong>No data collection</strong>No telemetry, analytics, advertising, or tracking.</div>
+			<div><strong>Local by default</strong>Settings, rules, and credentials stay in your browser.</div>
+			<div><strong>You choose the servers</strong>Traffic only goes to proxies and subscriptions you add.</div>
+		</div>
+
+		<main>
+			<section>
+				<h2>About WebProxy</h2>
+				<p>
+					WebProxy is a browser extension that automatically enables or disables proxy
+					servers for the websites you visit, based on rules you configure. This policy
+					explains what data the extension handles and how it is handled.
+				</p>
+				<p>
+					WebProxy is a fork of the open-source
+					<a href="https://github.com/salarcode/SmartProxy">SmartProxy</a> project.
+				</p>
+			</section>
+
+			<section>
+				<h2>Summary</h2>
+				<ul>
+					<li>WebProxy does <strong>not</strong> collect, transmit, sell, or share personal data.</li>
+					<li>There is <strong>no</strong> analytics, telemetry, advertising, or tracking code.</li>
+					<li>All extension settings, rules, and credentials are stored locally in your browser.</li>
+					<li>Network traffic only goes to servers <strong>you</strong> configure or explicitly add.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Data handled by the extension</h2>
+
+				<h3>Settings, rules, and credentials</h3>
+				<p>
+					Proxy server configurations, proxy rule lists, subscriptions, and proxy
+					authentication credentials are stored in your browser's local extension storage.
+					They are not sent to the developer.
+				</p>
+				<p>If you enable sync, this data may be transferred to:</p>
+				<ul>
+					<li>your browser vendor's sync service, if you use built-in browser sync; or</li>
+					<li>the WebDAV server that you configure yourself.</li>
+				</ul>
+				<p>
+					Those services are operated by third parties or by you, and their own privacy
+					policies apply.
+				</p>
+
+				<h3>Websites you visit</h3>
+				<p>
+					The extension reads the URL of the active tab and network request metadata
+					locally, solely to decide whether a proxy rule matches. This processing happens
+					on your device. URLs and browsing history are not sent to the developer.
+				</p>
+
+				<h3>Proxy traffic</h3>
+				<p>
+					When a proxy is active, your network requests are forwarded to the proxy server
+					you configured. The developer of WebProxy does not operate these proxy servers
+					and cannot see your traffic. The privacy policy of your proxy provider applies.
+				</p>
+
+				<h3>Rule and proxy subscriptions</h3>
+				<p>
+					If you add a subscription URL, the extension requests that URL to download rules
+					or proxy server lists. The provider of that URL may receive standard HTTP
+					information such as your IP address, as with any web request.
+				</p>
+
+				<h3>IP geolocation</h3>
+				<p>
+					Country information is resolved locally using the IP2Location LITE database
+					bundled with the extension. No IP address is sent to a geolocation service.
+				</p>
+
+				<h3>Update checks</h3>
+				<p>
+					The extension periodically requests a version information file from
+					<code>raw.githubusercontent.com</code> to check for updates. This request
+					contains no personal data beyond what is inherent in any HTTP request.
+				</p>
+			</section>
+
+			<section>
+				<h2>Permissions</h2>
+				<p>
+					The extension requests browser permissions only to provide its core
+					functionality:
+				</p>
+				<ul>
+					<li><strong>proxy, webRequest, webRequestAuthProvider</strong> — apply proxy
+						rules and authenticate with proxy servers;</li>
+					<li><strong>tabs, webNavigation, activeTab</strong> — detect the current website
+						and apply rules;</li>
+					<li><strong>storage, unlimitedStorage</strong> — store settings, rules, and
+						subscriptions locally;</li>
+					<li><strong>notifications, alarms</strong> — show status messages and run
+						scheduled subscription refreshes;</li>
+					<li><strong>access to websites</strong> — apply proxy rules to the sites you
+						choose.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Data sharing and sale</h2>
+				<p>
+					WebProxy does not sell, rent, or share personal data with third parties. No data
+					is transferred to the developer's servers.
+				</p>
+			</section>
+
+			<section>
+				<h2>Children's privacy</h2>
+				<p>
+					WebProxy does not knowingly collect any information from anyone, including
+					children under 13.
+				</p>
+			</section>
+
+			<section>
+				<h2>Changes to this policy</h2>
+				<p>
+					This policy may be updated to reflect changes in the extension. The updated
+					version will be published at this URL with a new "Last updated" date.
+				</p>
+			</section>
+
+			<section>
+				<h2>Contact</h2>
+				<p class="note">
+					For privacy questions, open an issue at
+					<a href="https://github.com/lytree/WebProxy/issues">github.com/lytree/WebProxy/issues</a>.
+				</p>
+			</section>
+		</main>
+
+		<footer>
+			WebProxy is open source and licensed under GPLv3.
+		</footer>
+	</div>
+</body>
+</html>

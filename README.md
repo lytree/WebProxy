@@ -1,4 +1,4 @@
-## SmartProxy
+## WebProxy
 
 [![license](https://img.shields.io/github/license/salarcode/SmartProxy.svg)](https://github.com/salarcode/SmartProxy/blob/master/LICENSE) [![Crowdin](https://d322cqt584bo4o.cloudfront.net/smartproxy/localized.svg)](https://crowdin.com/project/smartproxy)
 
@@ -12,14 +12,14 @@
 This project is a modified fork of the open-source SmartProxy extension. The original source is retained below:
 
 - Original project: https://github.com/salarcode/SmartProxy
-- This repository: https://github.com/lyttree/WebProxy
+- This repository: https://github.com/lytree/WebProxy
 
-#### What is SmartProxy
-SmartProxy is a Firefox/Chrome extension based on WebExtensions/Chrome Extensions technology.
+#### What is WebProxy
+WebProxy is a Firefox/Chrome extension based on WebExtensions/Chrome Extensions technology.
 
-It uses patterns to automatically define rules to proxify your web experience. With SmartProxy, you don't need to change your proxy manually and turn it on and off. You can add your desired website to the proxy rules list with just one click. After that, when you visit that specific website, SmartProxy will act and all you data for that website will be transferred though the proxy, without you doing anything.
+It uses patterns to automatically define rules to proxify your web experience. With WebProxy, you don't need to change your proxy manually and turn it on and off. You can add your desired website to the proxy rules list with just one click. After that, when you visit that specific website, WebProxy will act and all you data for that website will be transferred though the proxy, without you doing anything.
 
-What's more, SmartProxy is inspired by AutoProxy and AutoProxy-ng and that are now considered legacy. SmartProxy is completely written from ground up using WebExtensions and provides more functionality than those proxies.
+What's more, WebProxy is inspired by AutoProxy and AutoProxy-ng and that are now considered legacy. WebProxy is completely written from ground up using WebExtensions and provides more functionality than those proxies.
 
 ##### Highlights
 - Automatically detect when to enable or disable proxy to certain websites based on rule patterns
@@ -31,7 +31,7 @@ What's more, SmartProxy is inspired by AutoProxy and AutoProxy-ng and that are n
 - Backup/Restore settings and rules
 
 #### How to translate
-If you are interested to have SmartProxy in your language or it is not translated completely you can head to https://crowdin.com/project/smartproxy then login with Google or Github and there by clicking your language start translating right away.
+If you are interested to have WebProxy in your language or it is not translated completely you can head to https://crowdin.com/project/smartproxy then login with Google or Github and there by clicking your language start translating right away.
 
 #### How to build/test:
 Requirements
@@ -107,5 +107,5 @@ The API can only update an existing product; the initial submission must be done
 
 #### Attribution
 
-SmartProxy uses [IP2Location LITE](https://lite.ip2location.com) for IP geolocation. Database is not included in the repo due to licensing requirements. 
+WebProxy uses [IP2Location LITE](https://lite.ip2location.com) for IP geolocation. Database is not included in the repo due to licensing requirements. 
 
