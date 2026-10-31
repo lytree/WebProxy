@@ -269,7 +269,6 @@ export class Core {
 				let ruleId = message.ruleId;
 				ProfileRules.toggleRule(domain, ruleId);
 
-				settingsOperationLib.saveSmartProfiles();
 				settingsOperationLib.saveAllSync();
 
 				// notify the proxy script
@@ -291,7 +290,6 @@ export class Core {
 				let result = ProfileRules.changeProxyForRule(ruleId, proxyServerId);
 
 				if (result.success) {
-					settingsOperationLib.saveSmartProfiles();
 					settingsOperationLib.saveAllSync();
 
 					// notify the proxy script
@@ -322,7 +320,6 @@ export class Core {
 				// notify the proxy script
 				proxyEngineLib.notifyProxyRulesChanged();
 
-				settingsOperationLib.saveSmartProfiles();
 				settingsOperationLib.saveAllSync();
 
 				// update active proxy tab status
@@ -349,7 +346,6 @@ export class Core {
 
 				let updatedFailedRequests = WebFailedRequestMonitor.removeDomainsFromTabFailedRequests(tabId, domainList);
 
-				settingsOperationLib.saveSmartProfiles();
 				settingsOperationLib.saveAllSync();
 
 				settingsLib.updateActiveSettings();
@@ -448,9 +444,7 @@ export class Core {
 
 				settingsLib.current.proxyServers = saveData.proxyServers;
 				settingsLib.current.defaultProxyServerId = message.saveData.defaultProxyServerId;
-				settingsOperationLib.saveProxyServers();
 				settingsOperationLib.updateSmartProfilesRulesProxyServer();
-				settingsOperationLib.saveDefaultProxyServer();
 				settingsOperationLib.saveAllSync();
 
 				settingsLib.updateActiveSettings();
@@ -472,7 +466,6 @@ export class Core {
 				let smartProfile: SmartProfile = message.smartProfile;
 				ProfileOperations.addUpdateProfile(smartProfile);
 
-				settingsOperationLib.saveSmartProfiles();
 				settingsOperationLib.saveAllSync();
 
 				settingsLib.updateActiveSettings();
@@ -499,7 +492,6 @@ export class Core {
 				let deleteResult = ProfileOperations.deleteProfile(smartProfileId);
 
 				if (deleteResult.success) {
-					settingsOperationLib.saveSmartProfiles();
 					settingsOperationLib.saveAllSync();
 
 					settingsLib.updateActiveSettings();
@@ -530,7 +522,6 @@ export class Core {
 				if (!message.proxyServerSubscriptions)
 					return;
 				settingsLib.current.proxyServerSubscriptions = message.proxyServerSubscriptions;
-				settingsOperationLib.saveProxyServerSubscriptions();
 				settingsOperationLib.saveAllSync();
 
 				// update the timers
@@ -619,7 +610,6 @@ export class Core {
 				};
 
 				if (ruleResult.success) {
-					settingsOperationLib.saveSmartProfiles();
 					settingsOperationLib.saveAllSync();
 
 					// notify the proxy script
@@ -686,7 +676,6 @@ export class Core {
 		settingsLib.current.activeProfileId = profileId;
 
 		// save the changes
-		settingsOperationLib.saveActiveProfile();
 		settingsOperationLib.saveAllSync();
 
 		settingsLib.updateActiveSettings();
@@ -711,7 +700,6 @@ export class Core {
 
 			smartProfile.profileProxyServerId = proxy.id;
 
-			settingsOperationLib.saveSmartProfiles();
 			settingsOperationLib.saveAllSync();
 			settingsOperationLib.updateSmartProfilesRulesProxyServer();
 		}
@@ -724,7 +712,6 @@ export class Core {
 		function updateDefaultProxyServer() {
 			settingsLib.current.defaultProxyServerId = proxy.id;
 
-			settingsOperationLib.saveDefaultProxyServer();
 			settingsOperationLib.saveAllSync();
 			settingsOperationLib.updateSmartProfilesRulesProxyServer();
 		}
@@ -756,7 +743,7 @@ export class Core {
 			// if there is no next proxy, this will cycle to the first one
 			resultProxy = settingsOperationLib.getFirstProxyServer();
 
-			if (resultProxy.id == currentServerId)
+			if (resultProxy && resultProxy.id == currentServerId)
 				// don't cycle on current proxy itself
 				resultProxy = null;
 		}
@@ -794,7 +781,7 @@ export class Core {
 			// if there is no previous proxy, this will cycle to the last one
 			resultProxy = settingsOperationLib.getLastProxyServer();
 
-			if (resultProxy.id == currentServerId)
+			if (resultProxy && resultProxy.id == currentServerId)
 				// don't cycle on current proxy itself
 				resultProxy = null;
 		}
@@ -1028,7 +1015,7 @@ export class Core {
 			if (tabData.incognito && settingsLib.active.activeIncognitoProfile) {
 				// private browsing mode has special profile, setting icon for that
 
-				actionIcon = iconsLib.getBrowserActionIcon(settingsLib.active.activeProfile.profileType, tabData);
+				actionIcon = iconsLib.getBrowserActionIcon(settingsLib.active.activeIncognitoProfile.profileType, tabData);
 				actionTitle = iconsLib.getBrowserActionTitle(settingsLib.active.activeIncognitoProfile.profileType);
 
 				// limiting to this tab only

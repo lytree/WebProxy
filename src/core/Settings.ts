@@ -629,7 +629,7 @@ export class Settings {
 
 		let activeIncognitoProfile: SmartProfileCompiled = null;
 		if (settings.options.activeIncognitoProfileId) {
-			if (foundActiveProfile.profileId == settings.options.activeIncognitoProfileId) {
+			if (foundActiveProfile && foundActiveProfile.profileId == settings.options.activeIncognitoProfileId) {
 				activeIncognitoProfile = activeProfile;
 			}
 			else {

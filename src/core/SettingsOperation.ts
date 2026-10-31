@@ -1262,21 +1262,15 @@ export class SettingsOperation {
 			// so start restoring
 			if (backupOptions != null) {
 				Settings.current.options = backupOptions;
-
-				SettingsOperation.saveOptions();
 			}
 
 			if (backupServers != null) {
 				Settings.current.proxyServers = backupServers;
-
-				SettingsOperation.saveProxyServers();
 			}
 
 			if (backupServerSubscriptions != null) {
 
 				Settings.current.proxyServerSubscriptions = backupServerSubscriptions;
-
-				SettingsOperation.saveProxyServerSubscriptions();
 				// update the timers
 				subscriptionUpdaterLib.setServerSubscriptionsRefreshTimers();
 			}
@@ -1284,8 +1278,6 @@ export class SettingsOperation {
 			if (backupProxyProfiles != null) {
 
 				Settings.current.proxyProfiles = backupProxyProfiles;
-
-				SettingsOperation.saveSmartProfiles();
 				proxyEngineLib.notifyProxyRulesChanged();
 				// update the timers
 				subscriptionUpdaterLib.setRulesSubscriptionsRefreshTimers();
@@ -1294,15 +1286,11 @@ export class SettingsOperation {
 			if (backupDefaultProxyServerId != null) {
 
 				Settings.current.defaultProxyServerId = backupDefaultProxyServerId;
-
-				SettingsOperation.saveDefaultProxyServer();
 			}
 
 			if (backupActiveProfileId != null) {
 
 				Settings.current.activeProfileId = backupActiveProfileId;
-
-				SettingsOperation.saveActiveProfile();
 			}
 
 			// save synced if needed

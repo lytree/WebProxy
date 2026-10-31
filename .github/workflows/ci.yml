@@ -40,6 +40,11 @@ jobs:
       - name: Test
         run: pnpm test
 
+      - name: Lint Firefox manifest
+        run: |
+          pnpm run build-ff
+          pnpm exec web-ext lint --source-dir extension
+
       - name: Build and package browser targets
         run: |
           for target in ch ed op ff ff-unlisted ff-android th; do
@@ -48,6 +53,16 @@ jobs:
             version=$(node -p "require('./extension/manifest.json').version")
             pnpm run pack:zip
             mv extension.zip "SmartProxy-v${version}-${target}.zip"
+            case "$target" in
+              ch|ed|op)
+                pnpm run pack:crx
+                mv extension.crx "SmartProxy-v${version}-${target}.crx"
+                ;;
+              *)
+                pnpm run pack:xpi
+                mv extension.xpi "SmartProxy-v${version}-${target}.xpi"
+                ;;
+            esac
             echo "::endgroup::"
           done
 
@@ -55,6 +70,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: smartproxy-extensions
-          path: SmartProxy-*.zip
+          path: SmartProxy-*
           if-no-files-found: error
           retention-days: 14

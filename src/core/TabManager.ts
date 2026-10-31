@@ -28,6 +28,8 @@ export class TabManager {
 
 	private static currentTab: TabDataType;
 
+	private static activeTabUpdateTimer: any = null;
+
 	private static readonly onTabRemoved = new LiteEvent<TabDataType>();
 	private static readonly onTabUpdated = new LiteEvent<TabDataType>();
 
@@ -38,12 +40,12 @@ export class TabManager {
 	public static initializeTracking() {
 
 		// listen to tab switching
-		api.tabs.onActivated.addListener(TabManager.updateActiveTab);
+		api.tabs.onActivated.addListener(TabManager.scheduleActiveTabUpdate);
 
 		// update tab status
 		api.tabs.onUpdated.addListener(TabManager.handleTabUpdated);
 		// listen to tab URL changes
-		api.tabs.onUpdated.addListener(TabManager.updateActiveTab);
+		api.tabs.onUpdated.addListener(TabManager.scheduleActiveTabUpdate);
 
 		let webNavigation = api.webNavigation;
 		if (webNavigation) {
@@ -63,7 +65,7 @@ export class TabManager {
 
 		// listen for window switching
 		if (api["windows"])
-			api.windows.onFocusChanged.addListener(TabManager.updateActiveTab);
+			api.windows.onFocusChanged.addListener(TabManager.scheduleActiveTabUpdate);
 
 		// read the active tab
 		TabManager.updateActiveTab();
@@ -175,6 +177,20 @@ export class TabManager {
 			// set `tabData.proxified = true` 
 			TabManager.setTabDataProxied(tabData, newRequestUrl, matchedRule);
 		}
+	}
+
+	/**
+	 * Debounces active tab refreshes. Tab events fire in bursts during navigation,
+	 * so querying every event would issue redundant tabs.query calls.
+	 */
+	private static scheduleActiveTabUpdate() {
+		if (TabManager.activeTabUpdateTimer != null)
+			clearTimeout(TabManager.activeTabUpdateTimer);
+
+		TabManager.activeTabUpdateTimer = setTimeout(() => {
+			TabManager.activeTabUpdateTimer = null;
+			TabManager.updateActiveTab();
+		}, 150);
 	}
 
 	private static updateActiveTab() {

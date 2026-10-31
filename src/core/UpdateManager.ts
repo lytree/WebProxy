@@ -16,10 +16,14 @@
  */
 import { Debug, DiagDebug } from "../lib/Debug";
 import { api, environment } from "../lib/environment";
+import { PolyFill } from "../lib/PolyFill";
 import { SettingsOperation } from "./SettingsOperation";
 
 export class UpdateManager {
 	private static updateIsChecking = false;
+	private static readonly updateCheckStorageKey = "lastUpdateCheckTimestamp";
+	private static readonly updateCheckIntervalMs = 24 * 60 * 60 * 1000;
+	private static lastCheckTimestamp: number = null;
 
 	public static readUpdateInfo() {
 		if (UpdateManager.updateIsChecking) {
@@ -27,6 +31,41 @@ export class UpdateManager {
 			return;
 		}
 		UpdateManager.updateIsChecking = true;
+
+		if (UpdateManager.lastCheckTimestamp != null) {
+			if (UpdateManager.isCheckThrottled(UpdateManager.lastCheckTimestamp)) {
+				UpdateManager.updateIsChecking = false;
+				return;
+			}
+			UpdateManager.performUpdateCheck();
+			return;
+		}
+
+		// the timestamp survives service worker restarts, so storing it keeps
+		// the update check from running on every background wake-up
+		PolyFill.storageLocalGet(UpdateManager.updateCheckStorageKey, (result: any) => {
+			const storedTimestamp = Number(result?.[UpdateManager.updateCheckStorageKey]) || 0;
+			UpdateManager.lastCheckTimestamp = storedTimestamp;
+
+			if (UpdateManager.isCheckThrottled(storedTimestamp)) {
+				UpdateManager.updateIsChecking = false;
+				return;
+			}
+			UpdateManager.performUpdateCheck();
+		}, () => {
+			UpdateManager.lastCheckTimestamp = 0;
+			UpdateManager.performUpdateCheck();
+		});
+	}
+
+	private static isCheckThrottled(lastCheckTimestamp: number): boolean {
+		return lastCheckTimestamp > 0 &&
+			(Date.now() - lastCheckTimestamp) < UpdateManager.updateCheckIntervalMs;
+	}
+
+	private static performUpdateCheck() {
+		UpdateManager.lastCheckTimestamp = Date.now();
+		PolyFill.storageLocalSet({ [UpdateManager.updateCheckStorageKey]: UpdateManager.lastCheckTimestamp });
 		DiagDebug?.trace("Checking for update...");
 
 		let updateInfoUrl = "https://raw.githubusercontent.com/salarcode/SmartProxy/master/updateinfo.json";

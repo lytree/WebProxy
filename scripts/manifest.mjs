@@ -93,6 +93,7 @@ const chromiumPermissions = [
 	"storage",
 	"unlimitedStorage",
 	"notifications",
+	"alarms",
 ];
 
 const geckoPermissions = [
@@ -107,6 +108,7 @@ const geckoPermissions = [
 	"unlimitedStorage",
 	"notifications",
 	"dns",
+	"alarms",
 ];
 
 function baseManifest(overrides) {
@@ -138,14 +140,14 @@ const manifests = {
 		permissions: chromiumPermissions,
 		background: { service_worker: "core.js" },
 		commands: chromiumCommands,
-		minimum_chrome_version: "100",
+		minimum_chrome_version: "108",
 	}),
 
 	edge: baseManifest({
 		permissions: chromiumPermissions,
 		background: { service_worker: "core.js" },
 		commands: chromiumCommands,
-		minimum_chrome_version: "100",
+		minimum_chrome_version: "108",
 	}),
 
 	opera: baseManifest({
@@ -162,10 +164,10 @@ const manifests = {
 		browser_specific_settings: {
 			gecko: {
 				id: "smartproxy@salarcode.com",
-				strict_min_version: "109.0",
+				strict_min_version: "126.0",
 			},
 			gecko_android: {
-				strict_min_version: "120.0",
+				strict_min_version: "126.0",
 			},
 		},
 	}),
@@ -177,10 +179,10 @@ const manifests = {
 		browser_specific_settings: {
 			gecko: {
 				id: "smartproxy-unlisted@salarcode.com",
-				strict_min_version: "109.0",
+				strict_min_version: "126.0",
 			},
 			gecko_android: {
-				strict_min_version: "120.0",
+				strict_min_version: "126.0",
 			},
 		},
 	}),
@@ -191,10 +193,10 @@ const manifests = {
 		browser_specific_settings: {
 			gecko: {
 				id: "smartproxy@salarcode.com",
-				strict_min_version: "109.0",
+				strict_min_version: "126.0",
 			},
 			gecko_android: {
-				strict_min_version: "120.0",
+				strict_min_version: "126.0",
 			},
 		},
 	}),

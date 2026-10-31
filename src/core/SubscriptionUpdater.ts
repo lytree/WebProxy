@@ -23,11 +23,15 @@ import { ProxyEngine } from "./ProxyEngine";
 import { ImportedProxyRule, ProxyRulesSubscription, ProxyServer, SubscriptionStats } from "./definitions";
 import { Utils } from "../lib/Utils";
 import { PolyFill } from "../lib/PolyFill";
+import { api } from "../lib/environment";
 import { CountryCode } from "../lib/CountryCode";
 
 export class SubscriptionUpdater {
-	private static serverSubscriptionTimers: SubscriptionTimerType[] = [{ timerId: null, subscriptionId: null, refreshRate: null }];
-	private static rulesSubscriptionTimers: SubscriptionTimerType[] = [{ timerId: null, subscriptionId: null, refreshRate: null }];
+	private static serverSubscriptionTimers: SubscriptionTimerType[] = [];
+	private static rulesSubscriptionTimers: SubscriptionTimerType[] = [];
+
+	private static readonly ServerAlarmPrefix = "smartproxy-server-subscription:";
+	private static readonly RulesAlarmPrefix = "smartproxy-rules-subscription:";
 
 	public static async reloadEmptyServerSubscriptions() {
 		/// Read subscriptions that are enabled but have no proxy
@@ -56,7 +60,7 @@ export class SubscriptionUpdater {
 			if (!subscription.enabled || !(subscription.refreshRate > 0)) {
 				let existingTimerInfo = SubscriptionUpdater.getServerSubscriptionIdTimer(subscription.name);
 				if (existingTimerInfo?.timer) {
-					clearInterval(existingTimerInfo.timer.timerId);
+					SubscriptionUpdater.cancelTimer(existingTimerInfo.timer.timerId);
 
 					// remove from array
 					SubscriptionUpdater.serverSubscriptionTimers.splice(existingTimerInfo.index, 1);
@@ -77,7 +81,7 @@ export class SubscriptionUpdater {
 				// should be updated if rates are changed
 				if (serverTimerInfo.timer.refreshRate != subscription.refreshRate) {
 					shouldCreate = true;
-					clearInterval(serverTimerInfo.timer.timerId);
+					SubscriptionUpdater.cancelTimer(serverTimerInfo.timer.timerId);
 
 					// remove from array
 					SubscriptionUpdater.serverSubscriptionTimers.splice(serverTimerInfo.index, 1);
@@ -96,33 +100,11 @@ export class SubscriptionUpdater {
 					firstFetchTimeoutMs = 0;
 				}
 
-				let timerId: NodeJS.Timeout;
-
-				if (firstFetchTimeoutMs) {
-					// This is like `setInterval`, but with an offset first invocation.
-					// And `clearInterval` also works on `setTimeout` IDs.
-					timerId = setTimeout(() => {
-						SubscriptionUpdater.readServerSubscription(subscription.name);
-
-						// Start using `setInterval` from now on.
-						const intervalId = setInterval(
-							SubscriptionUpdater.readServerSubscription,
-							interval,
-							subscription.name
-						);
-
-						// updating the reference
-						timerObj.timerId = intervalId;
-					}, firstFetchTimeoutMs);
-				}
-				else {
-
-					timerId = setInterval(
-						SubscriptionUpdater.readServerSubscription,
-						interval,
-						subscription.name
-					);
-				}
+				const timerId = SubscriptionUpdater.scheduleTimer(
+					SubscriptionUpdater.ServerAlarmPrefix + subscription.name,
+					interval,
+					firstFetchTimeoutMs,
+					() => SubscriptionUpdater.readServerSubscription(subscription.name));
 
 				const timerObj = {
 					timerId: timerId,
@@ -136,7 +118,7 @@ export class SubscriptionUpdater {
 		let remainingTimers = SubscriptionUpdater.serverSubscriptionTimers.filter(timer => {
 			// not used or removed. Just unregister it then remove it
 			if (serverExistingNames.indexOf(timer.subscriptionId) === -1) {
-				clearInterval(timer.timerId);
+				SubscriptionUpdater.cancelTimer(timer.timerId);
 				return false;
 			}
 
@@ -184,7 +166,6 @@ export class SubscriptionUpdater {
 
 					SubscriptionStats.updateStats(subscription.stats, true);
 
-					SettingsOperation.saveProxyServerSubscriptions();
 					SettingsOperation.saveAllSync(false);
 
 					// Fire-and-forget: update country codes for proxy servers
@@ -238,7 +219,7 @@ export class SubscriptionUpdater {
 					// remove existing timers
 					let existingTimerInfo = SubscriptionUpdater.getRulesSubscriptionIdTimer(subscription.id);
 					if (existingTimerInfo?.timer) {
-						clearInterval(existingTimerInfo.timer.timerId);
+						SubscriptionUpdater.cancelTimer(existingTimerInfo.timer.timerId);
 
 						// remove from array
 						SubscriptionUpdater.rulesSubscriptionTimers.splice(existingTimerInfo.index, 1);
@@ -260,7 +241,7 @@ export class SubscriptionUpdater {
 					// should be updated if rates are changed
 					if (ruleTimerInfo.timer.refreshRate != subscription.refreshRate) {
 						shouldCreate = true;
-						clearInterval(ruleTimerInfo.timer.timerId);
+						SubscriptionUpdater.cancelTimer(ruleTimerInfo.timer.timerId);
 
 						// remove from array
 						SubscriptionUpdater.rulesSubscriptionTimers.splice(ruleTimerInfo.index, 1);
@@ -279,33 +260,11 @@ export class SubscriptionUpdater {
 						firstFetchTimeoutMs = 0;
 					}
 
-					let timerId: NodeJS.Timeout;
-
-					if (firstFetchTimeoutMs) {
-						// This is like `setInterval`, but with an offset first invocation.
-						// And `clearInterval` also works on `setTimeout` IDs.
-						timerId = setTimeout(() => {
-							SubscriptionUpdater.readRulesSubscription(subscription);
-
-							// Start using `setInterval` from now on.
-							const intervalId = setInterval(
-								SubscriptionUpdater.readRulesSubscription,
-								interval,
-								subscription
-							);
-
-							// updating the reference
-							timerObj.timerId = intervalId;
-						}, firstFetchTimeoutMs);
-					}
-					else {
-
-						timerId = setInterval(
-							SubscriptionUpdater.readRulesSubscription,
-							interval,
-							subscription
-						);
-					}
+					const timerId = SubscriptionUpdater.scheduleTimer(
+						SubscriptionUpdater.RulesAlarmPrefix + subscription.id,
+						interval,
+						firstFetchTimeoutMs,
+						() => SubscriptionUpdater.readRulesSubscription(subscription));
 
 					const timerObj = {
 						timerId: timerId,
@@ -320,7 +279,7 @@ export class SubscriptionUpdater {
 		let remainingTimers = SubscriptionUpdater.rulesSubscriptionTimers.filter(timer => {
 			// not used or removed. Just unregister it then remove it
 			if (ruleExistingIds.indexOf(timer.subscriptionId) === -1) {
-				clearInterval(timer.timerId);
+				SubscriptionUpdater.cancelTimer(timer.timerId);
 				return false;
 			}
 
@@ -370,7 +329,6 @@ export class SubscriptionUpdater {
 
 					SubscriptionStats.updateStats(subscription.stats, true);
 
-					SettingsOperation.saveProxyServerSubscriptions();
 					SettingsOperation.saveAllSync(false);
 
 					ProxyEngine.notifyProxyRulesChanged();
@@ -384,6 +342,67 @@ export class SubscriptionUpdater {
 				SubscriptionStats.updateStats(subscription.stats, false, error);
 				Debug.warn("Failed to read proxy rules subscription: " + subscription.name, subscription, error);
 			});
+	}
+
+	private static usesAlarms(): boolean {
+		return !!(api?.alarms?.create && api?.alarms?.onAlarm?.addListener);
+	}
+
+	/** Schedules a subscription refresh. Alarms are used when available so the
+	 * background service worker is not kept alive by long-running timers. */
+	private static scheduleTimer(alarmName: string, intervalMs: number, firstFetchTimeoutMs: number, callback: Function): any {
+		if (SubscriptionUpdater.usesAlarms()) {
+			const periodInMinutes = Math.max(1, Math.round(intervalMs / 60000));
+			// delay is recalculated from the last fetch, so re-creating the alarm
+			// on every wake-up does not push the next refresh forward
+			const delayInMinutes = Math.max(1, Math.round(firstFetchTimeoutMs / 60000));
+
+			api.alarms.create(alarmName, {
+				delayInMinutes: delayInMinutes,
+				periodInMinutes: periodInMinutes
+			});
+			return alarmName;
+		}
+
+		// Fallback for environments without alarms support
+		return setInterval(callback, intervalMs);
+	}
+
+	private static cancelTimer(timerId: any) {
+		if (!timerId)
+			return;
+
+		if (typeof timerId === "string" && SubscriptionUpdater.usesAlarms())
+			api.alarms.clear(timerId);
+		else
+			clearInterval(timerId);
+	}
+
+	public static handleAlarm(alarm: any) {
+		const alarmName: string = alarm?.name;
+
+		if (!alarmName || !Settings.current)
+			return;
+
+		if (alarmName.startsWith(SubscriptionUpdater.ServerAlarmPrefix)) {
+			SubscriptionUpdater.readServerSubscription(alarmName.substring(SubscriptionUpdater.ServerAlarmPrefix.length));
+			return;
+		}
+
+		if (alarmName.startsWith(SubscriptionUpdater.RulesAlarmPrefix)) {
+			const subscriptionId = alarmName.substring(SubscriptionUpdater.RulesAlarmPrefix.length);
+
+			for (const profile of Settings.current.proxyProfiles) {
+				const subscription = profile.rulesSubscriptions?.find(item => item.id === subscriptionId);
+				if (subscription) {
+					SubscriptionUpdater.readRulesSubscription(subscription);
+					return;
+				}
+			}
+
+			// the subscription is removed, stop the alarm
+			api.alarms.clear(alarmName);
+		}
 	}
 
 	private static _getSubscriptionIdTimer(timers: SubscriptionTimerType[], id: string)
@@ -432,7 +451,6 @@ export class SubscriptionUpdater {
 
 		// Save once at the end if any updates were made
 		if (save) {
-			SettingsOperation.saveProxyServerSubscriptions();
 			SettingsOperation.saveAllSync(false);
 		}
 	}
@@ -496,7 +514,6 @@ export class SubscriptionUpdater {
 
 					// Save if any proxy was updated
 					if (updated && save) {
-						SettingsOperation.saveProxyServerSubscriptions();
 						SettingsOperation.saveAllSync(false);
 					}
 				})
@@ -507,4 +524,10 @@ export class SubscriptionUpdater {
 	}
 }
 
-type SubscriptionTimerType = { timerId: NodeJS.Timeout, subscriptionId: string, refreshRate: number };
+type SubscriptionTimerType = { timerId: any, subscriptionId: string, refreshRate: number };
+
+// Registering the alarm handler at module level keeps it attached across
+// service worker restarts, so scheduled subscription refreshes keep working.
+if (api?.alarms?.onAlarm?.addListener) {
+	api.alarms.onAlarm.addListener(SubscriptionUpdater.handleAlarm);
+}

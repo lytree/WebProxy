@@ -72,7 +72,7 @@ function buildEntry(entry) {
 		mode: isDev ? "development" : "production",
 		plugins: [virtualEntry(entry.files)],
 		build: {
-			outDir: "extension",
+			outDir: extensionDir,
 			emptyOutDir: false,
 			target: "es2021",
 			minify: !isDev,
@@ -92,6 +92,34 @@ function buildEntry(entry) {
 			},
 		},
 	});
+}
+
+/**
+ * fs.watch 的 recursive 选项在 Linux 上不受支持，
+ * 这里手动遍历目录并为每个目录建立非递归监听。
+ */
+function watchDirectoryRecursive(target, callback) {
+	const watchers = [];
+	walk(target);
+	return () => watchers.forEach((watcher) => watcher.close());
+
+	function walk(dir) {
+		try {
+			watchers.push(fs.watch(dir, callback));
+		} catch (error) {
+			console.warn(`[watch] cannot watch ${path.relative(rootDir, dir)}:`, error.message);
+			return;
+		}
+		let entries;
+		try {
+			entries = fs.readdirSync(dir, { withFileTypes: true });
+		} catch {
+			return;
+		}
+		for (const entry of entries) {
+			if (entry.isDirectory()) walk(path.join(dir, entry.name));
+		}
+	}
 }
 
 function watchStaticFiles() {
@@ -116,7 +144,7 @@ function watchStaticFiles() {
 		try {
 			fs.watch(target, { recursive: true }, refresh);
 		} catch {
-			fs.watch(target, refresh);
+			watchDirectoryRecursive(target, refresh);
 		}
 	}
 }

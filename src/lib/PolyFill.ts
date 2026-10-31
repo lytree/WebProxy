@@ -431,15 +431,8 @@ export class PolyFill {
 	}
 
 	public static extensionGetURL(path: string) {
-		if (environment.chrome) {
-
-			if (api.extension["getURL"])
-				return api.extension.getURL(path);
-
-			return api.runtime.getURL(path);
-		} else {
-			return api.extension.getURL(path);
-		}
+		// api.extension.getURL is deprecated, api.runtime.getURL works in Chrome and Firefox
+		return api.runtime.getURL(path);
 	}
 	public static getExtensionVersion(success?: Function) {
 		if (environment.extensionVersion)

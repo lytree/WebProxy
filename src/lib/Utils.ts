@@ -38,8 +38,9 @@ export class Utils {
 		let settingArray = enc.encode(settingStr);
 
 		// compress
-		let compressResultStr = pako.deflateRaw(settingArray, {}) as unknown as string;
-		compressResultStr = Utils.b64EncodeUnicode(compressResultStr as string);
+		let compressedBytes = pako.deflateRaw(settingArray, {});
+		// encode the compressed bytes directly to base64
+		let compressResultStr = Utils.bytesToBase64(compressedBytes);
 
 		let saveObject = {};
 
@@ -79,7 +80,7 @@ export class Utils {
 		let compressResultStr = chunks.join("");
 
 		// convert from base64 string
-		let compressResult = Utils.b64DecodeUnicodeArray(compressResultStr);
+		let compressResult = Utils.decodeSyncPayload(compressResultStr);
 		let settingArray = pako.inflateRaw(compressResult);
 
 		// decode array to string
@@ -137,14 +138,6 @@ export class Utils {
 		return result;
 	}
 
-	public static b64EncodeUnicode(str: string): string {
-		// first we use encodeURIComponent to get percent-encoded UTF-8,
-		// then we convert the percent encodings into raw bytes which
-		// can be fed into btoa.
-		return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
-			(match, p1: number) => String.fromCharCode(+('0x' + p1))));
-	}
-
 	public static b64DecodeUnicode(str: string): string {
 		// Going backwards: from byte-stream, to percent-encoding, to original string.
 		return decodeURIComponent(atob(str)
@@ -153,13 +146,39 @@ export class Utils {
 			.join(""));
 	}
 
-	public static b64DecodeUnicodeArray(str: string): any {
-		// Going backwards: from byte-stream, to percent-encoding, to original string.
-		let result = Utils.b64DecodeUnicode(str);
-		if (typeof (result) === 'string') {
-			return new Uint16Array(result.split(',') as unknown as number[])
+	public static bytesToBase64(bytes: Uint8Array): string {
+		let binary = "";
+		const chunkSize = 8192;
+
+		for (let index = 0; index < bytes.length; index += chunkSize) {
+			binary += String.fromCharCode.apply(null, bytes.subarray(index, index + chunkSize) as unknown as number[]);
 		}
-		return result;
+
+		return btoa(binary);
+	}
+
+	public static base64ToBytes(base64Text: string): Uint8Array {
+		const binary = atob(base64Text);
+		const bytes = new Uint8Array(binary.length);
+
+		for (let index = 0; index < binary.length; index++) {
+			bytes[index] = binary.charCodeAt(index);
+		}
+
+		return bytes;
+	}
+
+	public static decodeSyncPayload(base64Text: string): Uint8Array {
+		const bytes = Utils.base64ToBytes(base64Text);
+
+		// Older versions base64-encoded the decimal byte list ("13,45,...").
+		// Keep decoding those payloads so existing synced data stays readable.
+		const decodedText = new TextDecoder().decode(bytes);
+		if (/^\d[\d,]*$/.test(decodedText)) {
+			return new Uint8Array(decodedText.split(',').map(Number));
+		}
+
+		return bytes;
 	}
 
 	public static isNotInternalHostName(host: string): boolean {

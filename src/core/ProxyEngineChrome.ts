@@ -1,5 +1,5 @@
 // IMPORTANT: This file MUST stay in ASCII encoding, no non-ASCII characters are allowed.
-import { ProxyServer, CompiledProxyRule, SmartProfileType, CompiledProxyRuleType } from "./definitions";
+import { ProxyServer, CompiledProxyRule, SmartProfileCompiled, SmartProfileType, CompiledProxyRuleType } from "./definitions";
 import { api } from "../lib/environment";
 import { Debug, DiagDebug } from "../lib/Debug";
 import { Settings } from "./Settings";
@@ -10,44 +10,47 @@ export class ProxyEngineChrome {
 	public static updateChromeProxyConfig() {
 		let settingsActive = Settings.active;
 
-		if (settingsActive.activeProfile.profileType == SmartProfileType.SystemProxy) {
+		ProxyEngineChrome.applyProxyConfig(
+			settingsActive.activeProfile,
+			settingsActive.currentProxyServer,
+			"regular");
 
-			let config = {
+		// Incognito sessions can use a separate profile
+		let incognitoProfile = settingsActive.activeIncognitoProfile;
+		if (incognitoProfile) {
+			ProxyEngineChrome.applyIncognitoProxyConfig(
+				incognitoProfile,
+				incognitoProfile.profileProxyServer || settingsActive.currentProxyServer);
+		}
+		else {
+			ProxyEngineChrome.clearIncognitoProxyConfig();
+		}
+	}
+
+	private static applyProxyConfig(profile: SmartProfileCompiled, proxyServer: ProxyServer, scope: string) {
+		let config: any;
+
+		if (profile.profileType == SmartProfileType.SystemProxy) {
+			config = {
 				mode: "system"
 			};
-			api.proxy.settings.set(
-				{ value: config, scope: "regular" },
-				function () {
-					if (api.runtime.lastError) {
-						Debug.error("updateChromeProxyConfig failed with ", api.runtime.lastError);
-					}
-				});
-			return;
 		}
-		else if (settingsActive.activeProfile.profileType == SmartProfileType.Direct) {
-			let config = {
+		else if (profile.profileType == SmartProfileType.Direct) {
+			config = {
 				mode: "direct"
 			};
-			api.proxy.settings.set(
-				{ value: config, scope: "regular" },
-				function () {
-					if (api.runtime.lastError) {
-						Debug.error("updateChromeProxyConfig failed with ", api.runtime.lastError);
-					}
-				});
-			return;
 		}
-		// generate PAC script specific to Chrome
-		let pacScript = this.generateChromePacScript();
+		else {
+			config = {
+				mode: "pac_script",
+				pacScript: {
+					data: ProxyEngineChrome.generateChromePacScript(profile, proxyServer)
+				}
+			};
+		}
 
-		let config = {
-			mode: "pac_script",
-			pacScript: {
-				data: pacScript
-			}
-		};
 		api.proxy.settings.set(
-			{ value: config, scope: "regular" },
+			{ value: config, scope: scope },
 			function () {
 				if (api.runtime.lastError) {
 					Debug.error("updateChromeProxyConfig failed with ", api.runtime.lastError);
@@ -55,14 +58,46 @@ export class ProxyEngineChrome {
 			});
 	}
 
-	private static generateChromePacScript(): string {
-		//let settings = Settings.current;
-		let settingsActive = Settings.active;
+	/** Applies the incognito config only when the extension is allowed in incognito */
+	private static applyIncognitoProxyConfig(profile: SmartProfileCompiled, proxyServer: ProxyServer) {
+		if (api.extension?.isAllowedIncognitoAccess) {
+			api.extension.isAllowedIncognitoAccess((isAllowed: boolean) => {
+				if (isAllowed)
+					ProxyEngineChrome.applyProxyConfig(profile, proxyServer, "incognito_persistent");
+			});
+			return;
+		}
 
-		let profileType = settingsActive.activeProfile.profileType;
-		let resultCurrentProxyServer = this.convertActiveProxyServer(settingsActive.currentProxyServer);
+		ProxyEngineChrome.applyProxyConfig(profile, proxyServer, "incognito_persistent");
+	}
 
-		let compiledRules = settingsActive.activeProfile.compiledRules;
+	private static clearIncognitoProxyConfig() {
+		if (api.extension?.isAllowedIncognitoAccess) {
+			api.extension.isAllowedIncognitoAccess((isAllowed: boolean) => {
+				if (isAllowed)
+					ProxyEngineChrome.clearIncognitoProxyConfigScope();
+			});
+			return;
+		}
+
+		ProxyEngineChrome.clearIncognitoProxyConfigScope();
+	}
+
+	private static clearIncognitoProxyConfigScope() {
+		api.proxy.settings.clear(
+			{ scope: "incognito_persistent" },
+			function () {
+				if (api.runtime.lastError) {
+					Debug.warn("Clearing incognito proxy config failed with ", api.runtime.lastError);
+				}
+			});
+	}
+
+	private static generateChromePacScript(profile: SmartProfileCompiled, currentProxyServer: ProxyServer): string {
+		let profileType = profile.profileType;
+		let resultCurrentProxyServer = this.convertActiveProxyServer(currentProxyServer);
+
+		let compiledRules = profile.compiledRules;
 		let compiledRules_WhitelistRules = this.regexHostArrayToString(compiledRules.WhitelistRules).join(",");
 		let compiledRules_Rules = this.regexHostArrayToString(compiledRules.Rules).join(",");
 		let compiledRules_WhitelistSubscriptionRules = this.regexHostArrayToString(compiledRules.WhitelistSubscriptionRules).join(",");
@@ -169,7 +204,7 @@ function FindProxyForURL(url, host, noDiagnostics) {
 		// user whitelist rules/ don't apply proxy
 		let userWhitelistMatchedRule = findMatchedUrlInRules(url, host, hostAndPort, compiledRules.WhitelistRules)
 		if (userWhitelistMatchedRule) {
-			return makeResultForWhitelistRule(userWhitelistMatchedRule);
+			return resultDirect;
 		}
 
 		// user rules/ apply proxy
@@ -181,20 +216,13 @@ function FindProxyForURL(url, host, noDiagnostics) {
 		// subscription whitelist rules/ don't apply proxy
 		let subWhitelistMatchedRule = findMatchedUrlInRules(url, host, hostAndPort, compiledRules.WhitelistSubscriptionRules)
 		if (subWhitelistMatchedRule) {
-			return makeResultForWhitelistRule(subWhitelistMatchedRule);
+			return resultDirect;
 		}
 
 		// subscription rules/ apply proxy
 		let subMatchedRule = findMatchedUrlInRules(url, host, hostAndPort, compiledRules.SubscriptionRules);
 		if (subMatchedRule) {
 			return makeResultForMatchedRule(subMatchedRule);
-		}
-
-		/**
-		 * Generate result for matched whitelist rule
-		 */
-		const makeResultForWhitelistRule = () => {
-			return resultDirect;
 		}
 
 		/**
@@ -447,7 +475,8 @@ function extractHostFromUrl(url) {
 
 			let search: string;
 			if (rule.search) {
-				search = `unescape('${escape(rule.search)}')`;
+				// JSON.stringify produces a valid JS string literal without deprecated escape/unescape
+				search = JSON.stringify(rule.search);
 			}
 			else
 				search = 'null';

@@ -23,7 +23,7 @@ import { TabDataType, TabManager } from './TabManager';
 export class WebRequestMonitor {
 	private static isMonitoring = false;
 	private static monitorCallback: Function = null;
-	private static requestTimeoutTime: 5000;
+	private static requestTimeoutTime: number = 5000;
 	private static timer: any = null;
 	private static requests: { [index: string]: any } = {};
 	private static debugInfo = false;
@@ -82,6 +82,12 @@ export class WebRequestMonitor {
 
 			if (WebRequestMonitor.debugInfo)
 				WebRequestMonitor.logMessage(RequestMonitorEvent[RequestMonitorEvent.RequestTimeout], req);
+		}
+
+		if (Object.keys(WebRequestMonitor.requests).length === 0) {
+			// no pending requests: stop the timer so the service worker can go idle
+			clearInterval(WebRequestMonitor.timer);
+			WebRequestMonitor.timer = null;
 		}
 	}
 
