@@ -1,0 +1,115 @@
+name: Publish to Microsoft Edge Add-ons
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      notes:
+        description: Notes for certification
+        required: false
+        default: ""
+
+concurrency:
+  group: publish-edge
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Edge package
+        run: |
+          pnpm run build-ed
+          pnpm run pack:zip
+
+      - name: Upload and publish to Microsoft Edge Add-ons
+        env:
+          EDGE_PRODUCT_ID: ${{ secrets.EDGE_PRODUCT_ID }}
+          EDGE_CLIENT_ID: ${{ secrets.EDGE_CLIENT_ID }}
+          EDGE_API_KEY: ${{ secrets.EDGE_API_KEY }}
+          NOTES: ${{ inputs.notes || format('Automated release {0}', github.ref_name) }}
+        run: |
+          set -euo pipefail
+
+          : "${EDGE_PRODUCT_ID:?EDGE_PRODUCT_ID secret is required}"
+          : "${EDGE_CLIENT_ID:?EDGE_CLIENT_ID secret is required}"
+          : "${EDGE_API_KEY:?EDGE_API_KEY secret is required}"
+
+          api="https://api.addons.microsoftedge.microsoft.com/v1/products/${EDGE_PRODUCT_ID}"
+          auth=(-H "Authorization: ApiKey ${EDGE_API_KEY}" -H "X-ClientID: ${EDGE_CLIENT_ID}")
+
+          # Poll an operation until it succeeds or fails.
+          wait_operation() {
+            local url="$1" label="$2" body status
+            for _ in $(seq 1 60); do
+              body=$(curl -sS "${auth[@]}" "$url")
+              status=$(jq -r '.status // empty' <<< "$body")
+              echo "${label}: ${status:-unknown}"
+              case "$status" in
+                Succeeded) return 0 ;;
+                *Failed*) echo "$body"; return 1 ;;
+              esac
+              sleep 10
+            done
+            echo "Timed out waiting for ${label}: $url"
+            return 1
+          }
+
+          headers=$(mktemp)
+          trap 'rm -f "$headers"' EXIT
+
+          echo "Uploading extension.zip..."
+          code=$(curl -sS -o /dev/null -D "$headers" -w '%{http_code}' -X POST \
+            "${auth[@]}" -H "Content-Type: application/zip" \
+            -T extension.zip "${api}/submissions/draft/package")
+          if [ "$code" != "202" ]; then
+            cat "$headers"
+            exit 1
+          fi
+          location=$(awk -F': ' 'tolower($1)=="location"{print $2}' "$headers" | tr -d '\r')
+          if [ -z "$location" ]; then
+            echo "Missing Location header in upload response."
+            cat "$headers"
+            exit 1
+          fi
+          upload_url="${api}/submissions/draft/package/operations/${location##*/}"
+          wait_operation "$upload_url" "upload"
+
+          echo "Publishing submission..."
+          code=$(curl -sS -o /dev/null -D "$headers" -w '%{http_code}' -X POST \
+            "${auth[@]}" -H "Content-Type: application/json" \
+            -d "$(jq -cn --arg notes "$NOTES" '{notes: $notes}')" \
+            "${api}/submissions")
+          if [ "$code" != "202" ]; then
+            cat "$headers"
+            exit 1
+          fi
+          location=$(awk -F': ' 'tolower($1)=="location"{print $2}' "$headers" | tr -d '\r')
+          if [ -z "$location" ]; then
+            echo "Missing Location header in publish response."
+            cat "$headers"
+            exit 1
+          fi
+          publish_url="${api}/submissions/operations/${location##*/}"
+          wait_operation "$publish_url" "publish"
+
+          echo "Published to Microsoft Edge Add-ons."

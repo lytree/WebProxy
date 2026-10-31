@@ -8,6 +8,12 @@
  * [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/jogcnplbkgkfdakgdenhlpcfhjioidoj.svg)](https://chrome.google.com/webstore/detail/smartproxy/jogcnplbkgkfdakgdenhlpcfhjioidoj) [Chrome Extension](https://chrome.google.com/webstore/detail/smartproxy/jogcnplbkgkfdakgdenhlpcfhjioidoj)
  * [![Edge Extension](https://img.shields.io/badge/dynamic/json?label=edge%20add-on&prefix=v&query=$.version&url=https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/canbjhbbhfggbdfgpddpnckdjgfcbnpb)](https://microsoftedge.microsoft.com/addons/detail/canbjhbbhfggbdfgpddpnckdjgfcbnpb) [Edge Extension](https://microsoftedge.microsoft.com/addons/detail/canbjhbbhfggbdfgpddpnckdjgfcbnpb)
 
+#### Origin / 来源
+This project is a modified fork of the open-source SmartProxy extension. The original source is retained below:
+
+- Original project: https://github.com/salarcode/SmartProxy
+- This repository: https://github.com/lyttree/WebProxy
+
 #### What is SmartProxy
 SmartProxy is a Firefox/Chrome extension based on WebExtensions/Chrome Extensions technology.
 
@@ -73,6 +79,31 @@ https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#
 3.	The Extension Management page can also be opened by clicking on the Chrome menu, hovering over More Tools then selecting Extensions.
 4.	Enable Developer Mode by clicking the toggle switch next to Developer mode.
 5.	Click the LOAD UNPACKED button and select the `extension/` directory.
+
+#### Publish to Microsoft Edge Add-ons
+
+The Edge package is built with `pnpm run build-ed`; `pnpm run pack:zip` produces `extension.zip` for store upload.
+
+Manual submission (first release):
+
+1. Sign in to [Partner Center](https://partner.microsoft.com/dashboard/microsoftedge/public/login) and create the extension product.
+2. Copy the **Product ID** from the extension overview page.
+3. Upload `extension.zip` under the package section and submit for review.
+
+Automated updates via the [Microsoft Edge Add-ons Publish API](https://learn.microsoft.com/microsoft-edge/extensions/update/api/using-addons-api) (v1.1):
+
+1. In Partner Center, open **Microsoft Edge > Publish API** and create API credentials.
+2. Add these repository secrets:
+
+   | Secret | Description |
+   | --- | --- |
+   | `EDGE_PRODUCT_ID` | Product ID (GUID) of the published extension |
+   | `EDGE_CLIENT_ID` | Client ID from the Publish API page |
+   | `EDGE_API_KEY` | API key from the Publish API page |
+
+3. Push a `v*` tag (for example `v1.0.0`) or run the **Publish to Microsoft Edge Add-ons** workflow manually. The workflow builds the Edge package, uploads it to the draft submission, waits for processing, then publishes it.
+
+The API can only update an existing product; the initial submission must be done in Partner Center.
 
 #### Attribution
 

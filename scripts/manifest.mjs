@@ -114,7 +114,7 @@ const geckoPermissions = [
 function baseManifest(overrides) {
 	return {
 		name: "__MSG_extensionName__",
-		version: "2.4.3",
+		version: "0.0.1",
 		manifest_version: 3,
 		author: "Salar Khalilzadeh",
 		description: "__MSG_extensionDescription__",
