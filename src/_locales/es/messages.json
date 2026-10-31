@@ -213,12 +213,6 @@
 	"settingsTabUpdateText": {
 		"message": "Actualizado a {0}"
 	},
-	"settingsAffiliateAdTitle": {
-		"message": "AvaProxy: ejecuta servidores VPN en hosting compartido"
-	},
-	"settingsAffiliateAdDescription": {
-		"message": "Implementa servidores VPN resistentes a la censura en hosting compartido economico. No se requiere VPS. Gratis para usar."
-	},
 	"settingsTabAboutDescription": {
 		"message": "Usa patrones para automáticamente definir reglas para Proxificar tu experiencia web. Con Proxy inteligente, no necesitas cambiar manualmente el Proxy y encenderlo y apagarlo. Puedes agregar tus sitios web deseados a la lista de las reglas del Proxy con sólo un click. Luego de eso, cuando visites ese sitio web específico, Proxy Inteligente actuará y toda tu data para el sitio web será transferida por el proxy, sin hacer nada."
 	},

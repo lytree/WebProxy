@@ -213,12 +213,6 @@
 	"settingsTabUpdateText": {
 		"message": "تحديث إلى {0}"
 	},
-	"settingsAffiliateAdTitle": {
-		"message": "AvaProxy: شغّل خوادم VPN على الاستضافة المشتركة"
-	},
-	"settingsAffiliateAdDescription": {
-		"message": "انشر خوادم VPN مقاومة للرقابة على استضافة مشتركة منخفضة التكلفة. لا حاجة إلى VPS. مجاني للاستخدام."
-	},
 	"settingsTabAboutDescription": {
 		"message": "استخدام البروكسي أصبح أسهل مع SmartProxy. اعتبره حلًا \"اضبط مرة وانسَ\". مع SmartProxy لا تحتاج لتغيير البروكسي يدويًا أو تشغيله وإيقافه. كل ما عليك هو إخبار SmartProxy بأنك تريد تفعيل البروكسي لموقع معين بنقرة واحدة. بعد ذلك، عندما تزور ذلك الموقع، سيتولى SmartProxy توجيه جميع بيانات ذلك الموقع عبر البروكسي تلقائيًا."
 	},

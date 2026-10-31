@@ -213,12 +213,6 @@
 	"settingsTabUpdateText": {
 		"message": "Metre à jour {0}"
 	},
-	"settingsAffiliateAdTitle": {
-		"message": "AvaProxy : executez des serveurs VPN sur un hebergement mutualise"
-	},
-	"settingsAffiliateAdDescription": {
-		"message": "Deployez des serveurs VPN resistants a la censure sur un hebergement mutualise economique. Aucun VPS requis. Utilisation gratuite."
-	},
 	"settingsTabAboutDescription": {
 		"message": "Utiliser des proxies ne peut pas être plus facile avec SmartProxy. Pensez-y comme une solution de configuration unique et oubli. Avec SmartProxy, vous n'avez pas besoin de changer votre proxy manuellement ou de l'activer et le désactiver. Tout ce que vous avez à faire est de dire à SmartProxy que vous voulez activer le proxy pour votre site web souhaité avec juste un clic. Après cela, lorsque vous visitez ce site web spécifique, SmartProxy agira et toutes vos données pour ce site web seront transférées via le proxy, sans que vous fassiez quoi que ce soit."
 	},
