@@ -1,5 +1,6 @@
 {
   "name": "WebProxy",
+  "version": "0.0.2",
   "description": "WebProxy is a browser extension that will automatically enable/disable proxy for the sites you visit, based on customizable patterns.",
   "packageManager": "pnpm@12.15.0",
   "devDependencies": {
@@ -50,7 +51,7 @@
     "start:firefox": "web-ext run --source-dir extension --target=firefox-desktop",
     "pack": "pnpm run pack:zip && pnpm run pack:crx && pnpm run pack:xpi",
     "pack:zip": "node scripts/pack.mjs",
-    "pack:crx": "crx pack extension -o extension.crx",
+    "pack:crx": "crx pack extension -o extension.crx -p key.pem",
     "pack:xpi": "cross-env WEB_EXT_ARTIFACTS_DIR=./ web-ext build --source-dir extension --filename extension.xpi --overwrite-dest"
   },
   "jest": {

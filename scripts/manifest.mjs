@@ -2,6 +2,11 @@
  * 按目标浏览器生成 manifest.json（Manifest V3）。
  * 参考 vitesse-webext 的动态 manifest 方案，集中维护各平台差异。
  */
+import { readFileSync } from "node:fs";
+
+const packageVersion = JSON.parse(
+	readFileSync(new URL("../package.json", import.meta.url), "utf8"),
+).version;
 
 const icons = {
 	"16": "icons/webproxy-16.png",
@@ -114,7 +119,7 @@ const geckoPermissions = [
 function baseManifest(overrides) {
 	return {
 		name: "__MSG_extensionName__",
-		version: "0.0.1",
+		version: packageVersion,
 		manifest_version: 3,
 		author: "Salar Khalilzadeh",
 		description: "__MSG_extensionDescription__",
@@ -213,6 +218,7 @@ const manifests = {
 			"storage",
 			"unlimitedStorage",
 			"notifications",
+			"alarms",
 		],
 		background: { scripts: ["core.js"] },
 		commands: geckoCommands,

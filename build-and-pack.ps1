@@ -13,6 +13,10 @@ $csvSource = "IPCountryDB\IP2LOCATION-LITE-DB1.CSV"
 $csvDestination = "src\assets\IPCountryDB\IP2LOCATION-LITE-DB1.CSV"
 
 if (Test-Path $csvSource) {
+    $csvDestinationDir = Split-Path -Parent $csvDestination
+    if (!(Test-Path $csvDestinationDir)) {
+        New-Item -Path $csvDestinationDir -ItemType Directory -Force | Out-Null
+    }
     Copy-Item -Path $csvSource -Destination $csvDestination -Force
     Write-Output "IP2Location database copied successfully."
 } else {
@@ -25,7 +29,8 @@ Function BuildAndPack($Build, $BuildName) {
     return;
  }
 
- Invoke-Expression ("pnpm run build-$Build " + ';$global:Success=$?')
+ & pnpm run "build-$Build"
+ $global:Success = ($LASTEXITCODE -eq 0)
 
  if($global:Success)
  {
@@ -56,5 +61,9 @@ BuildAndPack "th"  "Thunderbird"
 BuildAndPack "op"  "Opera"
 BuildAndPack "ff-unlisted" "firefox-unlisted"
 
-Invoke-Expression ("git archive --format zip -o ..\!Releases\$global:version\WebProxy-$global:version-sources.zip HEAD")
-Write-Output "Sources are saved in WebProxy-$global:version-sources.zip"
+if ($global:Success -and $global:version) {
+    git archive --format zip -o "..\!Releases\$global:version\WebProxy-$global:version-sources.zip" HEAD
+    Write-Output "Sources are saved in WebProxy-$global:version-sources.zip"
+} else {
+    Write-Warning "Skipping source archive because the build did not produce a version."
+}

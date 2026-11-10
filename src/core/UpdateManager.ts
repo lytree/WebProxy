@@ -68,7 +68,7 @@ export class UpdateManager {
 		PolyFill.storageLocalSet({ [UpdateManager.updateCheckStorageKey]: UpdateManager.lastCheckTimestamp });
 		DiagDebug?.trace("Checking for update...");
 
-		let updateInfoUrl = "https://raw.githubusercontent.com/salarcode/SmartProxy/master/updateinfo.json";
+		let updateInfoUrl = "https://raw.githubusercontent.com/lytree/WebProxy/main/updateinfo.json";
 
 		if (Debug.isEnabled()) {
 			updateInfoUrl = "http://localhost:5500/updateinfo.json";
