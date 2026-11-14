@@ -15,7 +15,7 @@
  * along with WebProxy.  If not, see <http://www.gnu.org/licenses/>.
  */
 import { Debug, DiagDebug } from "../lib/Debug";
-import { api, environment } from "../lib/environment";
+import { api } from "../lib/environment";
 import { PolyFill } from "../lib/PolyFill";
 import { SettingsOperation } from "./SettingsOperation";
 
@@ -68,16 +68,20 @@ export class UpdateManager {
 		PolyFill.storageLocalSet({ [UpdateManager.updateCheckStorageKey]: UpdateManager.lastCheckTimestamp });
 		DiagDebug?.trace("Checking for update...");
 
-		let updateInfoUrl = "https://raw.githubusercontent.com/lytree/WebProxy/main/updateinfo.json";
-
-		if (Debug.isEnabled()) {
-			updateInfoUrl = "http://localhost:5500/updateinfo.json";
-		}
+		const updateInfoUrl = "https://api.github.com/repos/lytree/WebProxy/releases/latest";
 
 		fetch(updateInfoUrl, {
 			method: 'GET',
+			headers: {
+				'Accept': 'application/vnd.github+json'
+			}
 		})
-			.then((response) => response.json())
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(`Request failed with status ${response.status}`);
+				}
+				return response.json();
+			})
 			.then((result) => {
 				DiagDebug?.trace("Checking for update result", result);
 				checkForUpdate(result);
@@ -90,30 +94,20 @@ export class UpdateManager {
 			});
 
 
-		function checkForUpdate(updatePackage: any) {
+		function checkForUpdate(release: any) {
 
-			if (!updatePackage || !updatePackage.latestVersion || !updatePackage.latestVersion.version) {
-				Debug.warn("Invalid update info has received", updatePackage);
+			if (!release || !release.tag_name) {
+				Debug.warn("Invalid update info has received", release);
 				return;
 			}
-			let latestVersion: UpdateInfoType = updatePackage.latestVersion;
+			let latestVersion: UpdateInfoType = {
+				version: release.tag_name.replace(/^v/i, ""),
+				versionName: release.name || release.tag_name,
+				downloadPage: release.html_url
+			};
 
 			let manifestVersion = api.runtime.getManifest().version;
-			let isBrowserSpecific = false;
-			if (updatePackage.browsers) {
-				const browserSpecificVersion: UpdateInfoType = updatePackage.browsers[environment.browserConfig.name]?.latestVersion;
 
-				// overriding with browser specific version
-				if (browserSpecificVersion) {
-					if (browserSpecificVersion.version) {
-						latestVersion.version = browserSpecificVersion.version || latestVersion.version;
-						latestVersion.versionName = browserSpecificVersion.versionName || latestVersion.versionName;
-						isBrowserSpecific = true;
-					}
-					latestVersion.downloadPage = browserSpecificVersion.downloadPage || latestVersion.downloadPage;
-				}
-			}
-			
 			// checking...
 			if (UpdateManager.compareVersions(latestVersion.version, manifestVersion)) {
 				DiagDebug?.trace("New update is found", latestVersion);
@@ -123,7 +117,7 @@ export class UpdateManager {
 					downloadPage: latestVersion.downloadPage,
 					version: latestVersion.version,
 					versionName: latestVersion.versionName,
-					isBrowserSpecific: isBrowserSpecific
+					isBrowserSpecific: false
 				});
 			}
 			else {
@@ -133,7 +127,7 @@ export class UpdateManager {
 					downloadPage: null,
 					version: null,
 					versionName: null,
-					isBrowserSpecific: isBrowserSpecific
+					isBrowserSpecific: false
 				});
 			}
 		}

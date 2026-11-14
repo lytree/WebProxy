@@ -57,8 +57,8 @@ bundled with the extension. No IP address is sent to a geolocation service.
 
 ### Update checks
 
-The extension periodically requests a version information file from
-`raw.githubusercontent.com` to check for updates. This request contains no
+The extension periodically requests the latest release information from
+`api.github.com` to check for updates. This request contains no
 personal data beyond what is inherent in any HTTP request.
 
 ## Permissions
