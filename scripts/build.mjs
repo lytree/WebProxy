@@ -99,13 +99,23 @@ function buildEntry(entry) {
  * 这里手动遍历目录并为每个目录建立非递归监听。
  */
 function watchDirectoryRecursive(target, callback) {
-	const watchers = [];
+	const watchers = new Map();
 	walk(target);
-	return () => watchers.forEach((watcher) => watcher.close());
+	return () => {
+		for (const watcher of watchers.values()) watcher.close();
+	};
 
 	function walk(dir) {
+		if (watchers.has(dir)) return;
 		try {
-			watchers.push(fs.watch(dir, callback));
+			// 目录发生变化时重新遍历，为新创建的子目录补上监听
+			watchers.set(
+				dir,
+				fs.watch(dir, (...args) => {
+					callback(...args);
+					walk(dir);
+				}),
+			);
 		} catch (error) {
 			console.warn(`[watch] cannot watch ${path.relative(rootDir, dir)}:`, error.message);
 			return;
