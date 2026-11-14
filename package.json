@@ -1,6 +1,6 @@
 {
   "name": "WebProxy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "WebProxy is a browser extension that will automatically enable/disable proxy for the sites you visit, based on customizable patterns.",
   "packageManager": "pnpm@12.15.0",
   "devDependencies": {
