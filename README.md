@@ -79,6 +79,12 @@ https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#
 4. 打开右上角的“开发者模式”开关
 5. 点击“加载已解压的扩展程序”，选择 `extension/` 目录
 
+#### 发布到 GitHub Releases
+
+推送 `v*` 标签（例如 `v0.0.3`）会触发 **Release** 工作流，构建并打包各浏览器版本（`WebProxy-v<版本>-<目标>.zip`，Chrome/Edge/Opera 额外生成 `.crx`，Firefox/Thunderbird 生成 `.xpi`），然后创建对应的 GitHub Release。插件的版本检查通过 `releases/latest` 获取最新版本，因此需要保持 Release 与版本号一致。
+
+对于已存在但尚未发布 Release 的标签，可手动运行 **Release** 工作流并填写标签名进行补发。
+
 #### 发布到 Microsoft Edge 加载项商店
 
 Edge 版本的包通过 `pnpm run build-ed` 构建；`pnpm run pack:zip` 会生成用于商店上传的 `extension.zip`。

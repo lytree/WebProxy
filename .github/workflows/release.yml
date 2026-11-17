@@ -1,0 +1,84 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to publish (for example v0.0.3)
+        required: true
+
+concurrency:
+  group: release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare CRX signing key
+        env:
+          CRX_PRIVATE_KEY: ${{ secrets.CRX_PRIVATE_KEY }}
+        run: |
+          if [ -z "$CRX_PRIVATE_KEY" ]; then
+            echo "::warning::CRX_PRIVATE_KEY is not configured; .crx artifacts will use a random key and a different extension ID."
+            exit 0
+          fi
+          printf '%s\n' "$CRX_PRIVATE_KEY" > key.pem
+          chmod 600 key.pem
+
+      - name: Build and package browser targets
+        run: |
+          for target in ch ed op ff ff-unlisted ff-android th; do
+            echo "::group::$target"
+            pnpm run "build-$target"
+            version=$(node -p "require('./extension/manifest.json').version")
+            pnpm run pack:zip
+            mv extension.zip "WebProxy-v${version}-${target}.zip"
+            case "$target" in
+              ch|ed|op)
+                pnpm run pack:crx
+                mv extension.crx "WebProxy-v${version}-${target}.crx"
+                ;;
+              *)
+                pnpm run pack:xpi
+                mv extension.xpi "WebProxy-v${version}-${target}.xpi"
+                ;;
+            esac
+            echo "::endgroup::"
+          done
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" WebProxy-* --clobber
+          else
+            gh release create "$TAG" WebProxy-* \
+              --title "WebProxy ${TAG}" \
+              --generate-notes \
+              --verify-tag
+          fi
