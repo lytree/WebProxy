@@ -83,7 +83,7 @@ https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#
 
 推送 `v*` 标签（例如 `v0.0.3`）会触发 **Release** 工作流，构建并打包各浏览器版本（`WebProxy-v<版本>-<目标>.zip`，Chrome/Edge/Opera 额外生成 `.crx`，Firefox/Thunderbird 生成 `.xpi`），然后创建对应的 GitHub Release。插件的版本检查通过 `releases/latest` 获取最新版本，因此需要保持 Release 与版本号一致。
 
-对于已存在但尚未发布 Release 的标签，可手动运行 **Release** 工作流并填写标签名进行补发。
+对于已存在但尚未发布 Release 的标签，可手动运行 **Release** 工作流并填写标签名进行补发；手动补发只创建 GitHub Release，不会推送到 Microsoft Edge 加载项商店。
 
 #### 发布到 Microsoft Edge 加载项商店
 
@@ -106,7 +106,7 @@ Edge 版本的包通过 `pnpm run build-ed` 构建；`pnpm run pack:zip` 会生�
    | `EDGE_CLIENT_ID` | 发布 API 页面中的 Client ID |
    | `EDGE_API_KEY` | 发布 API 页面中的 API Key |
 
-3. 推送 `v*` 标签（例如 `v1.0.0`），或手动运行 **Publish to Microsoft Edge Add-ons** 工作流。该工作流会构建 Edge 包、上传到草稿提交、等待处理完成，然后发布。
+3. 发版本时推送 `v*` 标签（例如 `v1.0.0`），**Release** 工作流创建 GitHub Release 后会自动触发 **Publish to Microsoft Edge Add-ons**；也可以手动运行该工作流。它会构建 Edge 包、上传到草稿提交、等待处理完成，然后发布。
 
 该 API 只能更新已存在的产品，首次提交必须通过 Partner Center 完成。
 

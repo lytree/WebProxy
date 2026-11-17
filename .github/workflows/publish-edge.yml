@@ -1,8 +1,6 @@
 name: Publish to Microsoft Edge Add-ons
 
 on:
-  push:
-    tags: ["v*"]
   workflow_dispatch:
     inputs:
       notes:

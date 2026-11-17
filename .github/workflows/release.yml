@@ -15,6 +15,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   release:
@@ -82,3 +83,10 @@ jobs:
               --generate-notes \
               --verify-tag
           fi
+
+      - name: Trigger Edge Add-ons publish
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: gh workflow run publish-edge.yml --ref "$TAG" -f notes="Automated release ${TAG}"
