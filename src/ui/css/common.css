@@ -992,3 +992,63 @@ html.popup body {
 		transition-duration: .01ms !important;
 	}
 }
+
+
+/* Compact density pass: keep the interface polished while reducing its footprint. */
+html { font-size: 14px; }
+html.popup { font-size: 12.5px; }
+html.popup body { width: 320px; min-width: 260px; max-width: 380px; }
+.popup-container, .popup-menu-contents { display: block; width: 100%; min-width: 0; }
+.popup-menu-contents { padding: .45rem !important; }
+.popup-menu-contents > h6:first-of-type { margin: 0 0 .4rem; font-size: .68rem; letter-spacing: .07em; }
+#divProxyProfiles { gap: .2rem; }
+#divProxyProfiles .nav-link { min-height: 2.25rem; padding: .42rem .6rem; gap: .5rem; border-radius: .45rem; font-size: .82rem; box-shadow: none; }
+#divProxyProfiles .nav-link .icon { width: 1.1rem; font-size: .95rem; text-align: center; }
+#divActiveProxy, #divProxyableContainer, #divFailedRequests { margin-top: .45rem; padding-top: .35rem; }
+#divActiveProxy h6, #divProxyableContainer h6, #lblActiveProxyLabel { margin: 0 0 .25rem; padding-left: .35rem !important; font-size: .7rem; }
+#divActiveProxy > .p-2 { padding: 0 .25rem .2rem !important; }
+.active-proxy-select { min-height: 2.1rem; padding-block: .25rem; font-size: .78rem; }
+#divProxyableDomains { gap: .18rem; }
+#divProxyableDomains > li > a { padding: .4rem .5rem; border-radius: .45rem; font-size: .78rem; box-shadow: none; }
+#divProxyableDomains .proxyable-item .row { --bs-gutter-x: .35rem; }
+#divProxyableDomains .proxyable-is-subscription { padding-left: 1.2rem; font-size: .62rem; line-height: 1.1; }
+.proxyable-panel { padding: .5rem; border-radius: 0 0 .45rem .45rem; }
+.proxyable-panel label { margin-bottom: .15rem; font-size: .68rem; }
+.proxyable-panel .form-select, .proxyable-panel .form-control { min-height: 1.9rem; padding: .2rem .45rem; font-size: .75rem; }
+.popup-menu-contents > .nav { gap: .15rem; }
+.popup-menu-contents > .nav a { padding: .4rem .55rem; border-radius: .45rem; font-size: .78rem; }
+#divProxyableContainer hr, #divActiveProxy hr, #divFailedRequests hr, .popup-menu-contents > hr { margin: .4rem 0; opacity: .45; }
+.private-browsing-mode-head { margin: -.45rem -.45rem .4rem; padding: .35rem .5rem; font-size: .72rem; border-radius: .4rem; }
+.popup-menu-failed { display: block; width: 100%; min-width: 0; padding: .45rem !important; border-right: 0; border-bottom: 1px solid var(--wp-border); }
+.popup-menu-failed .failed-requests-box .card-body { padding: .5rem; }
+.failed-requests-box .failed-request-container { max-height: 180px; }
+.failed-requests-box .request-box { font-size: .75rem; }
+.failed-requests-box .card-footer { padding: .45rem; }
+.failed-requests-box .card-footer .btn { padding: .25rem .45rem; font-size: .7rem; }
+
+/* Settings: tighter shell, navigation, forms and tables. */
+body:has(#tabSettingsContent) > .container { max-width: 1440px; padding: .75rem .9rem 1.25rem !important; }
+body:has(#tabSettingsContent) .slogan { margin: 0 0 .75rem; font-size: 1.25rem; letter-spacing: -.025em; }
+body:has(#tabSettingsContent) .slogan img { width: 32px; height: 32px; }
+body:has(#tabSettingsContent) .row { --bs-gutter-x: .85rem; }
+body:has(#tabSettingsContent) .col-sm-4.col-md-4.col-lg-3 { top: .5rem; }
+body:has(#tabSettingsContent) .nav.flex-column.nav-pills.list-group { gap: .12rem; padding: .35rem; border-radius: .7rem; box-shadow: none; }
+body:has(#tabSettingsContent) .nav-pills .nav-link { padding: .48rem .6rem; border-radius: .42rem; font-size: .82rem; line-height: 1.3; }
+#tabSettings .nav-link { min-width: 0; }
+#tabSettingsContent { padding: 1rem; border-radius: .75rem; box-shadow: none; }
+#tabSettingsContent > .tab-pane > h3:first-child { margin-bottom: .9rem; padding-bottom: .55rem; font-size: 1.3rem; }
+#tabSettingsContent h3:not(:first-child) { margin-top: 1.25rem; margin-bottom: .65rem; padding-bottom: .4rem; font-size: 1.02rem; }
+#tabSettingsContent h4 { font-size: 1rem; }
+#tabSettingsContent h5 { margin-bottom: .45rem; font-size: .9rem; }
+#tabSettingsContent .form-text, #tabSettingsContent small.text-muted { font-size: .76rem; line-height: 1.4; }
+#tabSettingsContent .form-check, #tabSettingsContent .form-group { margin-bottom: .55rem; }
+#tabSettingsContent .form-control, #tabSettingsContent .form-select { min-height: 2.1rem; padding: .3rem .55rem; font-size: .84rem; }
+#tabSettingsContent .btn { padding: .35rem .65rem; font-size: .8rem; }
+#tabSettingsContent .table > :not(caption) > * > * { padding: .45rem .55rem; }
+#tabSettingsContent .sticky-save-buttons-bar { margin-top: .75rem; padding: .5rem .65rem; border-radius: .55rem; box-shadow: 0 -4px 14px rgba(15,23,42,.04); }
+#tabSettingsContent .card { box-shadow: none; }
+@media (max-width: 767.98px) {
+ body:has(#tabSettingsContent) > .container { padding: 3.5rem .5rem .75rem !important; }
+ #tabSettingsContent { padding: .75rem; }
+ #tabSettingsContent .sticky-save-buttons-bar { bottom: .15rem; }
+}
