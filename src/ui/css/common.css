@@ -1052,3 +1052,306 @@ body:has(#tabSettingsContent) .nav-pills .nav-link { padding: .48rem .6rem; bord
  #tabSettingsContent { padding: .75rem; }
  #tabSettingsContent .sticky-save-buttons-bar { bottom: .15rem; }
 }
+
+
+/* Edge extension density refinement: compact, native-feeling controls. */
+:root {
+	--wp-radius-sm: 4px;
+	--wp-radius-md: 6px;
+	--wp-radius-lg: 8px;
+	--wp-shadow-sm: none;
+	--wp-shadow-md: none;
+}
+
+html.popup,
+html.popup body {
+	width: 320px;
+	min-width: 280px;
+	max-width: 360px;
+}
+
+html.popup body {
+	font-size: 12.5px;
+	line-height: 1.35;
+	overflow-x: hidden;
+}
+
+.popup-menu-contents {
+	padding: 6px !important;
+}
+
+.popup-menu-contents > h6:first-of-type {
+	margin: 2px 0 6px;
+	font-size: 11px;
+	letter-spacing: .04em;
+}
+
+#divProxyProfiles .nav-link {
+	min-height: 30px;
+	padding: 5px 8px;
+	gap: 7px;
+	border-radius: 5px;
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+#divProxyProfiles .nav-link .icon {
+	font-size: 13px;
+}
+
+#divActiveProxy,
+#divProxyableContainer,
+#divFailedRequests {
+	margin-top: 6px;
+	padding-top: 5px;
+}
+
+#divActiveProxy h6,
+#divProxyableContainer h6,
+#lblActiveProxyLabel {
+	margin-bottom: 3px;
+	font-size: 11px;
+}
+
+#divActiveProxy > .p-2 {
+	padding: 2px 4px !important;
+}
+
+.active-proxy-select {
+	min-height: 30px;
+	padding: 4px 7px;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+#divProxyableDomains > li > a {
+	padding: 5px 7px;
+	border-radius: 5px;
+	font-size: 11.5px;
+	line-height: 1.25;
+}
+
+#divProxyableDomains .proxyable-status-icon {
+	font-size: 12px;
+}
+
+.proxyable-panel {
+	padding: 7px;
+	border-radius: 0 0 5px 5px;
+}
+
+.proxyable-panel .form-select,
+.proxyable-panel .form-control {
+	min-height: 28px;
+	padding: 3px 6px;
+	font-size: 11.5px;
+}
+
+.popup-menu-contents > .nav a {
+	padding: 5px 7px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+
+#divProxyableContainer hr,
+#divActiveProxy hr,
+#divFailedRequests hr,
+.popup-menu-contents > hr {
+	margin: 5px 0;
+}
+
+.popup-menu-failed {
+	padding: 6px !important;
+}
+
+.popup-menu-failed .failed-requests-box h5 {
+	margin: 2px 0 5px;
+	font-size: 13px;
+}
+
+.popup-menu-failed .failed-requests-box p {
+	margin-bottom: 6px;
+	font-size: 11px;
+	line-height: 1.35;
+}
+
+.failed-requests-box .failed-request-container {
+	max-height: 160px;
+}
+
+.failed-requests-box .card-body {
+	padding: 6px;
+}
+
+.failed-requests-box .request-box {
+	margin-top: 2px;
+	font-size: 11px;
+}
+
+.failed-requests-box .card-footer {
+	padding: 5px;
+	gap: 4px;
+}
+
+.failed-requests-box .card-footer .btn {
+	padding: 3px 6px;
+	font-size: 10.5px;
+}
+
+/* Settings page: use the available viewport instead of decorative framing. */
+body:has(#tabSettingsContent) > .container {
+	width: 100%;
+	max-width: 1280px;
+	padding: 8px 12px 16px !important;
+}
+
+body:has(#tabSettingsContent) > .container > .row {
+	--bs-gutter-x: 12px;
+}
+
+body:has(#tabSettingsContent) .col-sm-4.col-md-4.col-lg-3 {
+	flex: 0 0 220px;
+	max-width: 220px;
+}
+
+body:has(#tabSettingsContent) .col-sm-8.col-md-8.col-lg-9 {
+	flex: 1 1 0;
+	max-width: calc(100% - 220px);
+	min-width: 0;
+}
+
+body:has(#tabSettingsContent) .slogan {
+	margin: 0 0 8px;
+	font-size: 19px;
+	gap: 7px;
+}
+
+body:has(#tabSettingsContent) .slogan img {
+	width: 28px;
+	height: 28px;
+}
+
+body:has(#tabSettingsContent) .nav.flex-column.nav-pills.list-group {
+	padding: 4px;
+	gap: 1px;
+	border-radius: 6px;
+}
+
+body:has(#tabSettingsContent) .nav-pills .nav-link {
+	min-height: 30px;
+	padding: 5px 7px;
+	border-radius: 4px;
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+body:has(#tabSettingsContent) .nav-pills .nav-link .fa,
+body:has(#tabSettingsContent) .nav-pills .nav-link .fas,
+body:has(#tabSettingsContent) .nav-pills .nav-link .far {
+	width: 18px;
+	font-size: 12px;
+}
+
+#tabSettingsContent {
+	padding: 12px;
+	border-radius: 7px;
+}
+
+#tabSettingsContent > .tab-pane > h3:first-child {
+	margin: 0 0 10px;
+	padding-bottom: 7px;
+	font-size: 19px;
+}
+
+#tabSettingsContent h3:not(:first-child) {
+	margin: 16px 0 8px;
+	padding-bottom: 5px;
+	font-size: 15px;
+}
+
+#tabSettingsContent h4 {
+	margin-bottom: 7px;
+	font-size: 14px;
+}
+
+#tabSettingsContent h5 {
+	margin-bottom: 5px;
+	font-size: 13px;
+}
+
+#tabSettingsContent p {
+	margin-bottom: 8px;
+}
+
+#tabSettingsContent .form-check,
+#tabSettingsContent .form-group {
+	margin-bottom: 7px;
+}
+
+#tabSettingsContent .form-control,
+#tabSettingsContent .form-select {
+	min-height: 30px;
+	padding: 4px 7px;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+#tabSettingsContent .btn {
+	padding: 4px 8px;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+#tabSettingsContent .table > :not(caption) > * > * {
+	padding: 5px 7px;
+}
+
+#tabSettingsContent .card,
+#tabSettingsContent .card-header,
+#tabSettingsContent .card-footer {
+	border-radius: 6px;
+	box-shadow: none;
+}
+
+#tabSettingsContent .sticky-save-buttons-bar {
+	margin-top: 10px;
+	padding: 6px 8px;
+	border-radius: 6px;
+	backdrop-filter: none;
+}
+
+#tabSettingsOffCanvas {
+	width: min(280px, 85vw);
+}
+
+#tabSettingsOffCanvas .offcanvas-body {
+	padding: 8px;
+}
+
+@media (max-width: 767.98px) {
+	body:has(#tabSettingsContent) > .container {
+		padding: 54px 6px 10px !important;
+	}
+
+	body:has(#tabSettingsContent) .col-sm-4.col-md-4.col-lg-3,
+	body:has(#tabSettingsContent) .col-sm-8.col-md-8.col-lg-9 {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+
+	#tabSettingsContent {
+		padding: 9px;
+	}
+
+	#tabSettingsContent > .tab-pane > h3:first-child {
+		font-size: 17px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#divProxyProfiles .nav-link,
+	#divProxyableDomains > li > a,
+	.popup-menu-contents > .nav a {
+		transition: none;
+	}
+}
