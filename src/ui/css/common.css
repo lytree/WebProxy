@@ -512,3 +512,846 @@ button:disabled {
 		background-color: rgba(255, 255, 255, 0.1) !important;
 	}
 }
+
+
+/* ==========================================================================
+   WebProxy UI refresh
+   Visual-only overrides: preserve existing markup, IDs and interaction hooks.
+   ========================================================================== */
+
+:root {
+	--wp-radius-sm: 0.5rem;
+	--wp-radius-md: 0.75rem;
+	--wp-radius-lg: 1rem;
+	--wp-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.04);
+	--wp-shadow-md: 0 10px 30px rgba(15, 23, 42, 0.08);
+	--wp-border: var(--bs-border-color, #e2e8f0);
+	--wp-surface: var(--bs-body-bg, #fff);
+	--wp-surface-muted: var(--bs-tertiary-bg, #f8fafc);
+	--wp-text-muted: var(--bs-secondary-color, #64748b);
+	--wp-accent: var(--bs-primary, #2563eb);
+}
+
+html {
+	font-size: 15px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	color: var(--bs-body-color);
+	line-height: 1.55;
+}
+
+button, .btn, .form-control, .form-select {
+	transition: color .16s ease, background-color .16s ease, border-color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+
+.btn {
+	border-radius: .55rem;
+	font-weight: 600;
+}
+
+.btn:not(:disabled):active {
+	transform: translateY(1px);
+}
+
+.form-control, .form-select {
+	min-height: 2.45rem;
+	border-radius: .55rem;
+	border-color: var(--wp-border);
+}
+
+.form-control:focus, .form-select:focus, .form-check-input:focus {
+	border-color: color-mix(in srgb, var(--wp-accent) 55%, white);
+	box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--wp-accent) 15%, transparent);
+}
+
+.form-check-input {
+	cursor: pointer;
+}
+
+.card {
+	border: 1px solid var(--wp-border);
+	border-radius: var(--wp-radius-md);
+	box-shadow: var(--wp-shadow-sm);
+	overflow: hidden;
+}
+
+.card-header, .card-footer {
+	background: var(--wp-surface-muted);
+	border-color: var(--wp-border);
+}
+
+.table {
+	--bs-table-border-color: var(--wp-border);
+	vertical-align: middle;
+}
+
+.table thead th {
+	font-size: .78rem;
+	font-weight: 700;
+	letter-spacing: .025em;
+	color: var(--wp-text-muted);
+	background: var(--wp-surface-muted);
+	white-space: nowrap;
+}
+
+.table > :not(caption) > * > * {
+	padding: .7rem .8rem;
+}
+
+.badge {
+	font-weight: 650;
+	letter-spacing: .01em;
+}
+
+/* Settings workspace */
+body:has(#tabSettingsContent) {
+	background: var(--bs-tertiary-bg, #f5f7fb);
+}
+
+body:has(#tabSettingsContent) > .container {
+	max-width: 1480px;
+	padding-top: 1.5rem !important;
+	padding-bottom: 2.5rem;
+}
+
+#tabSettingsContent {
+	min-width: 0;
+	padding: clamp(1rem, 2.4vw, 2rem);
+	background: var(--wp-surface);
+	border: 1px solid var(--wp-border);
+	border-radius: var(--wp-radius-lg);
+	box-shadow: var(--wp-shadow-sm);
+}
+
+#tabSettingsContent > .tab-pane > h3:first-child {
+	margin: 0 0 1.4rem;
+	padding-bottom: .9rem;
+	border-bottom: 1px solid var(--wp-border);
+	font-size: clamp(1.35rem, 2vw, 1.7rem);
+	font-weight: 750;
+	letter-spacing: -.025em;
+}
+
+#tabSettingsContent h4,
+#tabSettingsContent h5 {
+	font-weight: 700;
+	letter-spacing: -.01em;
+}
+
+#tabSettingsContent h3:not(:first-child) {
+	margin-top: 2rem;
+	padding-bottom: .65rem;
+	border-bottom: 1px solid var(--wp-border);
+	font-size: 1.15rem;
+	font-weight: 700;
+}
+
+#tabSettingsContent .form-text,
+#tabSettingsContent small.text-muted {
+	color: var(--wp-text-muted) !important;
+	line-height: 1.55;
+}
+
+#tabSettingsContent .form-check,
+#tabSettingsContent .form-group {
+	margin-bottom: .9rem;
+}
+
+#tabSettingsContent .card-group {
+	gap: 1rem;
+}
+
+#tabSettingsContent .card-group > .card {
+	border-radius: var(--wp-radius-md) !important;
+}
+
+#tabSettingsContent .table-responsive,
+#tabSettingsContent .dataTables_wrapper {
+	max-width: 100%;
+}
+
+#tabSettingsContent .table,
+#tabSettingsContent table.dataTable {
+	border-color: var(--wp-border);
+}
+
+#tabSettingsContent .sticky-save-buttons-bar {
+	z-index: 5;
+	margin-top: 1.25rem;
+	padding: .85rem 1rem;
+	background: color-mix(in srgb, var(--wp-surface) 94%, transparent);
+	border: 1px solid var(--wp-border);
+	border-radius: var(--wp-radius-md);
+	box-shadow: 0 -8px 24px rgba(15, 23, 42, .06);
+	backdrop-filter: blur(12px);
+}
+
+#tabSettingsContent .position-sticky-bottom {
+	z-index: 5;
+	background: var(--wp-surface);
+}
+
+body:has(#tabSettingsContent) .slogan {
+	display: flex;
+	align-items: center;
+	gap: .7rem;
+	margin: .25rem 0 1.5rem;
+	color: var(--bs-emphasis-color);
+	font-size: 1.55rem;
+	font-weight: 800;
+	letter-spacing: -.04em;
+}
+
+body:has(#tabSettingsContent) .slogan img {
+	width: 42px;
+	height: 42px;
+	object-fit: contain;
+}
+
+body:has(#tabSettingsContent) .col-sm-4.col-md-4.col-lg-3 {
+	position: sticky;
+	top: 1rem;
+	align-self: flex-start;
+}
+
+body:has(#tabSettingsContent) .nav.flex-column.nav-pills.list-group {
+	gap: .25rem;
+	padding: .55rem;
+	background: var(--wp-surface);
+	border: 1px solid var(--wp-border);
+	border-radius: var(--wp-radius-lg);
+	box-shadow: var(--wp-shadow-sm);
+}
+
+#tabSettings .nav-link,
+body:has(#tabSettingsContent) .nav-pills .nav-link {
+	min-width: 0;
+	margin: 0;
+	padding: .72rem .85rem;
+	border: 0;
+	border-radius: .6rem;
+	color: var(--bs-body-color);
+	font-weight: 600;
+	transition: background-color .16s ease, color .16s ease, transform .16s ease;
+}
+
+body:has(#tabSettingsContent) .nav-pills .nav-link:hover {
+	background: var(--wp-surface-muted);
+	transform: translateX(2px);
+}
+
+body:has(#tabSettingsContent) .nav-pills .nav-link.active {
+	color: var(--bs-primary-text-emphasis, #fff);
+	background: color-mix(in srgb, var(--wp-accent) 12%, var(--wp-surface));
+	box-shadow: inset 3px 0 0 var(--wp-accent);
+}
+
+body:has(#tabSettingsContent) .nav-pills .nav-link.active .fa,
+body:has(#tabSettingsContent) .nav-pills .nav-link.active .fas,
+body:has(#tabSettingsContent) .nav-pills .nav-link.active .far {
+	color: var(--wp-accent) !important;
+}
+
+#tabSettingsOffCanvas .offcanvas-body {
+	padding: 1rem;
+}
+
+#tabSettingsOffCanvas .nav {
+	gap: .3rem;
+}
+
+/* Extension popup */
+html.popup {
+	font-size: 13px;
+	min-width: 320px;
+}
+
+html.popup body {
+	width: 360px;
+	min-width: 320px;
+	max-width: 440px;
+	margin: 0;
+	background: var(--bs-body-bg);
+}
+
+.popup-container {
+	display: block;
+	width: 100%;
+}
+
+.popup-menu-contents {
+	display: block;
+	width: 100%;
+	min-width: 0;
+	padding: .8rem !important;
+}
+
+.popup-menu-contents > h6:first-of-type {
+	margin: .1rem 0 .8rem;
+	color: var(--wp-text-muted);
+	font-size: .72rem;
+	font-weight: 750;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+}
+
+#divProxyProfiles {
+	gap: .35rem;
+}
+
+#divProxyProfiles .nav-link {
+	display: flex;
+	align-items: center;
+	gap: .7rem;
+	min-height: 2.8rem;
+	margin: 0;
+	padding: .65rem .8rem;
+	border: 1px solid var(--wp-border);
+	border-radius: .7rem;
+	background: var(--wp-surface);
+	color: var(--bs-body-color);
+	font-weight: 650;
+}
+
+#divProxyProfiles .nav-link:hover {
+	border-color: color-mix(in srgb, var(--wp-accent) 45%, var(--wp-border));
+	background: var(--wp-surface-muted);
+}
+
+#divProxyProfiles .nav-link.active {
+	border-color: color-mix(in srgb, var(--wp-accent) 45%, var(--wp-border));
+	background: color-mix(in srgb, var(--wp-accent) 10%, var(--wp-surface));
+	color: var(--bs-emphasis-color);
+	box-shadow: inset 3px 0 0 var(--wp-accent);
+}
+
+#divProxyProfiles .nav-link.active .icon {
+	color: var(--wp-accent) !important;
+}
+
+#divActiveProxy,
+#divProxyableContainer,
+#divFailedRequests {
+	margin-top: .85rem;
+	padding-top: .7rem;
+	border-top: 1px solid var(--wp-border);
+}
+
+#divActiveProxy h6,
+#divProxyableContainer h6,
+#lblActiveProxyLabel {
+	margin: 0 0 .45rem;
+	font-size: .78rem;
+	font-weight: 750;
+	color: var(--wp-text-muted);
+}
+
+.active-proxy-select {
+	width: 100%;
+	min-height: 2.55rem;
+	font-size: .85rem;
+}
+
+#divProxyableDomains {
+	gap: .35rem;
+}
+
+#divProxyableDomains > li > a {
+	padding: .65rem .7rem;
+	border: 1px solid var(--wp-border);
+	border-radius: .65rem;
+	background: var(--wp-surface);
+	color: var(--bs-body-color);
+}
+
+#divProxyableDomains > li > a:hover {
+	background: var(--wp-surface-muted);
+}
+
+.proxyable-panel {
+	margin: -.15rem 0 .35rem;
+	padding: .8rem;
+	border: 1px solid var(--wp-border);
+	border-top: 0;
+	border-radius: 0 0 .65rem .65rem;
+	background: var(--wp-surface-muted);
+}
+
+.popup-menu-contents > .nav {
+	gap: .35rem;
+}
+
+.popup-menu-contents > .nav a {
+	padding: .65rem .75rem;
+	border-radius: .65rem;
+	font-weight: 600;
+}
+
+.popup-menu-contents > .nav a:hover {
+	background: var(--wp-surface-muted);
+}
+
+.popup-menu-failed {
+	width: 100%;
+	min-width: 0;
+	padding: .8rem !important;
+	border: 0;
+	border-bottom: 1px solid var(--wp-border);
+	background: var(--wp-surface-muted);
+}
+
+.failed-requests-box .card {
+	border-radius: var(--wp-radius-md);
+}
+
+.failed-requests-box .card-footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .45rem;
+	justify-content: space-between;
+}
+
+.failed-requests-box .card-footer .btn {
+	margin: 0;
+}
+
+.private-browsing-mode-head {
+	margin: -.8rem -.8rem .65rem;
+	padding: .55rem .8rem;
+	border-radius: 0;
+	font-size: .8rem;
+	font-weight: 700;
+}
+
+/* Proxyable resources page and data tables */
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+	border: 1px solid var(--wp-border);
+	border-radius: .5rem;
+	padding: .35rem .55rem;
+	background: var(--wp-surface);
+	color: var(--bs-body-color);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+	border-radius: .45rem !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+	border-color: var(--wp-border) !important;
+	background: var(--wp-surface-muted) !important;
+}
+
+.proxyable-arrow-btn {
+	border-radius: .4rem;
+}
+
+@media (max-width: 767.98px) {
+	body:has(#tabSettingsContent) > .container {
+		padding: 4.5rem .75rem 1.5rem !important;
+	}
+
+	body:has(#tabSettingsContent) .row > .col-sm-8.col-md-8.col-lg-9 {
+		width: 100%;
+	}
+
+	#tabSettingsContent {
+		padding: 1rem;
+		border-radius: .8rem;
+	}
+
+	#tabSettingsContent .sticky-save-buttons-bar {
+		bottom: .25rem;
+	}
+
+	#tabSettingsContent .card-group {
+		flex-direction: column;
+	}
+
+	#tabSettingsContent .card-group > .card {
+		margin-bottom: .5rem;
+	}
+
+	#tabSettingsContent .row > [class*="col-"] {
+		margin-bottom: .35rem;
+	}
+
+	.popup-menu-failed .failed-request-container {
+		max-height: 220px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: .01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+		transition-duration: .01ms !important;
+	}
+}
+
+
+/* Compact density pass: keep the interface polished while reducing its footprint. */
+html { font-size: 14px; }
+html.popup { font-size: 12.5px; }
+html.popup body { width: 320px; min-width: 260px; max-width: 380px; }
+.popup-container, .popup-menu-contents { display: block; width: 100%; min-width: 0; }
+.popup-menu-contents { padding: .45rem !important; }
+.popup-menu-contents > h6:first-of-type { margin: 0 0 .4rem; font-size: .68rem; letter-spacing: .07em; }
+#divProxyProfiles { gap: .2rem; }
+#divProxyProfiles .nav-link { min-height: 2.25rem; padding: .42rem .6rem; gap: .5rem; border-radius: .45rem; font-size: .82rem; box-shadow: none; }
+#divProxyProfiles .nav-link .icon { width: 1.1rem; font-size: .95rem; text-align: center; }
+#divActiveProxy, #divProxyableContainer, #divFailedRequests { margin-top: .45rem; padding-top: .35rem; }
+#divActiveProxy h6, #divProxyableContainer h6, #lblActiveProxyLabel { margin: 0 0 .25rem; padding-left: .35rem !important; font-size: .7rem; }
+#divActiveProxy > .p-2 { padding: 0 .25rem .2rem !important; }
+.active-proxy-select { min-height: 2.1rem; padding-block: .25rem; font-size: .78rem; }
+#divProxyableDomains { gap: .18rem; }
+#divProxyableDomains > li > a { padding: .4rem .5rem; border-radius: .45rem; font-size: .78rem; box-shadow: none; }
+#divProxyableDomains .proxyable-item .row { --bs-gutter-x: .35rem; }
+#divProxyableDomains .proxyable-is-subscription { padding-left: 1.2rem; font-size: .62rem; line-height: 1.1; }
+.proxyable-panel { padding: .5rem; border-radius: 0 0 .45rem .45rem; }
+.proxyable-panel label { margin-bottom: .15rem; font-size: .68rem; }
+.proxyable-panel .form-select, .proxyable-panel .form-control { min-height: 1.9rem; padding: .2rem .45rem; font-size: .75rem; }
+.popup-menu-contents > .nav { gap: .15rem; }
+.popup-menu-contents > .nav a { padding: .4rem .55rem; border-radius: .45rem; font-size: .78rem; }
+#divProxyableContainer hr, #divActiveProxy hr, #divFailedRequests hr, .popup-menu-contents > hr { margin: .4rem 0; opacity: .45; }
+.private-browsing-mode-head { margin: -.45rem -.45rem .4rem; padding: .35rem .5rem; font-size: .72rem; border-radius: .4rem; }
+.popup-menu-failed { display: block; width: 100%; min-width: 0; padding: .45rem !important; border-right: 0; border-bottom: 1px solid var(--wp-border); }
+.popup-menu-failed .failed-requests-box .card-body { padding: .5rem; }
+.failed-requests-box .failed-request-container { max-height: 180px; }
+.failed-requests-box .request-box { font-size: .75rem; }
+.failed-requests-box .card-footer { padding: .45rem; }
+.failed-requests-box .card-footer .btn { padding: .25rem .45rem; font-size: .7rem; }
+
+/* Settings: tighter shell, navigation, forms and tables. */
+body:has(#tabSettingsContent) > .container { max-width: 1440px; padding: .75rem .9rem 1.25rem !important; }
+body:has(#tabSettingsContent) .slogan { margin: 0 0 .75rem; font-size: 1.25rem; letter-spacing: -.025em; }
+body:has(#tabSettingsContent) .slogan img { width: 32px; height: 32px; }
+body:has(#tabSettingsContent) .row { --bs-gutter-x: .85rem; }
+body:has(#tabSettingsContent) .col-sm-4.col-md-4.col-lg-3 { top: .5rem; }
+body:has(#tabSettingsContent) .nav.flex-column.nav-pills.list-group { gap: .12rem; padding: .35rem; border-radius: .7rem; box-shadow: none; }
+body:has(#tabSettingsContent) .nav-pills .nav-link { padding: .48rem .6rem; border-radius: .42rem; font-size: .82rem; line-height: 1.3; }
+#tabSettings .nav-link { min-width: 0; }
+#tabSettingsContent { padding: 1rem; border-radius: .75rem; box-shadow: none; }
+#tabSettingsContent > .tab-pane > h3:first-child { margin-bottom: .9rem; padding-bottom: .55rem; font-size: 1.3rem; }
+#tabSettingsContent h3:not(:first-child) { margin-top: 1.25rem; margin-bottom: .65rem; padding-bottom: .4rem; font-size: 1.02rem; }
+#tabSettingsContent h4 { font-size: 1rem; }
+#tabSettingsContent h5 { margin-bottom: .45rem; font-size: .9rem; }
+#tabSettingsContent .form-text, #tabSettingsContent small.text-muted { font-size: .76rem; line-height: 1.4; }
+#tabSettingsContent .form-check, #tabSettingsContent .form-group { margin-bottom: .55rem; }
+#tabSettingsContent .form-control, #tabSettingsContent .form-select { min-height: 2.1rem; padding: .3rem .55rem; font-size: .84rem; }
+#tabSettingsContent .btn { padding: .35rem .65rem; font-size: .8rem; }
+#tabSettingsContent .table > :not(caption) > * > * { padding: .45rem .55rem; }
+#tabSettingsContent .sticky-save-buttons-bar { margin-top: .75rem; padding: .5rem .65rem; border-radius: .55rem; box-shadow: 0 -4px 14px rgba(15,23,42,.04); }
+#tabSettingsContent .card { box-shadow: none; }
+@media (max-width: 767.98px) {
+ body:has(#tabSettingsContent) > .container { padding: 3.5rem .5rem .75rem !important; }
+ #tabSettingsContent { padding: .75rem; }
+ #tabSettingsContent .sticky-save-buttons-bar { bottom: .15rem; }
+}
+
+
+/* Edge extension density refinement: compact, native-feeling controls. */
+:root {
+	--wp-radius-sm: 4px;
+	--wp-radius-md: 6px;
+	--wp-radius-lg: 8px;
+	--wp-shadow-sm: none;
+	--wp-shadow-md: none;
+}
+
+html.popup,
+html.popup body {
+	width: 320px;
+	min-width: 280px;
+	max-width: 360px;
+}
+
+html.popup body {
+	font-size: 12.5px;
+	line-height: 1.35;
+	overflow-x: hidden;
+}
+
+.popup-menu-contents {
+	padding: 6px !important;
+}
+
+.popup-menu-contents > h6:first-of-type {
+	margin: 2px 0 6px;
+	font-size: 11px;
+	letter-spacing: .04em;
+}
+
+#divProxyProfiles .nav-link {
+	min-height: 30px;
+	padding: 5px 8px;
+	gap: 7px;
+	border-radius: 5px;
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+#divProxyProfiles .nav-link .icon {
+	font-size: 13px;
+}
+
+#divActiveProxy,
+#divProxyableContainer,
+#divFailedRequests {
+	margin-top: 6px;
+	padding-top: 5px;
+}
+
+#divActiveProxy h6,
+#divProxyableContainer h6,
+#lblActiveProxyLabel {
+	margin-bottom: 3px;
+	font-size: 11px;
+}
+
+#divActiveProxy > .p-2 {
+	padding: 2px 4px !important;
+}
+
+.active-proxy-select {
+	min-height: 30px;
+	padding: 4px 7px;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+#divProxyableDomains > li > a {
+	padding: 5px 7px;
+	border-radius: 5px;
+	font-size: 11.5px;
+	line-height: 1.25;
+}
+
+#divProxyableDomains .proxyable-status-icon {
+	font-size: 12px;
+}
+
+.proxyable-panel {
+	padding: 7px;
+	border-radius: 0 0 5px 5px;
+}
+
+.proxyable-panel .form-select,
+.proxyable-panel .form-control {
+	min-height: 28px;
+	padding: 3px 6px;
+	font-size: 11.5px;
+}
+
+.popup-menu-contents > .nav a {
+	padding: 5px 7px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+
+#divProxyableContainer hr,
+#divActiveProxy hr,
+#divFailedRequests hr,
+.popup-menu-contents > hr {
+	margin: 5px 0;
+}
+
+.popup-menu-failed {
+	padding: 6px !important;
+}
+
+.popup-menu-failed .failed-requests-box h5 {
+	margin: 2px 0 5px;
+	font-size: 13px;
+}
+
+.popup-menu-failed .failed-requests-box p {
+	margin-bottom: 6px;
+	font-size: 11px;
+	line-height: 1.35;
+}
+
+.failed-requests-box .failed-request-container {
+	max-height: 160px;
+}
+
+.failed-requests-box .card-body {
+	padding: 6px;
+}
+
+.failed-requests-box .request-box {
+	margin-top: 2px;
+	font-size: 11px;
+}
+
+.failed-requests-box .card-footer {
+	padding: 5px;
+	gap: 4px;
+}
+
+.failed-requests-box .card-footer .btn {
+	padding: 3px 6px;
+	font-size: 10.5px;
+}
+
+/* Settings page: use the available viewport instead of decorative framing. */
+body:has(#tabSettingsContent) > .container {
+	width: 100%;
+	max-width: 1280px;
+	padding: 8px 12px 16px !important;
+}
+
+body:has(#tabSettingsContent) > .container > .row {
+	--bs-gutter-x: 12px;
+}
+
+body:has(#tabSettingsContent) .col-sm-4.col-md-4.col-lg-3 {
+	flex: 0 0 220px;
+	max-width: 220px;
+}
+
+body:has(#tabSettingsContent) .col-sm-8.col-md-8.col-lg-9 {
+	flex: 1 1 0;
+	max-width: calc(100% - 220px);
+	min-width: 0;
+}
+
+body:has(#tabSettingsContent) .slogan {
+	margin: 0 0 8px;
+	font-size: 19px;
+	gap: 7px;
+}
+
+body:has(#tabSettingsContent) .slogan img {
+	width: 28px;
+	height: 28px;
+}
+
+body:has(#tabSettingsContent) .nav.flex-column.nav-pills.list-group {
+	padding: 4px;
+	gap: 1px;
+	border-radius: 6px;
+}
+
+body:has(#tabSettingsContent) .nav-pills .nav-link {
+	min-height: 30px;
+	padding: 5px 7px;
+	border-radius: 4px;
+	font-size: 12px;
+	line-height: 1.25;
+}
+
+body:has(#tabSettingsContent) .nav-pills .nav-link .fa,
+body:has(#tabSettingsContent) .nav-pills .nav-link .fas,
+body:has(#tabSettingsContent) .nav-pills .nav-link .far {
+	width: 18px;
+	font-size: 12px;
+}
+
+#tabSettingsContent {
+	padding: 12px;
+	border-radius: 7px;
+}
+
+#tabSettingsContent > .tab-pane > h3:first-child {
+	margin: 0 0 10px;
+	padding-bottom: 7px;
+	font-size: 19px;
+}
+
+#tabSettingsContent h3:not(:first-child) {
+	margin: 16px 0 8px;
+	padding-bottom: 5px;
+	font-size: 15px;
+}
+
+#tabSettingsContent h4 {
+	margin-bottom: 7px;
+	font-size: 14px;
+}
+
+#tabSettingsContent h5 {
+	margin-bottom: 5px;
+	font-size: 13px;
+}
+
+#tabSettingsContent p {
+	margin-bottom: 8px;
+}
+
+#tabSettingsContent .form-check,
+#tabSettingsContent .form-group {
+	margin-bottom: 7px;
+}
+
+#tabSettingsContent .form-control,
+#tabSettingsContent .form-select {
+	min-height: 30px;
+	padding: 4px 7px;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+#tabSettingsContent .btn {
+	padding: 4px 8px;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+#tabSettingsContent .table > :not(caption) > * > * {
+	padding: 5px 7px;
+}
+
+#tabSettingsContent .card,
+#tabSettingsContent .card-header,
+#tabSettingsContent .card-footer {
+	border-radius: 6px;
+	box-shadow: none;
+}
+
+#tabSettingsContent .sticky-save-buttons-bar {
+	margin-top: 10px;
+	padding: 6px 8px;
+	border-radius: 6px;
+	backdrop-filter: none;
+}
+
+#tabSettingsOffCanvas {
+	width: min(280px, 85vw);
+}
+
+#tabSettingsOffCanvas .offcanvas-body {
+	padding: 8px;
+}
+
+@media (max-width: 767.98px) {
+	body:has(#tabSettingsContent) > .container {
+		padding: 54px 6px 10px !important;
+	}
+
+	body:has(#tabSettingsContent) .col-sm-4.col-md-4.col-lg-3,
+	body:has(#tabSettingsContent) .col-sm-8.col-md-8.col-lg-9 {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+
+	#tabSettingsContent {
+		padding: 9px;
+	}
+
+	#tabSettingsContent > .tab-pane > h3:first-child {
+		font-size: 17px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#divProxyProfiles .nav-link,
+	#divProxyableDomains > li > a,
+	.popup-menu-contents > .nav a {
+		transition: none;
+	}
+}
