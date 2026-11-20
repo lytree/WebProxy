@@ -138,6 +138,9 @@ export class CommonUi {
 			}
 		}
 
+		// Keep WebProxy semantic color overrides after the selected theme CSS.
+		CommonUi.insertStyleSheet("theme-overrides.css");
+
 		function insertDarkThemeFix(media: string = undefined) {
 			CommonUi.insertStyleSheet(themesDarkFix, media);
 		}
