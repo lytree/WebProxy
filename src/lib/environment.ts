@@ -53,8 +53,8 @@ export let environment = {
 	},
 	browserConfig: {
 		name: "Default",
-		marketName: "Extensions",
-		marketUrl: ""
+		marketName: "GitHub",
+		marketUrl: "https://github.com/lytree/WebProxy"
 	}
 };
 

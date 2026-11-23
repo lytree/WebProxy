@@ -2,8 +2,8 @@ import { environment } from "../../lib/environment";
 
 environment.browserConfig = {
     name: "Thunderbird",
-    marketName: "Thunderbird Add-ons",
-    marketUrl: "https://addons.thunderbird.net/en-US/thunderbird/addon/smartproxy/"
+    marketName: "GitHub",
+    marketUrl: "https://github.com/lytree/WebProxy"
 };
 environment.notSupported.setProxySettings = true;
 environment.initialConfig.displayTooltipOnBadge = false;

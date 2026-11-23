@@ -2,8 +2,8 @@ import { environment } from "../../lib/environment";
 
 environment.browserConfig = {
     name: "Firefox Android",
-    marketName: "Firefox Add-ons",
-    marketUrl: "https://addons.mozilla.org/en-US/firefox/addon/smartproxy/"
+    marketName: "GitHub",
+    marketUrl: "https://github.com/lytree/WebProxy"
 };
 environment.notSupported.keyboardShortcuts = true;
 environment.initialConfig.displayTooltipOnBadge = false;

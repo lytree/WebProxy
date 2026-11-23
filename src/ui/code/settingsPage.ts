@@ -4451,7 +4451,7 @@ export class settingsPage {
 				PolyFill.runtimeSendMessage({ command: CommandMessages.DebugEnableDiagnostics });
 
 				alert("Diagnostics are enabled for this session only. Check this page for more info.");
-				window.open("https://github.com/salarcode/SmartProxy/wiki/Enable-Diagnostics")
+				window.open("https://github.com/lytree/WebProxy/wiki/Enable-Diagnostics")
 			}
 		},
 		onWindowUnload(event) {

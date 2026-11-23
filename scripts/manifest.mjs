@@ -123,7 +123,7 @@ function baseManifest(overrides) {
 		manifest_version: 3,
 		author: "Salar Khalilzadeh",
 		description: "__MSG_extensionDescription__",
-		homepage_url: "https://github.com/salarcode/SmartProxy",
+		homepage_url: "https://github.com/lytree/WebProxy",
 		default_locale: "en",
 		icons,
 		host_permissions: ["<all_urls>"],

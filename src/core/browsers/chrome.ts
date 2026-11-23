@@ -2,7 +2,7 @@ import { environment } from "../../lib/environment";
 
 environment.browserConfig = {
     name: "Chrome",
-    marketName: "Chrome Web Store",
-    marketUrl: "https://chrome.google.com/webstore/detail/smartproxy/jogcnplbkgkfdakgdenhlpcfhjioidoj"
+    marketName: "GitHub",
+    marketUrl: "https://github.com/lytree/WebProxy"
 };
 environment.manifestV3 = true;

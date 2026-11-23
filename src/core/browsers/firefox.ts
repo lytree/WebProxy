@@ -2,8 +2,8 @@ import { environment } from "../../lib/environment";
 
 environment.browserConfig = {
     name: "Firefox",
-    marketName: "Firefox Add-ons",
-    marketUrl: "https://addons.mozilla.org/en-US/firefox/addon/smartproxy/"
+    marketName: "GitHub",
+    marketUrl: "https://github.com/lytree/WebProxy"
 };
 
 if (typeof (navigator) != 'undefined' && navigator?.userAgent?.toLowerCase().includes("mobile")) {
